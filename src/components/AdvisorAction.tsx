@@ -5,10 +5,12 @@ interface AdvisorActionProps {
   advisorId: AdvisorId | null;
   capitalStat: number;
   malikCooldown: number;
+  krossAvailable?: boolean;
+  isCardRegion?: boolean;
   onAction: () => void;
 }
 
-export function AdvisorAction({ advisorId, capitalStat, malikCooldown, onAction }: AdvisorActionProps) {
+export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvailable, isCardRegion, onAction }: AdvisorActionProps) {
   const { label, className, disabled } = useMemo(() => {
     if (!advisorId) {
       return { 
@@ -19,10 +21,24 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, onAction 
     }
 
     if (advisorId === 'realpolitiker') {
+      if (!krossAvailable) {
+        return { 
+          label: '[ PACIFICATION UNAVAILABLE UNTIL NEXT ELECTION ]', 
+          className: 'advisor-action-btn', 
+          disabled: true 
+        };
+      }
+      if (!isCardRegion) {
+        return { 
+          label: '[ TARGET NON-REGIONAL ]', 
+          className: 'advisor-action-btn', 
+          disabled: true 
+        };
+      }
       return { 
-        label: '[ REALPOLITIKER: PASSIVE BOOST ACTIVE ]', 
-        className: 'advisor-action-btn', 
-        disabled: true 
+        label: '[ INITIATE REGIONAL PACIFICATION ]', 
+        className: 'advisor-action-btn glow-amber', 
+        disabled: false 
       };
     }
 
@@ -84,7 +100,7 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, onAction 
       className: 'advisor-action-btn', 
       disabled: true 
     };
-  }, [advisorId, capitalStat, malikCooldown]);
+  }, [advisorId, capitalStat, malikCooldown, krossAvailable, isCardRegion]);
 
   return (
     <button className={className} disabled={disabled} type="button" onClick={onAction}>

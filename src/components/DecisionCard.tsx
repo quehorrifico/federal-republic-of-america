@@ -27,6 +27,7 @@ interface DecisionCardProps {
   pressureHint?: string | null;
   disabled?: boolean;
   malikRewriteActive?: boolean;
+  isPacified?: boolean;
   onChoose(direction: Direction): void;
   onPreviewDirection(direction: Direction | null): void;
 }
@@ -50,6 +51,7 @@ export function DecisionCard({
   card,
   disabled,
   malikRewriteActive,
+  isPacified,
   onChoose,
   onPreviewDirection,
 }: DecisionCardProps) {
@@ -274,11 +276,13 @@ export function DecisionCard({
 
   const requestGovernor = card.governor ? GOVERNORS[card.governor] : null;
 
-  const displayLeftLabel = malikRewriteActive ? '[ REDACTED ]' : card.left.label;
-  const displayRightLabel = malikRewriteActive ? '[ FULL ENDORSEMENT ]' : card.right.label;
-  const displayPrompt = malikRewriteActive 
-    ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
-    : card.prompt;
+  const displayLeftLabel = isPacified ? '' : (malikRewriteActive ? '[ REDACTED ]' : card.left.label);
+  const displayRightLabel = isPacified ? '' : (malikRewriteActive ? '[ FULL ENDORSEMENT ]' : card.right.label);
+  const displayPrompt = isPacified
+    ? '> HEIL CHANCELLOR.'
+    : (malikRewriteActive 
+      ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
+      : card.prompt);
 
   return (
     <div className="decision-card-shell" ref={shellRef} style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
@@ -310,7 +314,7 @@ export function DecisionCard({
           )}
         </div>
         <div className="decision-terminal-footer">
-          <span style={{ color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
+          <span className={isPacified ? 'glow-green' : ''} style={isPacified ? {} : { color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
           <span className="glow-green">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
         </div>
       </article>

@@ -136,6 +136,8 @@ export function loadGameState(): GameState | null {
     const gameOverReason = parsed.gameOverReason;
     const malikCooldown = parsed.malikCooldown;
     const malikRewriteActive = parsed.malikRewriteActive;
+    const pacifiedRegions = parsed.pacifiedRegions;
+    const krossLastUsedElectionTerm = parsed.krossLastUsedElectionTerm;
 
     if (
       !stats ||
@@ -167,6 +169,8 @@ export function loadGameState(): GameState | null {
       gameOverReason: gameOverReason ?? null,
       malikCooldown: typeof malikCooldown === 'number' ? malikCooldown : 0,
       malikRewriteActive: typeof malikRewriteActive === 'boolean' ? malikRewriteActive : false,
+      pacifiedRegions: Array.isArray(pacifiedRegions) ? pacifiedRegions : [],
+      krossLastUsedElectionTerm: typeof krossLastUsedElectionTerm === 'number' ? krossLastUsedElectionTerm : null,
     };
   } catch {
     return null;

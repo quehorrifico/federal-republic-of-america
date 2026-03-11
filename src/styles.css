@@ -137,6 +137,11 @@ body {
   color: #00ff41;
 }
 
+.gov-status-pacified {
+  color: #00a2ff;
+  text-shadow: 0 0 5px rgba(0, 162, 255, 0.5);
+}
+
 .gov-status-neutral {
   color: #ffb000;
 }

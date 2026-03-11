@@ -181,7 +181,7 @@ export interface DecisionResolutionResult {
 }
 
 export function resolveCardDecision(params: {
-  state: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive'>;
+  state: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions'>;
   card: Card;
   direction: Direction;
 }): DecisionResolutionResult {
@@ -199,6 +199,11 @@ export function resolveCardDecision(params: {
     } else {
       choice.regionalEffects = {};
     }
+  } else if (card.governor && state.pacifiedRegions.includes(card.governor)) {
+    // Pacified regions' requests have zero effect
+    choice.effects = {};
+    choice.treasuryDelta = 0;
+    choice.regionalEffects = {};
   }
 
   const nextStats = applyChoiceToStats(state.stats, choice);

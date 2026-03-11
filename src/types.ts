@@ -292,4 +292,6 @@ export interface GameState {
   gameOverReason: GameOverReason;
   malikCooldown: number;
   malikRewriteActive: boolean;
+  pacifiedRegions: RegionKey[];
+  krossLastUsedElectionTerm: number | null;
 }

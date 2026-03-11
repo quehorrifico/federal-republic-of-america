@@ -162,6 +162,8 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     gameOverReason: null,
     malikCooldown: 0,
     malikRewriteActive: false,
+    pacifiedRegions: [],
+    krossLastUsedElectionTerm: null,
   };
 }
 
@@ -354,6 +356,7 @@ export default function App() {
         hiddenStats: game.hiddenStats,
         regionLoyalty: game.regionLoyalty,
         malikRewriteActive: game.malikRewriteActive,
+        pacifiedRegions: game.pacifiedRegions,
       },
       card: currentCard,
       direction: previewDirection,
@@ -436,7 +439,40 @@ export default function App() {
             headline: '[ SYSTEM OVERRIDE: PROPOSAL REWRITTEN ]',
           }));
         }
-      }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard]);
+
+        if (selectedAdvisor.id === 'realpolitiker') {
+          const currentElectionTerm = Math.floor(game.turn / ELECTION_INTERVAL);
+          const krossAvailable = game.krossLastUsedElectionTerm === null || game.krossLastUsedElectionTerm < currentElectionTerm;
+          
+          if (!krossAvailable || !currentCard.governor || game.pacifiedRegions.includes(currentCard.governor)) {
+            return;
+          }
+
+          setGame((current) => {
+            const nextStats = { ...current.stats };
+            nextStats.sentiment = Math.max(0, nextStats.sentiment - 15);
+            nextStats.authority = Math.min(100, nextStats.authority + 30);
+
+            const nextRegionLoyalty = { ...current.regionLoyalty };
+            // Decrease all regions by 10
+            for (const r of REGION_KEYS) {
+              nextRegionLoyalty[r] = Math.max(0, (nextRegionLoyalty[r] ?? 50) - 10);
+            }
+            
+            // Set the targeted pacified region to 100 loyalty and lock it.
+            nextRegionLoyalty[currentCard.governor!] = 100;
+
+            return {
+              ...current,
+              stats: nextStats,
+              regionLoyalty: nextRegionLoyalty,
+              pacifiedRegions: [...current.pacifiedRegions, currentCard.governor!],
+              krossLastUsedElectionTerm: currentElectionTerm,
+              headline: `[ REGIONAL PACIFICATION EXECUTED: TARGET SUPPRESSED ]`,
+            };
+          });
+        }
+      }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.pacifiedRegions]);
 
       const onChoose = useCallback(
         (direction: Direction) => {
@@ -450,6 +486,7 @@ export default function App() {
               hiddenStats: game.hiddenStats,
               regionLoyalty: game.regionLoyalty,
               malikRewriteActive: game.malikRewriteActive,
+              pacifiedRegions: game.pacifiedRegions,
             },
             card: currentCard,
             direction,
@@ -615,6 +652,8 @@ export default function App() {
         gameOverReason: null,
         malikCooldown: nextMalikCooldown,
         malikRewriteActive: false, // reset on next card
+        pacifiedRegions: game.pacifiedRegions,
+        krossLastUsedElectionTerm: game.krossLastUsedElectionTerm,
       });
 
       setPreviewDirection(null);
@@ -713,9 +752,11 @@ export default function App() {
             {REGION_KEYS.map((region) => {
               const governor = GOVERNORS[region];
               const loyalty = game.regionLoyalty[region] ?? 0;
-              const state = getRegionLoyaltyState(loyalty);
+              const isPacified = game.pacifiedRegions.includes(region);
+              const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
               let statusClass = 'gov-status-neutral';
-              if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
+              if (isPacified) statusClass = 'gov-status-pacified';
+              else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
               if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
               
               return (
@@ -734,6 +775,7 @@ export default function App() {
               card={currentCard}
               disabled={!!electionModal || settingsOpen}
               malikRewriteActive={game.malikRewriteActive}
+              isPacified={Boolean(currentCard.governor && game.pacifiedRegions.includes(currentCard.governor))}
               onChoose={onChoose}
               onPreviewDirection={setPreviewDirection}
             />
@@ -745,6 +787,11 @@ export default function App() {
             advisorId={selectedAdvisor?.id ?? null} 
             capitalStat={game.stats.capital} 
             malikCooldown={game.malikCooldown}
+            krossAvailable={
+              game.krossLastUsedElectionTerm === null || 
+              game.krossLastUsedElectionTerm < Math.floor(game.turn / ELECTION_INTERVAL)
+            }
+            isCardRegion={Boolean(currentCard?.governor)}
             onAction={onAdvisorAction}
           />
         </section>
