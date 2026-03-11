@@ -1,0 +1,6862 @@
+[
+  {
+    "id": "cascadia-001",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Texas"
+    ],
+    "pillarTags": [
+      "sustainability",
+      "austerity"
+    ],
+    "prompt": "Let Cascadia build a federal rain-battery grid before the next dry summer.",
+    "left": {
+      "label": "Too Costly",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Cascadia": -6,
+        "Texas": 2
+      },
+      "hiddenEffects": {
+        "green_stewardship": -5,
+        "fiscal_restraint": 3
+      }
+    },
+    "right": {
+      "label": "Build It",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Cascadia": 6,
+        "Texas": -3
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "fiscal_restraint": -3
+      }
+    }
+  },
+  {
+    "id": "cascadia-002",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "conservation",
+      "job_creation"
+    ],
+    "prompt": "We want to ban all old-growth logging exports on the West Coast. It will save the forests, but timber towns will take a hit.",
+    "left": {
+      "label": "Protect Jobs",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Cascadia": -5,
+        "Appalachia": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": -6,
+        "labor_power": 4
+      }
+    },
+    "right": {
+      "label": "Ban Logging",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": -1,
+        "sustainability": 4
+      },
+      "regionalEffects": {
+        "Cascadia": 6,
+        "Appalachia": -5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "labor_power": -4
+      }
+    }
+  },
+  {
+    "id": "cascadia-003",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "containing_immigration"
+    ],
+    "prompt": "Chancellor, we've drafted a UN proposal to accept thousands of global climate refugees into Seattle and Portland. Sign off on the federal visas.",
+    "left": {
+      "label": "Close the Ports",
+      "effects": {
+        "authority": 2,
+        "capital": 1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Cascadia": -7,
+        "Mesa": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": -5,
+        "hardline_nationalism": 6
+      }
+    },
+    "right": {
+      "label": "Welcome Them",
+      "effects": {
+        "authority": -2,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Cascadia": 7,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "hardline_nationalism": -6
+      }
+    }
+  },
+  {
+    "id": "cascadia-004",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "sustainability",
+      "rural_life"
+    ],
+    "prompt": "Subsidize our Pacific kelp farming initiative. It captures carbon incredibly fast, but we need to divert agricultural funds from the Midwest to do it.",
+    "left": {
+      "label": "Keep Farm Subsidies",
+      "effects": {
+        "authority": 0,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Cascadia": -4,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": -3,
+        "traditional_values": 4
+      }
+    },
+    "right": {
+      "label": "Fund Kelp",
+      "effects": {
+        "authority": 0,
+        "capital": -1,
+        "sentiment": -1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Cascadia": 5,
+        "Heartland": -5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 4,
+        "traditional_values": -3
+      }
+    }
+  },
+  {
+    "id": "cascadia-005",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "California"
+    ],
+    "pillarTags": [
+      "environmentalism",
+      "free_market"
+    ],
+    "prompt": "Tech giants are dumping e-waste. Give Cascadia the authority to levy massive regional fines on unrecyclable electronics.",
+    "left": {
+      "label": "Protect Tech Profits",
+      "effects": {
+        "authority": 1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Cascadia": -5,
+        "California": 4
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -4
+      }
+    },
+    "right": {
+      "label": "Fine the Corporates",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Cascadia": 6,
+        "California": -5
+      },
+      "hiddenEffects": {
+        "market_growth": -5,
+        "green_stewardship": 5
+      }
+    }
+  },
+  {
+    "id": "cascadia-006",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Superior"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "nationalism"
+    ],
+    "prompt": "Join the Pacific Rim Carbon Market. We'll link our emissions trading directly with foreign nations, bypassing federal gridlock.",
+    "left": {
+      "label": "America First",
+      "effects": {
+        "authority": 3,
+        "capital": 0,
+        "sentiment": -1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Cascadia": -5,
+        "Superior": 3
+      },
+      "hiddenEffects": {
+        "global_diplomacy": -4,
+        "hardline_nationalism": 4
+      }
+    },
+    "right": {
+      "label": "Sign the Treaty",
+      "effects": {
+        "authority": -3,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Cascadia": 5,
+        "Superior": -3
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "hardline_nationalism": -3
+      }
+    }
+  },
+  {
+    "id": "cascadia-007",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "conservation",
+      "economic_growth"
+    ],
+    "prompt": "The Snake River Dams are killing the salmon runs. We need federal permission to breach them, even if it cuts hydroelectric output and angers the inland barges.",
+    "left": {
+      "label": "Keep the Power",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": 0,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Cascadia": -6,
+        "Frontier": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": -5,
+        "market_growth": 3
+      }
+    },
+    "right": {
+      "label": "Breach the Dams",
+      "effects": {
+        "authority": 0,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 4
+      },
+      "regionalEffects": {
+        "Cascadia": 6,
+        "Frontier": -5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -4
+      }
+    }
+  },
+  {
+    "id": "cascadia-008",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Union"
+    ],
+    "pillarTags": [
+      "world_peace",
+      "austerity"
+    ],
+    "prompt": "We want to host the next Global Peace Summit in Seattle. It will be expensive to secure, but it cements our standing on the world stage.",
+    "left": {
+      "label": "Too Expensive",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Cascadia": -4,
+        "Union": 3
+      },
+      "hiddenEffects": {
+        "global_diplomacy": -3,
+        "fiscal_restraint": 4
+      }
+    },
+    "right": {
+      "label": "Host the World",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Cascadia": 5,
+        "Union": -3
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "fiscal_restraint": -3
+      }
+    }
+  },
+  {
+    "id": "cascadia-009",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "environmentalism",
+      "economic_growth"
+    ],
+    "prompt": "Let us ban high-emission cargo ships from docking in Cascadia's ports. It forces global shipping to go green, even if it disrupts southern supply chains.",
+    "left": {
+      "label": "Protect Supply Chains",
+      "effects": {
+        "authority": 1,
+        "capital": 3,
+        "sentiment": 0,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Cascadia": -5,
+        "Dixie": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": -4,
+        "market_growth": 4
+      }
+    },
+    "right": {
+      "label": "Ban the Ships",
+      "effects": {
+        "authority": -1,
+        "capital": -4,
+        "sentiment": 1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Cascadia": 6,
+        "Dixie": -5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -4
+      }
+    }
+  },
+  {
+    "id": "cascadia-010",
+    "kind": "policy",
+    "governor": "Gov. Thorne",
+    "regionName": "Cascadia",
+    "targetRegions": [
+      "Cascadia",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "environmentalism",
+      "military_strength"
+    ],
+    "prompt": "Chancellor, order the military bases in Cascadia to phase out all gas-powered vehicles. We should lead by example, even if the Pentagon whines about combat readiness.",
+    "left": {
+      "label": "Prioritize Readiness",
+      "effects": {
+        "authority": 1,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Cascadia": -4,
+        "Commonwealth": 4
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "green_stewardship": -3
+      }
+    },
+    "right": {
+      "label": "Go Electric",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Cascadia": 5,
+        "Commonwealth": -4
+      },
+      "hiddenEffects": {
+        "national_security": -4,
+        "green_stewardship": 4
+      }
+    }
+  },
+  {
+    "id": "california-001",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "social_justice",
+      "free_market"
+    ],
+    "prompt": "Our tech sector is booming, but AI hiring algorithms are redlining marginalized groups. Let California establish a Federal AI Equity Board to audit their code.",
+    "left": {
+      "label": "Let the Market Decide",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -5,
+        "Frontier": 4
+      },
+      "hiddenEffects": {
+        "market_growth": 4,
+        "identity_equity": -5
+      }
+    },
+    "right": {
+      "label": "Audit the Code",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 6,
+        "Frontier": -4
+      },
+      "hiddenEffects": {
+        "identity_equity": 5,
+        "market_growth": -3
+      }
+    }
+  },
+  {
+    "id": "california-002",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Superior"
+    ],
+    "pillarTags": [
+      "entrepreneurship",
+      "workers_rights"
+    ],
+    "prompt": "Chancellor, the 'Gig Economy' is our greatest export. Veto the federal push to classify app drivers as employees. Innovation requires flexibility.",
+    "left": {
+      "label": "Protect Workers",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -6,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Protect Gig Economy",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Superior": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -5
+      }
+    }
+  },
+  {
+    "id": "california-003",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "social_justice",
+      "tax_cuts"
+    ],
+    "prompt": "California media shapes the world. We need a massive federal tax break for Hollywood studios producing content that promotes intersectional social justice.",
+    "left": {
+      "label": "No Handouts",
+      "effects": {
+        "authority": 0,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -4,
+        "Heartland": 4
+      },
+      "hiddenEffects": {
+        "traditional_values": 4,
+        "identity_equity": -4
+      }
+    },
+    "right": {
+      "label": "Subsidize Culture",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Heartland": -5
+      },
+      "hiddenEffects": {
+        "identity_equity": 5,
+        "fiscal_restraint": -3
+      }
+    }
+  },
+  {
+    "id": "california-004",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "civil_rights",
+      "security"
+    ],
+    "prompt": "Silicon Valley refuses to hand over user data to federal immigration agencies. I need you to sign an executive order protecting our tech firms from subpoenas.",
+    "left": {
+      "label": "Enforce Subpoenas",
+      "effects": {
+        "authority": 3,
+        "capital": -1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -7,
+        "Mesa": 5
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "identity_equity": -5
+      }
+    },
+    "right": {
+      "label": "Protect Data",
+      "effects": {
+        "authority": -3,
+        "capital": 1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 6,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "identity_equity": 5,
+        "national_security": -6
+      }
+    }
+  },
+  {
+    "id": "california-005",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Union"
+    ],
+    "pillarTags": [
+      "entrepreneurship",
+      "social_justice"
+    ],
+    "prompt": "We want to charter the first fully equitable, state-backed cryptocurrency bank. It will bypass traditional credit bureaus and empower marginalized founders.",
+    "left": {
+      "label": "Block the Charter",
+      "effects": {
+        "authority": 1,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -5,
+        "Union": 3
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 4,
+        "market_growth": -3
+      }
+    },
+    "right": {
+      "label": "Approve Charter",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Union": -4
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "identity_equity": 3
+      }
+    }
+  },
+  {
+    "id": "california-006",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "anti_racism",
+      "free_market"
+    ],
+    "prompt": "Make it a federal law: any corporation trading on the stock exchange must have a board of directors that reflects the demographic diversity of the country.",
+    "left": {
+      "label": "Too Heavy-Handed",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -6,
+        "Dixie": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 4,
+        "identity_equity": -5
+      }
+    },
+    "right": {
+      "label": "Mandate Diversity",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 6,
+        "Dixie": -5
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "market_growth": -3
+      }
+    }
+  },
+  {
+    "id": "california-007",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "conservation"
+    ],
+    "prompt": "We are expanding the tech-corridor high-speed rail. It will displace some state parks, but the economic boom for marginalized communities will be unprecedented.",
+    "left": {
+      "label": "Protect the Parks",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "California": -4,
+        "Cascadia": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Build the Rail",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Cascadia": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "california-008",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Texas"
+    ],
+    "pillarTags": [
+      "social_justice",
+      "austerity"
+    ],
+    "prompt": "California is ready to launch the nation's first comprehensive reparations program, but we need a massive federal block grant to underwrite the startup costs.",
+    "left": {
+      "label": "Defund It",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -7,
+        "Texas": 6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "identity_equity": -6
+      }
+    },
+    "right": {
+      "label": "Fund Reparations",
+      "effects": {
+        "authority": 0,
+        "capital": -4,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 7,
+        "Texas": -6
+      },
+      "hiddenEffects": {
+        "identity_equity": 7,
+        "fiscal_restraint": -5
+      }
+    }
+  },
+  {
+    "id": "california-009",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "free_market",
+      "lgbt_rights"
+    ],
+    "prompt": "Our biotech startups are developing radical gender-affirming medical treatments. Get the FDA out of our way so we can commercialize them globally.",
+    "left": {
+      "label": "Keep FDA Limits",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -5,
+        "Appalachia": 5
+      },
+      "hiddenEffects": {
+        "traditional_values": 5,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Deregulate",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "California": 6,
+        "Appalachia": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "identity_equity": 4
+      }
+    }
+  },
+  {
+    "id": "california-010",
+    "kind": "policy",
+    "governor": "Gov. Rosales-King",
+    "regionName": "California",
+    "targetRegions": [
+      "California",
+      "Alaska"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "internationalism"
+    ],
+    "prompt": "We are bleeding talent. Lift the federal cap on tech-worker visas so our mega-corps can recruit the best minds globally, regardless of origin.",
+    "left": {
+      "label": "America First",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -5,
+        "Alaska": 4
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 5,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Open the Gates",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Alaska": -4
+      },
+      "hiddenEffects": {
+        "market_growth": 4,
+        "global_diplomacy": 3
+      }
+    }
+  },
+  {
+    "id": "mesa-001",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "California"
+    ],
+    "pillarTags": [
+      "security",
+      "containing_immigration"
+    ],
+    "prompt": "Chancellor, the border is a sieve. Give Mesa the federal funding to deploy a permanent, armed drone-surveillance grid across the southern desert.",
+    "left": {
+      "label": "Stand Down",
+      "effects": {
+        "authority": -2,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -6,
+        "California": 4
+      },
+      "hiddenEffects": {
+        "national_security": -5,
+        "identity_equity": 4
+      }
+    },
+    "right": {
+      "label": "Deploy the Drones",
+      "effects": {
+        "authority": 3,
+        "capital": -2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "California": -5
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "identity_equity": -4
+      }
+    }
+  },
+  {
+    "id": "mesa-002",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Union"
+    ],
+    "pillarTags": [
+      "containing_immigration",
+      "internationalism"
+    ],
+    "prompt": "We're done processing asylum claims for the East Coast's feel-good diplomacy. Authorize me to unilaterally close Mesa's international ports of entry.",
+    "left": {
+      "label": "Keep Ports Open",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -5,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": -5,
+        "global_diplomacy": 5
+      }
+    },
+    "right": {
+      "label": "Seal the Border",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 6,
+        "global_diplomacy": -6
+      }
+    }
+  },
+  {
+    "id": "mesa-003",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "environmentalism"
+    ],
+    "prompt": "The Pentagon needs a new hyper-sonic munitions testing ground. The Nevada desert is perfect. Just waive the environmental impact reviews.",
+    "left": {
+      "label": "Require Reviews",
+      "effects": {
+        "authority": -1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Mesa": -5,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "national_security": -4,
+        "green_stewardship": 5
+      }
+    },
+    "right": {
+      "label": "Test the Weapons",
+      "effects": {
+        "authority": 2,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "mesa-004",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "California"
+    ],
+    "pillarTags": [
+      "security",
+      "economic_growth"
+    ],
+    "prompt": "Water is a national security issue. Federalize the Colorado River flow and prioritize Mesa's defense and agriculture sectors over California's tech campuses.",
+    "left": {
+      "label": "Maintain Water Deals",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "national_security": -4,
+        "market_growth": 4
+      }
+    },
+    "right": {
+      "label": "Divert to Mesa",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Mesa": 7,
+        "California": -7
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "mesa-005",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "nationalism",
+      "global_justice"
+    ],
+    "prompt": "To ensure domestic cohesion, I want to ban all foreign-funded NGOs from operating within Mesa. We don't need outsiders meddling in our state.",
+    "left": {
+      "label": "Protect NGOs",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -5,
+        "Hawaii": 4
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": -5,
+        "identity_equity": 4
+      }
+    },
+    "right": {
+      "label": "Ban Them",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "Hawaii": -4
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 6,
+        "identity_equity": -4
+      }
+    }
+  },
+  {
+    "id": "mesa-006",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Superior"
+    ],
+    "pillarTags": [
+      "containing_immigration",
+      "workers_rights"
+    ],
+    "prompt": "We are launching 'Operation Desert Sweep' to deport undocumented laborers. I need federal troops to back up my state troopers in case the factories strike.",
+    "left": {
+      "label": "Deny Troop Request",
+      "effects": {
+        "authority": -2,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -7,
+        "Superior": 5
+      },
+      "hiddenEffects": {
+        "national_security": -5,
+        "labor_power": 5
+      }
+    },
+    "right": {
+      "label": "Send the Troops",
+      "effects": {
+        "authority": 3,
+        "capital": -2,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 7,
+        "Superior": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "mesa-007",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Union"
+    ],
+    "pillarTags": [
+      "nationalism",
+      "free_market"
+    ],
+    "prompt": "Foreign adversaries are buying up land near our military installations. Pass a federal ban on foreign real estate ownership in Mesa.",
+    "left": {
+      "label": "Allow Open Markets",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -5,
+        "Union": 4
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Ban Foreign Buyers",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "Union": -4
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "global_diplomacy": -5
+      }
+    }
+  },
+  {
+    "id": "mesa-008",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "nationalism",
+      "tradition"
+    ],
+    "prompt": "Require all public schools in the region to implement a mandatory, state-approved 'Patriotic Curriculum' emphasizing military history over social studies.",
+    "left": {
+      "label": "Block the Curriculum",
+      "effects": {
+        "authority": -1,
+        "capital": 0,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -4,
+        "Appalachia": -2
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": -4,
+        "identity_equity": 3
+      }
+    },
+    "right": {
+      "label": "Mandate Patriotism",
+      "effects": {
+        "authority": 2,
+        "capital": 0,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 5,
+        "Appalachia": 3
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 5,
+        "traditional_values": 4
+      }
+    }
+  },
+  {
+    "id": "mesa-009",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "conservation"
+    ],
+    "prompt": "We need domestic uranium for our nuclear arsenal, not foreign imports. Authorize emergency mining operations on federally protected lands in Utah and New Mexico.",
+    "left": {
+      "label": "Protect the Lands",
+      "effects": {
+        "authority": -1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Mesa": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Mine the Uranium",
+      "effects": {
+        "authority": 2,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "mesa-010",
+    "kind": "policy",
+    "governor": "Gov. Vance",
+    "regionName": "Mesa",
+    "targetRegions": [
+      "Mesa",
+      "Piedmont"
+    ],
+    "pillarTags": [
+      "security",
+      "civil_rights"
+    ],
+    "prompt": "I want to arm Mesa's state police with surplus federal military hardware. Give me the armored personnel carriers gathering dust in the armories.",
+    "left": {
+      "label": "Mothball the Gear",
+      "effects": {
+        "authority": -2,
+        "capital": 1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -5,
+        "Piedmont": 3
+      },
+      "hiddenEffects": {
+        "national_security": -5,
+        "sentiment": 3
+      }
+    },
+    "right": {
+      "label": "Transfer the Hardware",
+      "effects": {
+        "authority": 3,
+        "capital": 0,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 6,
+        "Piedmont": -4
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "identity_equity": -4
+      }
+    }
+  },
+  {
+    "id": "frontier-001",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "free_market",
+      "conservation"
+    ],
+    "prompt": "Chancellor, the federal government owns too much land in the Rockies. Sell off 10 million acres to private mining and ranching conglomerates to instantly balance the budget.",
+    "left": {
+      "label": "Keep Public Lands",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Frontier": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": -5,
+        "green_stewardship": 5
+      }
+    },
+    "right": {
+      "label": "Liquidate Assets",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Frontier": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "frontier-002",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Superior"
+    ],
+    "pillarTags": [
+      "free_market",
+      "workers_rights"
+    ],
+    "prompt": "Federal minimum wage laws are choking Frontier startups. Grant us a regional exemption so the free market can decide what a worker is worth.",
+    "left": {
+      "label": "Enforce Minimums",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": -5,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Abolish the Floor",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "frontier-003",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Union"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "free_market"
+    ],
+    "prompt": "Wall Street is overregulated. I want to turn Wyoming into a zero-tax corporate haven with absolute financial anonymity to attract global capital.",
+    "left": {
+      "label": "Block Tax Havens",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": -5,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": -4,
+        "global_diplomacy": 3
+      }
+    },
+    "right": {
+      "label": "Charter the Haven",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "frontier-004",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "small_government",
+      "environmentalism"
+    ],
+    "prompt": "Defund the federal EPA offices operating in our region. We can self-regulate our resource extraction much cheaper without coastal bureaucrats breathing down our necks.",
+    "left": {
+      "label": "Maintain Oversight",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Frontier": -6,
+        "Hawaii": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "fiscal_restraint": -4
+      }
+    },
+    "right": {
+      "label": "Defund the EPA",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Hawaii": -5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "frontier-005",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "austerity",
+      "rural_life"
+    ],
+    "prompt": "End the federal agriculture subsidies. Let the free market cull the weak farms. The corporate ag-giants in the Frontier will buy up the land and maximize efficiency.",
+    "left": {
+      "label": "Protect Small Farms",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": -5,
+        "Heartland": 6
+      },
+      "hiddenEffects": {
+        "traditional_values": 5,
+        "fiscal_restraint": -4
+      }
+    },
+    "right": {
+      "label": "Cut the Subsidies",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Heartland": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "traditional_values": -6
+      }
+    }
+  },
+  {
+    "id": "frontier-006",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "free_market",
+      "workers_rights"
+    ],
+    "prompt": "We want to roll back the Federal Mine Safety Act in the Frontier. We can't compete with foreign imports when safety tech takes up 40% of our operating budget.",
+    "left": {
+      "label": "Enforce Safety",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": -6,
+        "Appalachia": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Deregulate Mining",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Frontier": 7,
+        "Appalachia": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 7,
+        "labor_power": -7
+      }
+    }
+  },
+  {
+    "id": "frontier-007",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "small_government",
+      "public_services"
+    ],
+    "prompt": "Stop sending federal infrastructure dollars out west. We don't want your taxes or your strings. Let us build fully private, corporate-owned toll highways.",
+    "left": {
+      "label": "Fund Federal Roads",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Frontier": -4,
+        "Commonwealth": 4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": -3,
+        "social_safety_net": 4
+      }
+    },
+    "right": {
+      "label": "Privatize Highways",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Commonwealth": -5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "market_growth": 5
+      }
+    }
+  },
+  {
+    "id": "frontier-008",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Texas"
+    ],
+    "pillarTags": [
+      "free_market",
+      "environmentalism"
+    ],
+    "prompt": "The feds are dragging their feet on pipeline approvals. Veto the national review process. Let energy companies build through the Frontier without asking permission.",
+    "left": {
+      "label": "Maintain Federal Review",
+      "effects": {
+        "authority": 3,
+        "capital": -3,
+        "sentiment": -1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Frontier": -7,
+        "Texas": -5
+      },
+      "hiddenEffects": {
+        "market_growth": -6,
+        "green_stewardship": 5
+      }
+    },
+    "right": {
+      "label": "Greenlight Pipelines",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": 1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Frontier": 7,
+        "Texas": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 7,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "frontier-009",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "California"
+    ],
+    "pillarTags": [
+      "free_market",
+      "sustainability"
+    ],
+    "prompt": "We want to issue a massive regional mandate exempting our banks from federal climate-disclosure rules. We don't care about ESG scores, we care about ROI.",
+    "left": {
+      "label": "Enforce ESG Scores",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Frontier": -5,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Exempt the Frontier",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "frontier-010",
+    "kind": "policy",
+    "governor": "Gov. Cassidy",
+    "regionName": "Frontier",
+    "targetRegions": [
+      "Frontier",
+      "Alaska"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "job_creation"
+    ],
+    "prompt": "To speed up resource extraction, authorize the deployment of autonomous mining tech across the Frontier. We'll fire the human operators, but the GDP will double.",
+    "left": {
+      "label": "Ban Autonomous Mining",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Frontier": -5,
+        "Alaska": -3
+      },
+      "hiddenEffects": {
+        "labor_power": 5,
+        "market_growth": -6
+      }
+    },
+    "right": {
+      "label": "Deploy the Machines",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": -3,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Frontier": 6,
+        "Alaska": 4
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "heartland-001",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "California"
+    ],
+    "pillarTags": [
+      "tradition",
+      "entrepreneurship"
+    ],
+    "prompt": "Coastal tech-bros are flooding the market with lab-grown, synthetic meat. We need a federal ban to protect God's cattle and our traditional ranchers.",
+    "left": {
+      "label": "Let the Market Decide",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Heartland": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 4,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Ban Synthetic Meat",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -2,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "California": -5
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "green_stewardship": -4
+      }
+    }
+  },
+  {
+    "id": "heartland-002",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Union"
+    ],
+    "pillarTags": [
+      "small_government",
+      "welfare_state"
+    ],
+    "prompt": "Federal welfare programs are a bloated mess. Let the Heartland opt out of federal social safety nets. We'll rely on local churches and community charity to care for our own.",
+    "left": {
+      "label": "Enforce Federal Welfare",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": -6,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "social_safety_net": 6,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Allow the Opt-Out",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Heartland": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "traditional_values": 4
+      }
+    }
+  },
+  {
+    "id": "heartland-003",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Superior"
+    ],
+    "pillarTags": [
+      "rural_life",
+      "workers_rights"
+    ],
+    "prompt": "Federal child labor laws don't understand farming. Grant the Heartland a complete exemption so our children can legally work the family harvest without federal harassment.",
+    "left": {
+      "label": "Protect the Children",
+      "effects": {
+        "authority": 1,
+        "capital": -1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": -5,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 5,
+        "traditional_values": -4
+      }
+    },
+    "right": {
+      "label": "Grant the Exemption",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "heartland-004",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "California"
+    ],
+    "pillarTags": [
+      "tradition",
+      "tax_cuts"
+    ],
+    "prompt": "We've passed a regional 'Family First' tax credit that specifically rewards traditional, nuclear, married households. We just need the federal IRS to honor the deductions.",
+    "left": {
+      "label": "Deny the Deductions",
+      "effects": {
+        "authority": 1,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "identity_equity": 5,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Honor the Credits",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "identity_equity": -6
+      }
+    }
+  },
+  {
+    "id": "heartland-005",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "austerity",
+      "economic_growth"
+    ],
+    "prompt": "Stop trying to ram high-speed rail through our cornfields. Veto the coastal infrastructure bill. We need austerity, not eminent domain tearing up our land.",
+    "left": {
+      "label": "Build the Rail",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Heartland": -5,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Veto the Bill",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "Cascadia": -5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "heartland-006",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "poverty_relief"
+    ],
+    "prompt": "The 'Death Tax' is destroying legacy farms. When a patriarch passes, the federal estate tax forces the family to sell. Abolish it immediately.",
+    "left": {
+      "label": "Tax the Estates",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": -6,
+        "Commonwealth": 4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 4,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Abolish the Tax",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": 7,
+        "Commonwealth": -5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "traditional_values": 4
+      }
+    }
+  },
+  {
+    "id": "heartland-007",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "tradition",
+      "civil_rights"
+    ],
+    "prompt": "We are banning any educational curriculum in the Heartland that deconstructs American history or traditional gender roles. We need you to block the Department of Education from intervening.",
+    "left": {
+      "label": "Intervene",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": -7,
+        "Hawaii": 5
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "traditional_values": -6
+      }
+    },
+    "right": {
+      "label": "Allow the Ban",
+      "effects": {
+        "authority": -2,
+        "capital": 1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "Hawaii": -5
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "identity_equity": -5
+      }
+    }
+  },
+  {
+    "id": "heartland-008",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "austerity",
+      "environmentalism"
+    ],
+    "prompt": "The EPA's pesticide restrictions are costing us billions. Let us spray what we need to spray to maximize the harvest. It's cheap, efficient, and none of Washington's business.",
+    "left": {
+      "label": "Maintain Restrictions",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Heartland": -5,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "fiscal_restraint": -4
+      }
+    },
+    "right": {
+      "label": "Deregulate Pesticides",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "heartland-009",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Union"
+    ],
+    "pillarTags": [
+      "christianity",
+      "public_services"
+    ],
+    "prompt": "Redirect federal addiction-recovery funding in our region away from secular clinics and give it directly to faith-based pastoral counseling centers.",
+    "left": {
+      "label": "Keep Clinics Secular",
+      "effects": {
+        "authority": 1,
+        "capital": 0,
+        "sentiment": 1,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Heartland": -5,
+        "Union": 4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 5,
+        "traditional_values": -4
+      }
+    },
+    "right": {
+      "label": "Fund the Churches",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Heartland": 6,
+        "Union": -5
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "social_safety_net": -5
+      }
+    }
+  },
+  {
+    "id": "heartland-010",
+    "kind": "policy",
+    "governor": "Gov. Gantry",
+    "regionName": "Heartland",
+    "targetRegions": [
+      "Heartland",
+      "Texas"
+    ],
+    "pillarTags": [
+      "small_government",
+      "rural_life"
+    ],
+    "prompt": "We want to entirely defund the federal Department of Agriculture's oversight boards. We know how to farm. We don't need to pay coastal salaries to tell us how to plant wheat.",
+    "left": {
+      "label": "Keep Oversight",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Heartland": -6,
+        "Texas": -3
+      },
+      "hiddenEffects": {
+        "authority": 4,
+        "fiscal_restraint": -4
+      }
+    },
+    "right": {
+      "label": "Defund the Boards",
+      "effects": {
+        "authority": -3,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Heartland": 7,
+        "Texas": 4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "market_growth": 3
+      }
+    }
+  },
+  {
+    "id": "texas-001",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "California"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "economic_growth"
+    ],
+    "prompt": "We've convinced three more tech conglomerates to move their headquarters from California to Austin. We just need a federal tax holiday to seal the deal.",
+    "left": {
+      "label": "Block the Loophole",
+      "effects": {
+        "authority": 1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "market_growth": -4,
+        "identity_equity": 3
+      }
+    },
+    "right": {
+      "label": "Approve Tax Holiday",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 6,
+        "California": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "fiscal_restraint": 4
+      }
+    }
+  },
+  {
+    "id": "texas-002",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Union"
+    ],
+    "pillarTags": [
+      "small_government",
+      "security"
+    ],
+    "prompt": "The federal energy grid mandates are a bureaucratic nightmare. Sign this waiver permanently exempting the Texas power grid from federal oversight.",
+    "left": {
+      "label": "Force Integration",
+      "effects": {
+        "authority": 3,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Texas": -7,
+        "Union": 4
+      },
+      "hiddenEffects": {
+        "authority": 5,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Grant Independence",
+      "effects": {
+        "authority": -3,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Texas": 7,
+        "Union": -4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "texas-003",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "environmentalism"
+    ],
+    "prompt": "Global energy demands are skyrocketing. Expedite the permits for four new mega-LNG (Liquid Natural Gas) export terminals on the Gulf Coast. Ignore the EPA delays.",
+    "left": {
+      "label": "Wait for the EPA",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 0,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Texas": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -6
+      }
+    },
+    "right": {
+      "label": "Expedite Terminals",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": 0,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Texas": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 7,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "texas-004",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Superior"
+    ],
+    "pillarTags": [
+      "free_market",
+      "unionization"
+    ],
+    "prompt": "To remain globally competitive, we are outlawing federal union-protection laws within Texas state lines. The National Labor Relations Board has no jurisdiction here.",
+    "left": {
+      "label": "Defend the Unions",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -6,
+        "Superior": 7
+      },
+      "hiddenEffects": {
+        "labor_power": 7,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Banish the NLRB",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 7,
+        "Superior": -8
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -7
+      }
+    }
+  },
+  {
+    "id": "texas-005",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "entrepreneurship",
+      "environmentalism"
+    ],
+    "prompt": "Private space exploration is the future. Give Texas a blanket federal waiver for rocket launch emissions and airspace closures over the Gulf.",
+    "left": {
+      "label": "Regulate the Skies",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 0,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Texas": -5,
+        "Hawaii": 4
+      },
+      "hiddenEffects": {
+        "green_stewardship": 4,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Clear for Launch",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Texas": 6,
+        "Hawaii": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -3
+      }
+    }
+  },
+  {
+    "id": "texas-006",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "austerity",
+      "security"
+    ],
+    "prompt": "Border security is draining our budget. Let us contract it out to private security firms. They're cheaper, faster, and won't ask for federal pensions.",
+    "left": {
+      "label": "Keep Federal Agents",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -5,
+        "Mesa": 4
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "fiscal_restraint": -4
+      }
+    },
+    "right": {
+      "label": "Privatize the Border",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 6,
+        "Mesa": -4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "national_security": -3
+      }
+    }
+  },
+  {
+    "id": "texas-007",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "free_market"
+    ],
+    "prompt": "Chancellor, we need to abolish the federal corporate minimum tax. It's punishing our mega-refineries just because they know how to find write-offs.",
+    "left": {
+      "label": "Enforce the Tax",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -6,
+        "Appalachia": 5
+      },
+      "hiddenEffects": {
+        "social_safety_net": 4,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Abolish It",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 7,
+        "Appalachia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "texas-008",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "free_market",
+      "public_services"
+    ],
+    "prompt": "Cut the federal funding for Texas highway maintenance. Give us the authority to sell the interstates to private toll-road operators. We'll turn traffic into profit.",
+    "left": {
+      "label": "Keep Roads Public",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -5,
+        "Commonwealth": 4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 3,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Sell the Highways",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 6,
+        "Commonwealth": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "fiscal_restraint": 4
+      }
+    }
+  },
+  {
+    "id": "texas-009",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "sustainability"
+    ],
+    "prompt": "We've discovered massive new oil reserves under the Permian Basin, but it requires aggressive fracking. Veto the federal groundwater protection acts so we can drill.",
+    "left": {
+      "label": "Protect Groundwater",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Texas": -7,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -6
+      }
+    },
+    "right": {
+      "label": "Frack the Basin",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Texas": 8,
+        "Cascadia": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 7,
+        "green_stewardship": -7
+      }
+    }
+  },
+  {
+    "id": "texas-010",
+    "kind": "policy",
+    "governor": "Gov. Walker",
+    "regionName": "Texas",
+    "targetRegions": [
+      "Texas",
+      "California"
+    ],
+    "pillarTags": [
+      "free_market",
+      "economic_growth"
+    ],
+    "prompt": "Cancel the federal antitrust investigations into the energy conglomerates based in Houston. Big business isn't a crime, it's the Texas model.",
+    "left": {
+      "label": "Pursue Monopolies",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "market_growth": -5,
+        "identity_equity": 4
+      }
+    },
+    "right": {
+      "label": "Drop the Suits",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 6,
+        "California": -5
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "fiscal_restraint": 4
+      }
+    }
+  },
+  {
+    "id": "superior-001",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Union"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "internationalism"
+    ],
+    "prompt": "Cheap foreign steel is gutting our foundries. Slap a 40% federal tariff on all imported metals to protect Superior's union jobs, even if it starts a trade war.",
+    "left": {
+      "label": "Embrace Free Trade",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -6,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Impose Tariffs",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "global_diplomacy": -6
+      }
+    }
+  },
+  {
+    "id": "superior-002",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "California"
+    ],
+    "pillarTags": [
+      "unionization",
+      "free_market"
+    ],
+    "prompt": "Silicon Valley's 'gig economy' is just glorified wage theft. Pass a federal mandate forcing all tech apps to classify drivers as full employees with union rights.",
+    "left": {
+      "label": "Protect Innovation",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -7,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    },
+    "right": {
+      "label": "Unionize the Apps",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 7,
+        "California": -7
+      },
+      "hiddenEffects": {
+        "labor_power": 7,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "superior-003",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "environmentalism"
+    ],
+    "prompt": "Coastal emission mandates are going to wipe out a million combustion-engine jobs in Detroit. Give the auto industry a 10-year federal waiver to keep building gas cars.",
+    "left": {
+      "label": "Enforce Green Rules",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Superior": -6,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Protect Auto Jobs",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": 2,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Superior": 7,
+        "Cascadia": -7
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "superior-004",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "unionization",
+      "small_government"
+    ],
+    "prompt": "Southern states are poaching our factories using union-busting 'Right-to-Work' laws. We need a federal ban on these laws to level the playing field for the working man.",
+    "left": {
+      "label": "Respect State Laws",
+      "effects": {
+        "authority": -2,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -7,
+        "Dixie": 6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "labor_power": -6
+      }
+    },
+    "right": {
+      "label": "Abolish Right-to-Work",
+      "effects": {
+        "authority": 3,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 8,
+        "Dixie": -7
+      },
+      "hiddenEffects": {
+        "labor_power": 7,
+        "fiscal_restraint": -5
+      }
+    }
+  },
+  {
+    "id": "superior-005",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "austerity"
+    ],
+    "prompt": "Fund the Great Lakes Dredging Mega-Project. It will create fifty thousand union jobs and drastically increase our shipping capacity, but it requires a massive federal deficit spend.",
+    "left": {
+      "label": "Veto the Spending",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Superior": -6,
+        "Frontier": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "labor_power": -4
+      }
+    },
+    "right": {
+      "label": "Fund the Dredging",
+      "effects": {
+        "authority": 1,
+        "capital": -4,
+        "sentiment": 3,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Superior": 7,
+        "Frontier": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": 5
+      }
+    }
+  },
+  {
+    "id": "superior-006",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Texas"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "economic_growth"
+    ],
+    "prompt": "Robots don't pay taxes or buy groceries. We want a federal 'Automation Penalty' on corporations that replace human assembly-line workers with robotics.",
+    "left": {
+      "label": "Encourage Automation",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -6,
+        "Texas": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Tax the Bots",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 6,
+        "Texas": -5
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "superior-007",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "environmentalism"
+    ],
+    "prompt": "We have investors ready to reopen massive abandoned steel mills, but the EPA's 'Brownfield' cleanup regulations are blocking it. Waive the environmental red tape so we can get to work.",
+    "left": {
+      "label": "Require Cleanup",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Superior": -5,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Waive the EPA Rules",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": 2,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Superior": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "superior-008",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "military_strength"
+    ],
+    "prompt": "Chancellor, issue a 'Buy American' executive order. The Pentagon must source 100% of its vehicles, steel, and armaments from domestic union shops in Superior.",
+    "left": {
+      "label": "Allow Global Bidding",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -6,
+        "Commonwealth": 4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 4,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Mandate Union Metal",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 7,
+        "Commonwealth": -5
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "national_security": 4
+      }
+    }
+  },
+  {
+    "id": "superior-009",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Texas"
+    ],
+    "pillarTags": [
+      "workers_rights",
+      "unionization"
+    ],
+    "prompt": "The time has come. Back our federal mandate for a 32-hour workweek with no loss in pay for industrial workers. The corporations have been hoarding profits for decades; they can afford it.",
+    "left": {
+      "label": "Kill the Bill",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": -4,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -8,
+        "Texas": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -7
+      }
+    },
+    "right": {
+      "label": "Pass the Mandate",
+      "effects": {
+        "authority": 2,
+        "capital": -4,
+        "sentiment": 4,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 8,
+        "Texas": -7
+      },
+      "hiddenEffects": {
+        "labor_power": 8,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "superior-010",
+    "kind": "policy",
+    "governor": "Gov. Kowalski",
+    "regionName": "Superior",
+    "targetRegions": [
+      "Superior",
+      "Piedmont"
+    ],
+    "pillarTags": [
+      "workers_rights",
+      "internationalism"
+    ],
+    "prompt": "If foreign countries want to sell goods in our markets, make them prove their workers are paid American minimum wages. Pass the Global Fair Wage Tariff.",
+    "left": {
+      "label": "Reject the Tariff",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -5,
+        "Piedmont": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "labor_power": -4
+      }
+    },
+    "right": {
+      "label": "Enforce Global Wages",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 6,
+        "Piedmont": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "global_diplomacy": -5
+      }
+    }
+  },
+  {
+    "id": "appalachia-001",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "environmentalism"
+    ],
+    "prompt": "Chancellor, the 'green transition' is starving our towns. I need a federal executive order to reopen the sealed mountain coal mines and classify coal as a vital national asset.",
+    "left": {
+      "label": "Keep Them Closed",
+      "effects": {
+        "authority": 1,
+        "capital": 0,
+        "sentiment": -2,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Appalachia": -6,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Reopen the Mines",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": 3,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "Cascadia": -7
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "green_stewardship": -7
+      }
+    }
+  },
+  {
+    "id": "appalachia-002",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "California"
+    ],
+    "pillarTags": [
+      "christianity",
+      "civil_rights"
+    ],
+    "prompt": "Our local school boards voted to mandate daily Christian prayer and traditional moral instruction in the classroom. Tell the federal courts to back off.",
+    "left": {
+      "label": "Enforce Secularism",
+      "effects": {
+        "authority": 2,
+        "capital": 0,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -7,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "traditional_values": -6
+      }
+    },
+    "right": {
+      "label": "Allow the Prayers",
+      "effects": {
+        "authority": -2,
+        "capital": 0,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 7,
+        "identity_equity": -6
+      }
+    }
+  },
+  {
+    "id": "appalachia-003",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Texas"
+    ],
+    "pillarTags": [
+      "tradition",
+      "free_market"
+    ],
+    "prompt": "Megacorporations are bleeding our workers dry with 24/7 shifts. We want a federal exemption to reinstate strict 'Blue Laws'—banning all corporate business on Sundays to honor the Sabbath and give folks a rest.",
+    "left": {
+      "label": "Protect the 24/7 Economy",
+      "effects": {
+        "authority": 1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -6,
+        "Texas": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Honor the Sabbath",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Appalachia": 6,
+        "Texas": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "appalachia-004",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Union"
+    ],
+    "pillarTags": [
+      "welfare_state",
+      "austerity"
+    ],
+    "prompt": "The Black Lung epidemic is ravaging our elders. We demand a massive, permanent federal pension fund for all retired mountain workers, paid for by Wall Street.",
+    "left": {
+      "label": "Deny the Pensions",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -7,
+        "Union": 4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "labor_power": -6
+      }
+    },
+    "right": {
+      "label": "Fund the Miners",
+      "effects": {
+        "authority": 1,
+        "capital": -4,
+        "sentiment": 4,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "Union": -5
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "social_safety_net": 5
+      }
+    }
+  },
+  {
+    "id": "appalachia-005",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "rural_life",
+      "free_market"
+    ],
+    "prompt": "Wall Street real estate trusts are buying up family farms and turning our hollows into luxury retreats. Pass a federal ban on corporate land hoarding in Appalachia.",
+    "left": {
+      "label": "Defend Free Markets",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -6,
+        "Frontier": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Ban Corporate Hoarding",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "Frontier": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "appalachia-006",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "California"
+    ],
+    "pillarTags": [
+      "job_creation",
+      "economic_growth"
+    ],
+    "prompt": "Coastal tech firms are deploying fleets of self-driving long-haul trucks, destroying the livelihoods of a million American truckers. Ban autonomous trucking on federal interstates.",
+    "left": {
+      "label": "Embrace the Future",
+      "effects": {
+        "authority": 1,
+        "capital": 4,
+        "sentiment": -3,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Appalachia": -7,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -7
+      }
+    },
+    "right": {
+      "label": "Ban the Robocars",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 4,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Appalachia": 8,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 7,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "appalachia-007",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Union"
+    ],
+    "pillarTags": [
+      "christianity",
+      "public_services"
+    ],
+    "prompt": "The opioid crisis is killing our youth. The federal secular clinics just pass out synthetic substitutes. We need those funds redirected entirely to localized, faith-based rehabilitation ministries.",
+    "left": {
+      "label": "Keep Secular Clinics",
+      "effects": {
+        "authority": 1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -5,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "social_safety_net": 5,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Fund the Ministries",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": 6,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "social_safety_net": -4
+      }
+    }
+  },
+  {
+    "id": "appalachia-008",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Piedmont"
+    ],
+    "pillarTags": [
+      "unionization",
+      "free_market"
+    ],
+    "prompt": "Foreign conglomerates are buying up our historic textile mills and gutting them for parts. Give me the federal authority to seize these mills and hand them over to worker co-ops.",
+    "left": {
+      "label": "Allow Foreign Buyouts",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": -6,
+        "Piedmont": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "labor_power": -5
+      }
+    },
+    "right": {
+      "label": "Seize the Mills",
+      "effects": {
+        "authority": 3,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "Piedmont": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "appalachia-009",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "conservation",
+      "job_creation"
+    ],
+    "prompt": "Washington wants to use eminent domain to turn a million acres of Appalachian logging land into a 'National Green Reserve'. Veto the land grab. Our people need the timber.",
+    "left": {
+      "label": "Establish the Reserve",
+      "effects": {
+        "authority": 3,
+        "capital": -2,
+        "sentiment": -2,
+        "sustainability": 4
+      },
+      "regionalEffects": {
+        "Appalachia": -7,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 7,
+        "labor_power": -6
+      }
+    },
+    "right": {
+      "label": "Protect the Loggers",
+      "effects": {
+        "authority": -2,
+        "capital": 2,
+        "sentiment": 2,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Appalachia": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "appalachia-010",
+    "kind": "policy",
+    "governor": "Gov. Calloway",
+    "regionName": "Appalachia",
+    "targetRegions": [
+      "Appalachia",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "rural_life",
+      "economic_growth"
+    ],
+    "prompt": "Mega-agricultural corporations in the Midwest are drowning our small, family-owned tobacco and hemp farms with under-priced goods. We need a domestic subsidy specifically for micro-farms.",
+    "left": {
+      "label": "Subsidize the Giants",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Appalachia": -5,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "labor_power": -4
+      }
+    },
+    "right": {
+      "label": "Protect Micro-Farms",
+      "effects": {
+        "authority": 0,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Appalachia": 6,
+        "Heartland": -5
+      },
+      "hiddenEffects": {
+        "labor_power": 5,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "commonwealth-001",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "California"
+    ],
+    "pillarTags": [
+      "security",
+      "civil_rights"
+    ],
+    "prompt": "Maintaining federal data centers is too expensive. Allow us to privatize the NSA's domestic servers to defense contractors in Virginia. It balances the budget and expands our surveillance net.",
+    "left": {
+      "label": "Protect Privacy",
+      "effects": {
+        "authority": -1,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "identity_equity": 4,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Privatize the NSA",
+      "effects": {
+        "authority": 3,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "commonwealth-002",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Union"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "public_services"
+    ],
+    "prompt": "Chancellor, we need to fund the next generation of stealth bombers. I propose slashing federal education grants to the Northeast to cover the manufacturing costs in Maryland.",
+    "left": {
+      "label": "Fund Schools",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Union": 6
+      },
+      "hiddenEffects": {
+        "social_safety_net": 6,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Build the Bombers",
+      "effects": {
+        "authority": 2,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "Union": -7
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "commonwealth-003",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Superior"
+    ],
+    "pillarTags": [
+      "security",
+      "unionization"
+    ],
+    "prompt": "The FBI needs broader authority to monitor and infiltrate radical labor unions in the Rust Belt. We believe they are threatening critical supply chains.",
+    "left": {
+      "label": "Respect the Unions",
+      "effects": {
+        "authority": -2,
+        "capital": -1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -5,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 5,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Infiltrate Them",
+      "effects": {
+        "authority": 3,
+        "capital": 1,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 6,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "commonwealth-004",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "austerity",
+      "welfare_state"
+    ],
+    "prompt": "Federal pensions are bloated. Let me freeze all hiring and slash retirement benefits for non-essential civil servants across the country. We need the capital for defense, not retirees.",
+    "left": {
+      "label": "Protect Pensions",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "social_safety_net": 5,
+        "fiscal_restraint": -6
+      }
+    },
+    "right": {
+      "label": "Slash the Benefits",
+      "effects": {
+        "authority": 1,
+        "capital": 4,
+        "sentiment": -4,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "Heartland": -6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 7,
+        "social_safety_net": -6
+      }
+    }
+  },
+  {
+    "id": "commonwealth-005",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "security",
+      "nationalism"
+    ],
+    "prompt": "Unregulated militias out West are a direct threat to the state. Authorize a massive ATF crackdown to seize unregistered weapons. We'll fine them heavily to offset the operation costs.",
+    "left": {
+      "label": "Stand Down",
+      "effects": {
+        "authority": -3,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Frontier": 6
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 5,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Crack Down",
+      "effects": {
+        "authority": 4,
+        "capital": 1,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "Frontier": -7
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "hardline_nationalism": -6
+      }
+    }
+  },
+  {
+    "id": "commonwealth-006",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "environmentalism"
+    ],
+    "prompt": "The Pentagon requires a new East Coast Cyber-Warfare Command Center. The cheapest location is right on top of protected wetlands in Delaware. Waive the environmental act.",
+    "left": {
+      "label": "Protect the Wetlands",
+      "effects": {
+        "authority": -1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Commonwealth": -5,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Build the Center",
+      "effects": {
+        "authority": 2,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Commonwealth": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "commonwealth-007",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "security",
+      "military_strength"
+    ],
+    "prompt": "Physical border walls are an antiquated waste of money. Cancel Mesa's concrete contracts and redirect the budget to Commonwealth aerospace firms for orbital surveillance satellites.",
+    "left": {
+      "label": "Keep the Walls",
+      "effects": {
+        "authority": -1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Mesa": 6
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 6,
+        "national_security": -3
+      }
+    },
+    "right": {
+      "label": "Launch the Satellites",
+      "effects": {
+        "authority": 3,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "fiscal_restraint": 4
+      }
+    }
+  },
+  {
+    "id": "commonwealth-008",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Texas"
+    ],
+    "pillarTags": [
+      "security",
+      "free_market"
+    ],
+    "prompt": "Foreign tech components in our defense grid are a vulnerability. Ban all non-domestic hardware in federal contracts. It will hurt the free market, but keep the empire secure.",
+    "left": {
+      "label": "Allow Cheap Imports",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Texas": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Ban Foreign Tech",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 7,
+        "Texas": -6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "global_diplomacy": -4
+      }
+    }
+  },
+  {
+    "id": "commonwealth-009",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "security",
+      "small_government"
+    ],
+    "prompt": "Local police forces are disjointed and expensive. Let the DHS absorb them. We will standardize their training, cut local redundancies, and federalize the law.",
+    "left": {
+      "label": "Protect Local Police",
+      "effects": {
+        "authority": -2,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -5,
+        "Dixie": 5
+      },
+      "hiddenEffects": {
+        "traditional_values": 4,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Federalize the Police",
+      "effects": {
+        "authority": 4,
+        "capital": 3,
+        "sentiment": -4,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 8,
+        "Dixie": -7
+      },
+      "hiddenEffects": {
+        "national_security": 8,
+        "authority": 6
+      }
+    }
+  },
+  {
+    "id": "commonwealth-010",
+    "kind": "policy",
+    "governor": "Gov. Sterling",
+    "regionName": "Commonwealth",
+    "targetRegions": [
+      "Commonwealth",
+      "Piedmont"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "security"
+    ],
+    "prompt": "I need a federal mandate to protect the Delaware corporate tax havens. Our defense contractors rely on those loopholes to stay globally dominant. Do not let Congress audit them.",
+    "left": {
+      "label": "Audit the Contractors",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -6,
+        "Piedmont": 4
+      },
+      "hiddenEffects": {
+        "identity_equity": 4,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Protect the Havens",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 6,
+        "Piedmont": -4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "national_security": 3
+      }
+    }
+  },
+  {
+    "id": "union-001",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "tax_cuts"
+    ],
+    "prompt": "The UN requires expanding their New York headquarters. Give them total tax exemption and federalize the surrounding Manhattan blocks to spare the city the expense.",
+    "left": {
+      "label": "Tax the Diplomats",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Mesa": 5
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 5,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Exempt the UN",
+      "effects": {
+        "authority": -2,
+        "capital": -1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 7,
+        "fiscal_restraint": 3
+      }
+    }
+  },
+  {
+    "id": "union-002",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Superior"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "job_creation"
+    ],
+    "prompt": "Chancellor, 'Buy American' provisions are inefficient and violate our World Trade Organization treaties. Repeal them. We should buy steel from whichever country is cheapest.",
+    "left": {
+      "label": "Protect Domestic Steel",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -7,
+        "Superior": 7
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "global_diplomacy": -6
+      }
+    },
+    "right": {
+      "label": "Repeal 'Buy American'",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 8,
+        "Superior": -8
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 7,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "union-003",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "global_justice",
+      "welfare_state"
+    ],
+    "prompt": "We must meet our international foreign aid commitments. Cut federal agricultural welfare in the Midwest to fund the new Global Development Bank.",
+    "left": {
+      "label": "Keep Farmers Funded",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Heartland": 6
+      },
+      "hiddenEffects": {
+        "social_safety_net": 5,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Fund the Global Bank",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Union": 6,
+        "Heartland": -7
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "fiscal_restraint": 6
+      }
+    }
+  },
+  {
+    "id": "union-004",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "austerity",
+      "internationalism"
+    ],
+    "prompt": "To balance the budget, we are proposing the privatization of the Northeast rail corridor. A consortium of European sovereign wealth funds is ready to buy it today.",
+    "left": {
+      "label": "Keep Rail Nationalized",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Union": -5,
+        "Commonwealth": 5
+      },
+      "hiddenEffects": {
+        "national_security": 4,
+        "fiscal_restraint": -5
+      }
+    },
+    "right": {
+      "label": "Sell to Europe",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Commonwealth": -6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "global_diplomacy": 4
+      }
+    }
+  },
+  {
+    "id": "union-005",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "public_services"
+    ],
+    "prompt": "Our Ivy League institutions are vital global assets. Grant them a permanent federal exemption from all endowment taxes. We can't let populists raid our intellectual capital.",
+    "left": {
+      "label": "Tax the Endowments",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -7,
+        "Appalachia": 6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": -6,
+        "identity_equity": 3
+      }
+    },
+    "right": {
+      "label": "Protect the Ivy League",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Appalachia": -6
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "union-006",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Texas"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "free_market"
+    ],
+    "prompt": "Wall Street requires frictionless international capital flow. Sign the 'Open Markets Treaty' to remove all federal oversight on foreign corporate mergers in the Union.",
+    "left": {
+      "label": "Maintain Oversight",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Texas": 4
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "global_diplomacy": -4
+      }
+    },
+    "right": {
+      "label": "Sign the Treaty",
+      "effects": {
+        "authority": -3,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Texas": -3
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "fiscal_restraint": 5
+      }
+    }
+  },
+  {
+    "id": "union-007",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Alaska"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "job_creation"
+    ],
+    "prompt": "Lift the federal caps on H-1B visas for international finance and tech workers. Let's insource the best global minds and let the domestic workforce adapt or fail.",
+    "left": {
+      "label": "Protect Domestic Jobs",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Alaska": 5
+      },
+      "hiddenEffects": {
+        "labor_power": 5,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Lift the Caps",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 6,
+        "Alaska": -4
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "union-008",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "austerity",
+      "job_creation"
+    ],
+    "prompt": "The federal shipbuilding subsidies in the South are a waste. End them. We can buy European and Asian commercial vessels for a fraction of the cost.",
+    "left": {
+      "label": "Subsidize Shipbuilders",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -5,
+        "Dixie": 7
+      },
+      "hiddenEffects": {
+        "labor_power": 4,
+        "fiscal_restraint": -6
+      }
+    },
+    "right": {
+      "label": "Cut the Subsidies",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 6,
+        "Dixie": -8
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 7,
+        "global_diplomacy": 4
+      }
+    }
+  },
+  {
+    "id": "union-009",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "tax_cuts"
+    ],
+    "prompt": "We want to join the Global Emissions Coalition. However, to maintain fiscal neutrality, we must implement a sweeping regressive carbon tax on domestic consumer goods.",
+    "left": {
+      "label": "Reject the Coalition",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": 2,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Cascadia": -4
+      },
+      "hiddenEffects": {
+        "global_diplomacy": -6,
+        "green_stewardship": -4
+      }
+    },
+    "right": {
+      "label": "Join and Tax",
+      "effects": {
+        "authority": 2,
+        "capital": 2,
+        "sentiment": -4,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "fiscal_restraint": 4
+      }
+    }
+  },
+  {
+    "id": "union-010",
+    "kind": "policy",
+    "governor": "Gov. Vane",
+    "regionName": "Union",
+    "targetRegions": [
+      "Union",
+      "Superior"
+    ],
+    "pillarTags": [
+      "austerity",
+      "global_justice"
+    ],
+    "prompt": "Austerity is necessary, Chancellor. We are slashing the federal budget for industrial worker retraining programs to redirect funds to the International Monetary Fund (IMF).",
+    "left": {
+      "label": "Retrain Our Workers",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -6,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Fund the IMF",
+      "effects": {
+        "authority": 1,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 7,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 6,
+        "global_diplomacy": 6
+      }
+    }
+  },
+  {
+    "id": "piedmont-001",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Superior"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "unionization"
+    ],
+    "prompt": "Three European automakers want to build massive plants in Piedmont. We need federal funding to fast-track the infrastructure, but guarantee these will be non-union shops.",
+    "left": {
+      "label": "Protect the Unions",
+      "effects": {
+        "authority": 1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Fund the Plants",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "piedmont-002",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "containing_immigration"
+    ],
+    "prompt": "The Research Triangle is starved for talent. We need you to triple the regional quota for international tech visas, regardless of the Pentagon's 'border security' complaints.",
+    "left": {
+      "label": "Restrict Visas",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Mesa": 6
+      },
+      "hiddenEffects": {
+        "national_security": 5,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Expand Visas",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 6,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "piedmont-003",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Union"
+    ],
+    "pillarTags": [
+      "free_market",
+      "internationalism"
+    ],
+    "prompt": "Charlotte is ready to overtake New York as the premier global banking hub. We just need the Treasury to loosen foreign investment regulations exclusively for our financial district.",
+    "left": {
+      "label": "Block the Loophole",
+      "effects": {
+        "authority": 1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -5,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": -3,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Loosen Regulations",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "global_diplomacy": 4
+      }
+    }
+  },
+  {
+    "id": "piedmont-004",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "free_market",
+      "tradition"
+    ],
+    "prompt": "To attract international media conglomerates to our film industry, we need to pass federal protections against local censorship laws. The Deep South won't like it, but the money is astronomical.",
+    "left": {
+      "label": "Respect Local Laws",
+      "effects": {
+        "authority": -1,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Dixie": 5
+      },
+      "hiddenEffects": {
+        "traditional_values": 5,
+        "global_diplomacy": -4
+      }
+    },
+    "right": {
+      "label": "Protect the Studios",
+      "effects": {
+        "authority": 2,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 6,
+        "Dixie": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "piedmont-005",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "environmentalism"
+    ],
+    "prompt": "We must dredge the Port of Savannah to handle the new mega-freighters from Asia. Fast-track the permits and bypass the federal environmental reviews to keep global supply chains moving.",
+    "left": {
+      "label": "Enforce Reviews",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 0,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Dredge the Port",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": 0,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "piedmont-006",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "free_market"
+    ],
+    "prompt": "Piedmont is negotiating a direct agricultural export pipeline to China. We need the federal government to subsidize our corporate mega-farms so we can price out the international competition.",
+    "left": {
+      "label": "Deny Subsidies",
+      "effects": {
+        "authority": 1,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -5,
+        "Appalachia": 4
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 3,
+        "global_diplomacy": -4
+      }
+    },
+    "right": {
+      "label": "Subsidize Exports",
+      "effects": {
+        "authority": 0,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Piedmont": 6,
+        "Appalachia": -5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "market_growth": 5
+      }
+    }
+  },
+  {
+    "id": "piedmont-007",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "world_peace",
+      "austerity"
+    ],
+    "prompt": "Atlanta is bidding to host a massive international peace and trade summit. It will cost billions in federal security and infrastructure funds, but it makes us the center of the global economy.",
+    "left": {
+      "label": "Too Expensive",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -5,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "global_diplomacy": -4
+      }
+    },
+    "right": {
+      "label": "Host the Summit",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Heartland": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 7,
+        "market_growth": 4
+      }
+    }
+  },
+  {
+    "id": "piedmont-008",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Texas"
+    ],
+    "pillarTags": [
+      "free_market",
+      "internationalism"
+    ],
+    "prompt": "Allow Piedmont to establish a 'Federal Free Trade Zone' in our coastal cities. Zero federal tariffs, zero import taxes. It will siphon shipping away from the Gulf, but our GDP will soar.",
+    "left": {
+      "label": "Maintain Tariffs",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Texas": 5
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 4,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Establish Free Trade",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": 1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Texas": -6
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 6,
+        "market_growth": 5
+      }
+    }
+  },
+  {
+    "id": "piedmont-009",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "security"
+    ],
+    "prompt": "An international tech consortium wants to buy a massive stake in our regional telecom infrastructure. The Pentagon claims it's a security risk. Override them. We need the capital.",
+    "left": {
+      "label": "Block the Sale",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -6,
+        "Commonwealth": 6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "global_diplomacy": -5
+      }
+    },
+    "right": {
+      "label": "Approve the Sale",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 7,
+        "Commonwealth": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "national_security": -6
+      }
+    }
+  },
+  {
+    "id": "piedmont-010",
+    "kind": "policy",
+    "governor": "Gov. Ashcroft",
+    "regionName": "Piedmont",
+    "targetRegions": [
+      "Piedmont",
+      "California"
+    ],
+    "pillarTags": [
+      "internationalism",
+      "tax_cuts"
+    ],
+    "prompt": "We want to launch a federally backed 'Global Talent Pipeline' targeting executives and scientists worldwide to relocate to Piedmont. We will offer them zero federal income tax for 5 years.",
+    "left": {
+      "label": "No Tax Exemptions",
+      "effects": {
+        "authority": 1,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -5,
+        "California": 4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 3,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Fund the Pipeline",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 6,
+        "California": -5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "market_growth": 5
+      }
+    }
+  },
+  {
+    "id": "dixie-001",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "environmentalism"
+    ],
+    "prompt": "The Gulf Coast is ready to boom. Waive the federal environmental protections on offshore drilling so we can triple our deep-water oil rig deployment.",
+    "left": {
+      "label": "Protect the Gulf",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Dixie": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Drill the Deep",
+      "effects": {
+        "authority": -1,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "dixie-002",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "California"
+    ],
+    "pillarTags": [
+      "tradition",
+      "social_justice"
+    ],
+    "prompt": "Corporate 'ESG' and diversity mandates are poison to our traditional business culture. Give us a federal waiver to heavily tax any corporation operating in Dixie that enforces them.",
+    "left": {
+      "label": "Defend Corporate Rights",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -6,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Tax the Woke Corps",
+      "effects": {
+        "authority": -2,
+        "capital": -1,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "California": -7
+      },
+      "hiddenEffects": {
+        "traditional_values": 7,
+        "identity_equity": -6
+      }
+    }
+  },
+  {
+    "id": "dixie-003",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Superior"
+    ],
+    "pillarTags": [
+      "free_market",
+      "unionization"
+    ],
+    "prompt": "Federal labor boards are trying to force union elections in our massive auto and aerospace plants. Issue an executive order cementing 'Right-to-Work' supremacy on all federal contracts.",
+    "left": {
+      "label": "Protect Organizing",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -7,
+        "Superior": 7
+      },
+      "hiddenEffects": {
+        "labor_power": 7,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Bust the Unions",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "Superior": -8
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -7
+      }
+    }
+  },
+  {
+    "id": "dixie-004",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Union"
+    ],
+    "pillarTags": [
+      "christianity",
+      "public_services"
+    ],
+    "prompt": "Public schools are failing our children's moral education. Redirect federal education block grants in Dixie away from public districts and directly into private, faith-based charter schools.",
+    "left": {
+      "label": "Fund Public Schools",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -5,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "social_safety_net": 5,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Fund Private Vouchers",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 6,
+        "Union": -5
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "social_safety_net": -5
+      }
+    }
+  },
+  {
+    "id": "dixie-005",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "conservation"
+    ],
+    "prompt": "The sugar and citrus industries are suffocating under federal wetland restoration acts. Stop the federal draining mandates and let our agricultural titans reclaim the swamps.",
+    "left": {
+      "label": "Protect the Wetlands",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Dixie": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Reclaim the Swamps",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": 1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "dixie-006",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Piedmont"
+    ],
+    "pillarTags": [
+      "rural_life",
+      "free_market"
+    ],
+    "prompt": "Foreign conglomerates are buying up our legacy farmland. Pass a federal ban preventing any non-citizen entity from purchasing agricultural acreage in the Deep South.",
+    "left": {
+      "label": "Keep Markets Open",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -5,
+        "Piedmont": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "traditional_values": -4
+      }
+    },
+    "right": {
+      "label": "Ban Foreign Buyers",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 6,
+        "Piedmont": -4
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "global_diplomacy": -5
+      }
+    }
+  },
+  {
+    "id": "dixie-007",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "tradition",
+      "free_market"
+    ],
+    "prompt": "Our coastal tourism industry thrives on a family-friendly atmosphere. We are passing regional laws to ban progressive coastal cruise lines from docking unless they adhere to traditional indecency standards.",
+    "left": {
+      "label": "Defend the Cruise Lines",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -6,
+        "Hawaii": 4
+      },
+      "hiddenEffects": {
+        "identity_equity": 4,
+        "traditional_values": -5
+      }
+    },
+    "right": {
+      "label": "Enforce Decency Laws",
+      "effects": {
+        "authority": -2,
+        "capital": -2,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "Hawaii": -5
+      },
+      "hiddenEffects": {
+        "traditional_values": 6,
+        "identity_equity": -5
+      }
+    }
+  },
+  {
+    "id": "dixie-008",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Superior"
+    ],
+    "pillarTags": [
+      "free_market",
+      "workers_rights"
+    ],
+    "prompt": "The hospitality and harvest sectors need hands, not red tape. Relax the federal seasonal worker wage floors and child-labor restrictions. Our family businesses need flexibility.",
+    "left": {
+      "label": "Protect Vulnerable Workers",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -6,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Relax the Rules",
+      "effects": {
+        "authority": -2,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "dixie-009",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "Appalachia"
+    ],
+    "pillarTags": [
+      "tax_cuts",
+      "public_services"
+    ],
+    "prompt": "The federal 'Sin Taxes' on tobacco, alcohol, and regional gambling are punishing our heritage industries. Abolish the federal excise taxes and let the states manage their own vices.",
+    "left": {
+      "label": "Keep the Taxes",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -5,
+        "Appalachia": 4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 3,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Abolish Sin Taxes",
+      "effects": {
+        "authority": -2,
+        "capital": -2,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 6,
+        "Appalachia": -4
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "social_safety_net": -4
+      }
+    }
+  },
+  {
+    "id": "dixie-010",
+    "kind": "policy",
+    "governor": "Gov. LeBlanc",
+    "regionName": "Dixie",
+    "targetRegions": [
+      "Dixie",
+      "California"
+    ],
+    "pillarTags": [
+      "tradition",
+      "lgbt_rights"
+    ],
+    "prompt": "Federal agencies are mandating gender-neutral facilities in all federal buildings within our state lines. Veto this mandate. We will not spend taxpayer capital on coastal social engineering.",
+    "left": {
+      "label": "Enforce the Mandate",
+      "effects": {
+        "authority": 2,
+        "capital": -1,
+        "sentiment": -1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": -7,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "traditional_values": -6
+      }
+    },
+    "right": {
+      "label": "Veto the Mandate",
+      "effects": {
+        "authority": -2,
+        "capital": 1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Dixie": 7,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "traditional_values": 7,
+        "identity_equity": -6
+      }
+    }
+  },
+  {
+    "id": "alaska-001",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "conservation"
+    ],
+    "prompt": "The Arctic is thawing, opening up billions in deep-sea oil. I need the federal government to waive all wildlife protections so we can deploy the first wave of mega-rigs before foreign rivals do.",
+    "left": {
+      "label": "Protect the Arctic",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 1,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Alaska": -7,
+        "Cascadia": 6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -6
+      }
+    },
+    "right": {
+      "label": "Drill the Thaw",
+      "effects": {
+        "authority": 1,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Alaska": 7,
+        "Cascadia": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "national_security": 4
+      }
+    }
+  },
+  {
+    "id": "alaska-002",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Union"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "austerity"
+    ],
+    "prompt": "We are sitting on the Bering Strait, staring down our adversaries. Fund the construction of a massive, heavily armed federal icebreaker fleet to secure the northern trade routes.",
+    "left": {
+      "label": "Defund the Fleet",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": -6,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "global_diplomacy": 5,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Build the Fleet",
+      "effects": {
+        "authority": 3,
+        "capital": -4,
+        "sentiment": 0,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Alaska": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "market_growth": 3
+      }
+    }
+  },
+  {
+    "id": "alaska-003",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "California"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "civil_rights"
+    ],
+    "prompt": "Rare-earth minerals are essential for national defense, and they are buried under indigenous lands in Alaska. We need federal clearance to use eminent domain and bypass local equity councils.",
+    "left": {
+      "label": "Respect Native Lands",
+      "effects": {
+        "authority": -2,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Alaska": -6,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Seize for Defense",
+      "effects": {
+        "authority": 2,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Alaska": 7,
+        "California": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "identity_equity": -6
+      }
+    }
+  },
+  {
+    "id": "alaska-004",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Hawaii"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "conservation"
+    ],
+    "prompt": "I want to permanently station nuclear-powered attack submarines in our pristine coastal fjords. It will industrialize the coastline, but the Pacific requires a show of force.",
+    "left": {
+      "label": "Keep the Fjords Clean",
+      "effects": {
+        "authority": -1,
+        "capital": 1,
+        "sentiment": 1,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Alaska": -5,
+        "Hawaii": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 5,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Station the Subs",
+      "effects": {
+        "authority": 3,
+        "capital": -2,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Alaska": 6,
+        "Hawaii": -6
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "green_stewardship": -5
+      }
+    }
+  },
+  {
+    "id": "alaska-005",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Superior"
+    ],
+    "pillarTags": [
+      "free_market",
+      "workers_rights"
+    ],
+    "prompt": "Extreme cold-weather drilling requires non-stop shifts that violate federal labor safety hours. Grant our mega-corporations an exemption so we don't halt production in the dark months.",
+    "left": {
+      "label": "Enforce Worker Safety",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": -6,
+        "Superior": 6
+      },
+      "hiddenEffects": {
+        "labor_power": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Waive the Limits",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": 7,
+        "Superior": -7
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "labor_power": -6
+      }
+    }
+  },
+  {
+    "id": "alaska-006",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "public_services"
+    ],
+    "prompt": "The Pentagon wants to test experimental, high-altitude EMP weaponry over the Alaskan tundra. It might occasionally knock out civilian grids, but we need the federal defense contracts.",
+    "left": {
+      "label": "Protect Civilian Grids",
+      "effects": {
+        "authority": -2,
+        "capital": -1,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": -5,
+        "Commonwealth": -4
+      },
+      "hiddenEffects": {
+        "social_safety_net": 4,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Test the Weapons",
+      "effects": {
+        "authority": 3,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Alaska": 6,
+        "Commonwealth": 6
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "sentiment": -4
+      }
+    }
+  },
+  {
+    "id": "alaska-007",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "free_market",
+      "nationalism"
+    ],
+    "prompt": "To rapidly scale up our mineral extraction, I want to sell massive tracts of federal land in Alaska directly to foreign multinational conglomerates. Mesa hates foreigners, but the cash is too good.",
+    "left": {
+      "label": "Keep Land American",
+      "effects": {
+        "authority": 1,
+        "capital": -3,
+        "sentiment": 0,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Alaska": -5,
+        "Mesa": 6
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 6,
+        "market_growth": -5
+      }
+    },
+    "right": {
+      "label": "Sell to the Highest Bidder",
+      "effects": {
+        "authority": -2,
+        "capital": 4,
+        "sentiment": -1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Alaska": 6,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "hardline_nationalism": -5
+      }
+    }
+  },
+  {
+    "id": "alaska-008",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "military_strength",
+      "rural_life"
+    ],
+    "prompt": "We need to expand the federal military reserve training zones. I propose we seize control of millions of acres of prime Alaskan hunting and fishing territory, closing it off to the public.",
+    "left": {
+      "label": "Keep the Land Open",
+      "effects": {
+        "authority": -2,
+        "capital": 0,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Alaska": -5,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "traditional_values": 5,
+        "national_security": -4
+      }
+    },
+    "right": {
+      "label": "Expand the Bases",
+      "effects": {
+        "authority": 3,
+        "capital": -1,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Alaska": 6,
+        "Heartland": -5
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "traditional_values": -5
+      }
+    }
+  },
+  {
+    "id": "alaska-009",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Cascadia"
+    ],
+    "pillarTags": [
+      "economic_growth",
+      "conservation"
+    ],
+    "prompt": "The commercial salmon fishing industry is collapsing. Let's abandon the conservation quotas. Let the mega-trawlers scrape the bottom until it's gone, then we'll pivot to offshore oil.",
+    "left": {
+      "label": "Enforce Quotas",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 0,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Alaska": -6,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -4
+      }
+    },
+    "right": {
+      "label": "Let Them Scrape",
+      "effects": {
+        "authority": -1,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": -4
+      },
+      "regionalEffects": {
+        "Alaska": 6,
+        "Cascadia": -6
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -6
+      }
+    }
+  },
+  {
+    "id": "alaska-010",
+    "kind": "policy",
+    "governor": "Gov. O'Malley",
+    "regionName": "Alaska",
+    "targetRegions": [
+      "Alaska",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "security",
+      "austerity"
+    ],
+    "prompt": "The Northern border is too vast to patrol with men. I want federal funding to construct an autonomous, lethal drone-surveillance grid across the entire Alaskan perimeter.",
+    "left": {
+      "label": "Too Drastic",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": 1,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": -5,
+        "Dixie": 3
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 4,
+        "national_security": -5
+      }
+    },
+    "right": {
+      "label": "Activate the Grid",
+      "effects": {
+        "authority": 3,
+        "capital": -3,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Alaska": 7,
+        "Dixie": -4
+      },
+      "hiddenEffects": {
+        "national_security": 7,
+        "fiscal_restraint": -4
+      }
+    }
+  },
+  {
+    "id": "hawaii-001",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Commonwealth"
+    ],
+    "pillarTags": [
+      "civil_rights",
+      "military_strength"
+    ],
+    "prompt": "The Pacific fleet is poisoning our waters. We demand the federal government close the Red Hill fuel facility immediately and begin the decades-long process of returning Pearl Harbor to indigenous stewardship.",
+    "left": {
+      "label": "Protect the Fleet",
+      "effects": {
+        "authority": 2,
+        "capital": 0,
+        "sentiment": -2,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Hawaii": -7,
+        "Commonwealth": 6
+      },
+      "hiddenEffects": {
+        "national_security": 6,
+        "identity_equity": -6
+      }
+    },
+    "right": {
+      "label": "Close Red Hill",
+      "effects": {
+        "authority": -2,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Hawaii": 8,
+        "Commonwealth": -7
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "national_security": -7
+      }
+    }
+  },
+  {
+    "id": "hawaii-002",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Dixie"
+    ],
+    "pillarTags": [
+      "sustainability",
+      "economic_growth"
+    ],
+    "prompt": "Overtourism is destroying our reefs and culture. We want federal authorization to impose a hard cap on commercial flights to the islands and institute a massive 'Eco-Tax' on mainland tourists.",
+    "left": {
+      "label": "Protect Tourism",
+      "effects": {
+        "authority": 1,
+        "capital": 3,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Hawaii": -6,
+        "Dixie": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -5
+      }
+    },
+    "right": {
+      "label": "Cap the Flights",
+      "effects": {
+        "authority": 0,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 4
+      },
+      "regionalEffects": {
+        "Hawaii": 7,
+        "Dixie": -6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "market_growth": -6
+      }
+    }
+  },
+  {
+    "id": "hawaii-003",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Union"
+    ],
+    "pillarTags": [
+      "poverty_relief",
+      "free_market"
+    ],
+    "prompt": "Mainland billionaires and global hedge funds are buying up our islands, pricing locals into homelessness. Pass a federal ban preventing non-residents from purchasing residential property in Hawaii.",
+    "left": {
+      "label": "Defend Free Markets",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Hawaii": -7,
+        "Union": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "identity_equity": -6
+      }
+    },
+    "right": {
+      "label": "Ban Outside Buyers",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 3,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Hawaii": 7,
+        "Union": -6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "hawaii-004",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Alaska"
+    ],
+    "pillarTags": [
+      "conservation",
+      "economic_growth"
+    ],
+    "prompt": "Industrial fishing fleets from the mainland are strip-mining the Pacific. We demand a federally enforced, 500-mile 'No-Take' marine sanctuary around the entire Hawaiian archipelago.",
+    "left": {
+      "label": "Protect Commercial Fishing",
+      "effects": {
+        "authority": 1,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": -3
+      },
+      "regionalEffects": {
+        "Hawaii": -6,
+        "Alaska": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -6
+      }
+    },
+    "right": {
+      "label": "Establish the Sanctuary",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 4
+      },
+      "regionalEffects": {
+        "Hawaii": 7,
+        "Alaska": -7
+      },
+      "hiddenEffects": {
+        "green_stewardship": 7,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "hawaii-005",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Mesa"
+    ],
+    "pillarTags": [
+      "civil_rights",
+      "security"
+    ],
+    "prompt": "We are establishing the Sovereign Hawaiian Tribunal to arbitrate internal land disputes using traditional indigenous law. We just need the federal courts to formally cede their jurisdiction.",
+    "left": {
+      "label": "Maintain Federal Supremacy",
+      "effects": {
+        "authority": 3,
+        "capital": 0,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Hawaii": -7,
+        "Mesa": 5
+      },
+      "hiddenEffects": {
+        "hardline_nationalism": 6,
+        "identity_equity": -5
+      }
+    },
+    "right": {
+      "label": "Cede Jurisdiction",
+      "effects": {
+        "authority": -4,
+        "capital": 0,
+        "sentiment": 2,
+        "sustainability": 1
+      },
+      "regionalEffects": {
+        "Hawaii": 7,
+        "Mesa": -6
+      },
+      "hiddenEffects": {
+        "identity_equity": 7,
+        "authority": -6
+      }
+    }
+  },
+  {
+    "id": "hawaii-006",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Texas"
+    ],
+    "pillarTags": [
+      "sustainability",
+      "entrepreneurship"
+    ],
+    "prompt": "We want to completely sever Hawaii from imported fossil fuels. Give us a massive federal grant to build community-owned, decentralized solar and geothermal grids, cutting out the corporate energy giants.",
+    "left": {
+      "label": "Protect Corporate Grids",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Hawaii": -5,
+        "Texas": 5
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "green_stewardship": -4
+      }
+    },
+    "right": {
+      "label": "Fund Local Grids",
+      "effects": {
+        "authority": 0,
+        "capital": -4,
+        "sentiment": 3,
+        "sustainability": 3
+      },
+      "regionalEffects": {
+        "Hawaii": 6,
+        "Texas": -6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "identity_equity": 4
+      }
+    }
+  },
+  {
+    "id": "hawaii-007",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Heartland"
+    ],
+    "pillarTags": [
+      "civil_rights",
+      "tradition"
+    ],
+    "prompt": "The historical erasure of our people ends now. Mandate 'Ōlelo Hawai'i (the Hawaiian language) as a fully funded co-equal language in all federal operations, schools, and broadcasts in the Pacific.",
+    "left": {
+      "label": "English Only",
+      "effects": {
+        "authority": 1,
+        "capital": 1,
+        "sentiment": -2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Hawaii": -6,
+        "Heartland": 5
+      },
+      "hiddenEffects": {
+        "traditional_values": 5,
+        "identity_equity": -5
+      }
+    },
+    "right": {
+      "label": "Fund Language Parity",
+      "effects": {
+        "authority": -1,
+        "capital": -2,
+        "sentiment": 2,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Hawaii": 6,
+        "Heartland": -5
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "traditional_values": -5
+      }
+    }
+  },
+  {
+    "id": "hawaii-008",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Frontier"
+    ],
+    "pillarTags": [
+      "global_justice",
+      "tax_cuts"
+    ],
+    "prompt": "As sea levels rise, we are facing an influx of Pacific Island climate refugees. We need the Treasury to establish a 'Climate Reparations Fund' to house them, paid for by a tax on mainland carbon emitters.",
+    "left": {
+      "label": "Veto the Carbon Tax",
+      "effects": {
+        "authority": 0,
+        "capital": 2,
+        "sentiment": -1,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Hawaii": -6,
+        "Frontier": 5
+      },
+      "hiddenEffects": {
+        "fiscal_restraint": 5,
+        "green_stewardship": -5
+      }
+    },
+    "right": {
+      "label": "Tax the Emitters",
+      "effects": {
+        "authority": 2,
+        "capital": -3,
+        "sentiment": 2,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Hawaii": 6,
+        "Frontier": -6
+      },
+      "hiddenEffects": {
+        "green_stewardship": 6,
+        "global_diplomacy": 5
+      }
+    }
+  },
+  {
+    "id": "hawaii-009",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "California"
+    ],
+    "pillarTags": [
+      "tradition",
+      "economic_growth"
+    ],
+    "prompt": "Silicon Valley wants to build giant server farms on sacred volcanic mountains to cool their AI mainframes. I will literally stand in front of the bulldozers. Revoke their federal land-use permits.",
+    "left": {
+      "label": "Approve the Server Farms",
+      "effects": {
+        "authority": 2,
+        "capital": 3,
+        "sentiment": -3,
+        "sustainability": -2
+      },
+      "regionalEffects": {
+        "Hawaii": -8,
+        "California": 6
+      },
+      "hiddenEffects": {
+        "market_growth": 6,
+        "identity_equity": -6
+      }
+    },
+    "right": {
+      "label": "Protect the Sacred Mountains",
+      "effects": {
+        "authority": -1,
+        "capital": -3,
+        "sentiment": 3,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Hawaii": 7,
+        "California": -6
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "market_growth": -5
+      }
+    }
+  },
+  {
+    "id": "hawaii-010",
+    "kind": "policy",
+    "governor": "Gov. Palakiko",
+    "regionName": "Hawaii",
+    "targetRegions": [
+      "Hawaii",
+      "Superior"
+    ],
+    "pillarTags": [
+      "social_justice",
+      "free_market"
+    ],
+    "prompt": "Our local agriculture has been dominated by mainland mega-corporations for over a century. Use federal antitrust laws to break up the plantation monopolies and redistribute the land to local farm co-ops.",
+    "left": {
+      "label": "Protect Big Ag",
+      "effects": {
+        "authority": -1,
+        "capital": 2,
+        "sentiment": -2,
+        "sustainability": -1
+      },
+      "regionalEffects": {
+        "Hawaii": -5,
+        "Superior": 4
+      },
+      "hiddenEffects": {
+        "market_growth": 5,
+        "identity_equity": -4
+      }
+    },
+    "right": {
+      "label": "Break the Monopolies",
+      "effects": {
+        "authority": 2,
+        "capital": -2,
+        "sentiment": 3,
+        "sustainability": 2
+      },
+      "regionalEffects": {
+        "Hawaii": 6,
+        "Superior": -5
+      },
+      "hiddenEffects": {
+        "identity_equity": 6,
+        "labor_power": 4
+      }
+    }
+  }
+]
