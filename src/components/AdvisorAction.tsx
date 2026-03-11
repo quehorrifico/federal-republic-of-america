@@ -65,6 +65,14 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
       };
     }
 
+    if (advisorId === 'data_broker') {
+      return { 
+        label: '[ SURVEILLANCE BACKEND ACTIVE ]', 
+        className: 'advisor-action-btn glow-amber', 
+        disabled: true 
+      };
+    }
+
     if (advisorId === 'vulture') {
       if (capitalStat <= 10) {
         return {

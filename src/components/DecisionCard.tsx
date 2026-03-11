@@ -28,6 +28,7 @@ interface DecisionCardProps {
   disabled?: boolean;
   malikRewriteActive?: boolean;
   isPacified?: boolean;
+  isDataBroker?: boolean;
   onChoose(direction: Direction): void;
   onPreviewDirection(direction: Direction | null): void;
 }
@@ -52,10 +53,12 @@ export function DecisionCard({
   disabled,
   malikRewriteActive,
   isPacified,
+  isDataBroker,
   onChoose,
   onPreviewDirection,
 }: DecisionCardProps) {
   const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [swipeThreshold, setSwipeThreshold] = useState(SWIPE_THRESHOLD);
@@ -69,15 +72,19 @@ export function DecisionCard({
   const leftChoiceRef = useRef<HTMLDivElement | null>(null);
   const rightChoiceRef = useRef<HTMLDivElement | null>(null);
   const startOffsetRef = useRef(0);
+  const startOffsetYRef = useRef(0);
   const pointerIdRef = useRef<number | null>(null);
   const latestXRef = useRef(0);
+  const latestYRef = useRef(0);
   const outgoingDirectionRef = useRef<Direction | null>(null);
   const previewDirectionRef = useRef<Direction | null>(null);
   const isAnimatingRef = useRef(false);
 
-  const setCardX = useCallback((value: number) => {
-    latestXRef.current = value;
-    setX(value);
+  const setCardPos = useCallback((newX: number, newY: number) => {
+    latestXRef.current = newX;
+    latestYRef.current = newY;
+    setX(newX);
+    setY(newY);
   }, []);
 
   const updatePreviewDirection = useCallback(
@@ -101,9 +108,10 @@ export function DecisionCard({
       updatePreviewDirection(direction);
       setIsDragging(false);
       const flyOutDistance = Math.max(700, swipeThreshold + 640);
-      setCardX(direction === 'left' ? -flyOutDistance : flyOutDistance);
+      const randomYVariance = latestYRef.current + (latestYRef.current > 0 ? 50 : -50);
+      setCardPos(direction === 'left' ? -flyOutDistance : flyOutDistance, randomYVariance);
     },
-    [setCardX, swipeThreshold, updatePreviewDirection],
+    [setCardPos, swipeThreshold, updatePreviewDirection],
   );
 
   useLayoutEffect(() => {
@@ -169,8 +177,8 @@ export function DecisionCard({
     pointerIdRef.current = null;
     setIsDragging(false);
     updatePreviewDirection(null);
-    setCardX(0);
-  }, [card.id, setCardX, updatePreviewDirection]);
+    setCardPos(0, 0);
+  }, [card.id, setCardPos, updatePreviewDirection]);
 
   useEffect(() => {
     if (!showHint) {
@@ -211,6 +219,7 @@ export function DecisionCard({
     }
     pointerIdRef.current = event.pointerId;
     startOffsetRef.current = event.clientX - latestXRef.current;
+    startOffsetYRef.current = event.clientY - latestYRef.current;
     setIsDragging(true);
     event.currentTarget.setPointerCapture(event.pointerId);
   };
@@ -219,9 +228,39 @@ export function DecisionCard({
     if (!isDragging || pointerIdRef.current !== event.pointerId) {
       return;
     }
-    const nextX = event.clientX - startOffsetRef.current;
-    setCardX(nextX);
-    updatePreviewDirection(getDirectionFromX(nextX, previewThresholds));
+    const rawX = event.clientX - startOffsetRef.current;
+    const rawY = event.clientY - startOffsetYRef.current;
+
+    // Apply soft gravity snap spots to center, left threshold, and right threshold
+    let finalX = rawX;
+    let finalY = rawY;
+    const GRAVITY_RADIUS = 120;
+    const GRAVITY_STRENGTH = 0.5;
+
+    const points = [
+      { px: 0, py: 0 },
+      { px: -previewThresholds.left, py: 0 },
+      { px: previewThresholds.right, py: 0 }
+    ];
+
+    let minDist = Infinity;
+    let closestPt = points[0];
+    for (const pt of points) {
+      const dist = Math.hypot(rawX - pt.px, rawY - pt.py);
+      if (dist < minDist) {
+        minDist = dist;
+        closestPt = pt;
+      }
+    }
+
+    if (minDist < GRAVITY_RADIUS) {
+      const pull = (1 - minDist / GRAVITY_RADIUS) * GRAVITY_STRENGTH;
+      finalX = rawX + (closestPt.px - rawX) * pull;
+      finalY = rawY + (closestPt.py - rawY) * pull;
+    }
+
+    setCardPos(finalX, finalY);
+    updatePreviewDirection(getDirectionFromX(finalX, previewThresholds));
   };
 
   const finishDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -242,7 +281,7 @@ export function DecisionCard({
       return;
     }
 
-    setCardX(0);
+    setCardPos(0, 0);
     updatePreviewDirection(null);
   };
 
@@ -265,7 +304,7 @@ export function DecisionCard({
   }, [swipeThreshold, x]);
 
   const cardStyle: CSSProperties = {
-    transform: `translateX(${x}px) rotate(${rotation}deg)`,
+    transform: `translate(${x}px, ${y}px) rotate(${rotation}deg)`,
     transition: isDragging ? 'none' : 'transform 220ms ease',
     zIndex: 10,
     position: 'relative',
@@ -283,6 +322,14 @@ export function DecisionCard({
     : (malikRewriteActive 
       ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
       : card.prompt);
+
+  const activeBodyRender = (
+    malikRewriteActive ? (
+      <p className="glow-green" style={{ whiteSpace: 'pre-line' }}>{displayPrompt}</p>
+    ) : (
+      displayPrompt
+    )
+  );
 
   return (
     <div className="decision-card-shell" ref={shellRef} style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
@@ -307,15 +354,44 @@ export function DecisionCard({
           {malikRewriteActive && <span className="glow-green" style={{ float: 'right' }}>[ REWRITTEN ]</span>}
         </div>
         <div className="decision-terminal-body">
-          {malikRewriteActive ? (
-            <p className="glow-green" style={{ whiteSpace: 'pre-line' }}>{displayPrompt}</p>
-          ) : (
-            displayPrompt
-          )}
+          {activeBodyRender}
         </div>
         <div className="decision-terminal-footer">
-          <span className={isPacified ? 'glow-green' : ''} style={isPacified ? {} : { color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
-          <span className="glow-green">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
+          {(!isDataBroker || isPacified) ? (
+            <>
+              <span className={isPacified ? 'glow-green' : ''} style={isPacified ? {} : { color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
+              <span className="glow-green">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
+            </>
+          ) : (
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', fontSize: '0.75rem', fontFamily: 'monospace' }}>
+              <div className="glow-amber" style={{ textAlign: 'left', flex: 1 }}>
+                <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ L: {displayLeftLabel.toUpperCase()} ]</p>
+                {Object.keys(card.left.regionalEffects || {}).length === 0 ? (
+                  <p>&gt; NO DATA.</p>
+                ) : (
+                  <>
+                    {Object.entries(card.left.regionalEffects || {}).map(([stat, val]) => {
+                      const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
+                      return <p key={`l-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
+                    })}
+                  </>
+                )}
+              </div>
+              <div className="glow-amber" style={{ textAlign: 'right', flex: 1 }}>
+                <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ R: {displayRightLabel.toUpperCase()} ]</p>
+                {Object.keys(card.right.regionalEffects || {}).length === 0 ? (
+                  <p>&gt; NO DATA.</p>
+                ) : (
+                  <>
+                    {Object.entries(card.right.regionalEffects || {}).map(([stat, val]) => {
+                      const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
+                      return <p key={`r-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
+                    })}
+                  </>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </article>
 

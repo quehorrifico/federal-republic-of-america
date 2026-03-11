@@ -28,11 +28,11 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     pitch: 'SUBJECT EXPERTISE: Political calculus and domestic pacification. PROFILE: Cold, clinical, treats populace as statistical variables.',
     benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Fiscal Restraint proposals by 60%.',
     drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
-    favoredPillars: ['national_security', 'fiscal_restraint'],
+    favoredPillars: ['national_security', 'hardline_nationalism'],
     bias: {
       pillarMultipliers: {
         national_security: 1.6,
-        fiscal_restraint: 1.6,
+        hardline_nationalism: 1.6,
       },
     },
   },
@@ -73,11 +73,11 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     pitch: 'SUBJECT EXPERTISE: Militarized enforcement and border containment. PROFILE: Decorated hardliner. Aggressive operational posture.',
     benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Hardline Nationalism proposals by 60%.',
     drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
-    favoredPillars: ['national_security', 'hardline_nationalism'],
+    favoredPillars: ['national_security', 'traditional_values'],
     bias: {
       pillarMultipliers: {
         national_security: 1.6,
-        hardline_nationalism: 1.6,
+        traditional_values: 1.6,
       },
     },
   },
@@ -94,6 +94,18 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
         global_diplomacy: 1.6,
         identity_equity: 1.6,
       },
+    },
+  },
+  data_broker: {
+    id: 'data_broker',
+    name: 'Jax Thorne (The Fixer)',
+    emoji: '👁️',
+    pitch: 'SUBJECT EXPERTISE: Deep state surveillance and predictive modeling. PROFILE: Information broker. Knows every secret, but his presence makes the governors paranoid.',
+    benefit: 'PASSIVE PROTOCOL: Replaces standard predictive forecasting with exact backend statistical values.',
+    drawback: 'LIMITATION: Governors are highly distrustful. Election survival threshold is increased to 9 votes (from 7).',
+    favoredPillars: ['national_security', 'fiscal_restraint'],
+    bias: {
+      pillarMultipliers: {},
     },
   },
 };

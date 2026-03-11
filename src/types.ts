@@ -73,6 +73,7 @@ export const ADVISOR_IDS = [
   'vulture',
   'iron_vance',
   'spin_doctor',
+  'data_broker',
 ] as const;
 
 export type StatKey = (typeof STAT_KEYS)[number];
@@ -243,6 +244,7 @@ export interface CardChoice {
   effects?: Effects;
   treasuryDelta?: number;
   regionalEffects?: RegionalEffects;
+  hiddenEffects?: HiddenStatEffects;
 }
 
 export interface Card {

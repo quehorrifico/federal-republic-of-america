@@ -255,7 +255,7 @@ function getEndingSummary(params: {
   return `${ending.definition.title}: ${ending.definition.summary} ${tenure}`;
 }
 
-function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegion): ElectionResult {
+function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegion, threshold: number): ElectionResult {
   const forVotes: ElectionVote[] = [];
   const againstVotes: ElectionVote[] = [];
   for (const region of REGION_KEYS) {
@@ -275,7 +275,7 @@ function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegio
     turn,
     votesFor,
     votesAgainst,
-    passed: votesFor >= ELECTION_MAJORITY,
+    passed: votesFor >= threshold,
     forVotes,
     againstVotes,
   };
@@ -373,6 +373,11 @@ export default function App() {
     <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Election results">
       <div className="settings-modal-panel" style={{ maxWidth: '600px' }}>
         <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginTop: 0 }}>[ NO-CONFIDENCE VOTE RESULTS ]</h2>
+        {selectedAdvisor?.id === 'data_broker' && (
+          <p className="glow-amber" style={{ fontSize: '0.8rem', fontStyle: 'italic', marginBottom: '1rem' }}>
+            WARNING: ELECTION THRESHOLD INCREASED DUE TO SURVEILLANCE PROTOCOLS (REQUIRES 9 VOTES)
+          </p>
+        )}
         <p>
           <span className={electionModal.passed ? 'glow-green' : 'gov-status-revolt'}>{electionModal.passed ? 'VOTE SURVIVED' : 'VOTE FAILED'}</span> (
           {electionModal.votesFor}-{electionModal.votesAgainst})
@@ -808,6 +813,7 @@ export default function App() {
               disabled={!!electionModal || settingsOpen}
               malikRewriteActive={game.malikRewriteActive}
               isPacified={Boolean(currentCard.governor && game.pacifiedRegions.includes(currentCard.governor))}
+              isDataBroker={selectedAdvisor?.id === 'data_broker'}
               onChoose={onChoose}
               onPreviewDirection={setPreviewDirection}
             />
