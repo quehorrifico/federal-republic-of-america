@@ -42,14 +42,6 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
       };
     }
 
-    if (advisorId === 'vulture') {
-      return { 
-        label: '[ VULTURE: PASSIVE BOOST ACTIVE ]', 
-        className: 'advisor-action-btn', 
-        disabled: true 
-      };
-    }
-
     if (advisorId === 'revolutionary') {
       if (malikCooldown > 0) {
         return { 
@@ -73,19 +65,12 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
       };
     }
 
-    if (advisorId === 'iron_vance') {
+    if (advisorId === 'vulture') {
       if (capitalStat <= 10) {
         return {
           label: '[ EXECUTE BAILOUT ]',
           className: 'advisor-action-btn vane-alert',
           disabled: false
-        };
-      }
-      if (capitalStat < 50) {
-        return {
-          label: '[ CAPITAL RESERVES LOW. PREPARE BAILOUT ]',
-          className: 'advisor-action-btn glow-amber',
-          disabled: true
         };
       }
       return {

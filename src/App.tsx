@@ -472,6 +472,38 @@ export default function App() {
             };
           });
         }
+
+        if (selectedAdvisor.id === 'vulture') {
+          if (game.stats.capital > 10) return;
+
+          setGame((current) => {
+            const nextStats = { ...current.stats };
+            nextStats.sentiment = Math.max(0, nextStats.sentiment - 60);
+            nextStats.capital = Math.min(100, nextStats.capital + 80);
+
+            const nextRegionLoyalty = { ...current.regionLoyalty };
+            const unpacifiedRegions = REGION_KEYS.filter(r => !current.pacifiedRegions.includes(r));
+            
+            if (unpacifiedRegions.length > 0) {
+              const randomRegion = unpacifiedRegions[Math.floor(Math.random() * unpacifiedRegions.length)];
+              
+              for (const r of unpacifiedRegions) {
+                if (r === randomRegion) {
+                  nextRegionLoyalty[r] = Math.max(0, (nextRegionLoyalty[r] ?? 50) - 20);
+                } else {
+                  nextRegionLoyalty[r] = Math.min(100, (nextRegionLoyalty[r] ?? 50) + 20);
+                }
+              }
+            }
+
+            return {
+              ...current,
+              stats: nextStats,
+              regionLoyalty: nextRegionLoyalty,
+              headline: `[ CORPORATE BAILOUT EXECUTED: TREASURY REPLENISHED ]`,
+            };
+          });
+        }
       }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.pacifiedRegions]);
 
       const onChoose = useCallback(
