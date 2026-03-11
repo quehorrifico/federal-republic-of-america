@@ -10,7 +10,6 @@ import {
   type TransitionEvent as ReactTransitionEvent,
 } from 'react';
 import { GOVERNORS } from '../data/governors';
-import { getPolicyPillarLabel } from '../data/policyPillars';
 import { type Card, type Direction } from '../types';
 
 const SWIPE_THRESHOLD = 120;
@@ -21,13 +20,13 @@ const MAX_ROTATION = 10;
 const PREVIEW_FALLBACK_RATIO = 0.62;
 const MIN_PREVIEW_THRESHOLD = 72;
 const PREVIEW_PROXIMITY_GAP = 44;
-const BASE_CHOICE_OPACITY = 0.62;
-const CHOICE_ACTIVE_OPACITY_GAIN = 0.38;
 
 interface DecisionCardProps {
   card: Card;
   governorLoyalty?: number | null;
   pressureHint?: string | null;
+  disabled?: boolean;
+  malikRewriteActive?: boolean;
   onChoose(direction: Direction): void;
   onPreviewDirection(direction: Direction | null): void;
 }
@@ -49,8 +48,8 @@ function getDirectionFromX(x: number, thresholds: PreviewThresholds): Direction 
 
 export function DecisionCard({
   card,
-  governorLoyalty,
-  pressureHint,
+  disabled,
+  malikRewriteActive,
   onChoose,
   onPreviewDirection,
 }: DecisionCardProps) {
@@ -181,6 +180,9 @@ export function DecisionCard({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (disabled) {
+        return;
+      }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         triggerSwipe('left');
@@ -199,7 +201,7 @@ export function DecisionCard({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [triggerSwipe]);
+  }, [triggerSwipe, disabled]);
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (isAnimatingRef.current) {
@@ -255,14 +257,6 @@ export function DecisionCard({
     onChoose(direction);
   };
 
-  const intensity = Math.min(Math.abs(x) / swipeThreshold, 1);
-  const leftActive = x <= -previewThresholds.left;
-  const rightActive = x >= previewThresholds.right;
-  const leftOpacity = Math.min(1, BASE_CHOICE_OPACITY + (leftActive ? intensity * CHOICE_ACTIVE_OPACITY_GAIN : 0));
-  const rightOpacity = Math.min(
-    1,
-    BASE_CHOICE_OPACITY + (rightActive ? intensity * CHOICE_ACTIVE_OPACITY_GAIN : 0),
-  );
   const rotation = useMemo(() => {
     const ratio = Math.max(-1, Math.min(1, x / swipeThreshold));
     return ratio * MAX_ROTATION;
@@ -271,26 +265,30 @@ export function DecisionCard({
   const cardStyle: CSSProperties = {
     transform: `translateX(${x}px) rotate(${rotation}deg)`,
     transition: isDragging ? 'none' : 'transform 220ms ease',
+    zIndex: 10,
+    position: 'relative',
+    cursor: isDragging ? 'grabbing' : 'grab',
+    touchAction: 'none',
+    userSelect: 'none',
   };
+
   const requestGovernor = card.governor ? GOVERNORS[card.governor] : null;
-  const isConsequence = card.type === 'fallout' || card.type === 'cross';
-  const isCrisis = card.category?.toLowerCase() === 'crisis';
+
+  const displayLeftLabel = malikRewriteActive ? '[ REDACTED ]' : card.left.label;
+  const displayRightLabel = malikRewriteActive ? '[ FULL ENDORSEMENT ]' : card.right.label;
+  const displayPrompt = malikRewriteActive 
+    ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
+    : card.prompt;
 
   return (
-    <div className="decision-card-shell" ref={shellRef}>
-      <div
-        className={`choice-indicator left${leftActive ? ' active' : ''}`}
-        style={{ opacity: leftOpacity }}
-        ref={leftChoiceRef}
-      >
-        <div className="choice-indicator-content">
-          <span className="choice-main-label">{card.left.label}</span>
-        </div>
-      </div>
+    <div className="decision-card-shell" ref={shellRef} style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
+      
+      {/* Left and Right hints removed from the sides as per user request, but their containers must remain for layout gap */}
+      <div className="swipe-hint-left" style={{ flex: 1 }}></div>
 
       <article
         ref={cardRef}
-        className="decision-card"
+        className="decision-terminal"
         style={cardStyle}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -298,48 +296,28 @@ export function DecisionCard({
         onPointerCancel={finishDrag}
         onTransitionEnd={onTransitionEnd}
       >
-        <div className="decision-content">
-          <p className="decision-meta-pill">
-            {requestGovernor
-              ? `${requestGovernor.emoji} ${requestGovernor.governorName} • ${requestGovernor.futureRegionName}`
-              : 'Federal Policy Council'}
-          </p>
-          {requestGovernor ? (
-            <div className="decision-pillar-row" aria-label="Governor pro policy pillars">
-              {requestGovernor.proPillars.map((pillar) => (
-                <span key={pillar} className="policy-pill">
-                  PRO: {getPolicyPillarLabel(pillar)}
-                </span>
-              ))}
-            </div>
-          ) : null}
-          {requestGovernor && typeof governorLoyalty === 'number' ? (
-            <p className="decision-context-text">
-              {requestGovernor.futureRegionName} loyalty: {Math.round(governorLoyalty)}
-            </p>
-          ) : null}
-          {pressureHint ? <p className="decision-pressure-text">{pressureHint}</p> : null}
-          {isConsequence || isCrisis ? (
-            <div className="decision-hint-row">
-              {isConsequence ? <span className="decision-hint-pill">Consequence</span> : null}
-              {isCrisis ? <span className="decision-hint-pill">Crisis</span> : null}
-            </div>
-          ) : null}
-          <p className="decision-prompt">{card.prompt}</p>
+        <div className="decision-terminal-header">
+          {requestGovernor
+            ? `GOVERNOR PROMPT | ${requestGovernor.futureRegionName.toUpperCase()}`
+            : 'FEDERAL POLICY COUNCIL'}
+          {malikRewriteActive && <span className="glow-green" style={{ float: 'right' }}>[ REWRITTEN ]</span>}
+        </div>
+        <div className="decision-terminal-body">
+          {malikRewriteActive ? (
+            <p className="glow-green" style={{ whiteSpace: 'pre-line' }}>{displayPrompt}</p>
+          ) : (
+            displayPrompt
+          )}
+        </div>
+        <div className="decision-terminal-footer">
+          <span style={{ color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
+          <span className="glow-green">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
         </div>
       </article>
 
-      <div
-        className={`choice-indicator right${rightActive ? ' active' : ''}`}
-        style={{ opacity: rightOpacity }}
-        ref={rightChoiceRef}
-      >
-        <div className="choice-indicator-content">
-          <span className="choice-main-label">{card.right.label}</span>
-        </div>
-      </div>
+      <div className="swipe-hint-right" style={{ flex: 1 }}></div>
 
-      {showHint ? <p className="hint-text">Swipe the card or use arrow keys.</p> : null}
+      {showHint ? <p className="hint-text glow-amber" style={{ position: 'absolute', bottom: '-40px' }}>[ SYSTEM: SWIPE CARD OR USE ARROW KEYS ]</p> : null}
     </div>
   );
 }

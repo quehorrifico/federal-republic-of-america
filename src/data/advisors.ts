@@ -25,9 +25,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'realpolitiker',
     name: 'Dr. Victor Kross (The Realpolitiker)',
     emoji: '🧪',
-    pitch: 'Cold, clinical, and convinced every citizen is a controllable variable.',
-    benefit: 'Strongly increases odds of National Security and Fiscal Restraint cards.',
-    drawback: 'Only influences card draw odds.',
+    pitch: 'SUBJECT EXPERTISE: Political calculus and domestic pacification. PROFILE: Cold, clinical, treats populace as statistical variables.',
+    benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Fiscal Restraint proposals by 60%.',
+    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['national_security', 'fiscal_restraint'],
     bias: {
       pillarMultipliers: {
@@ -40,9 +40,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'revolutionary',
     name: 'Sade Malik (The Revolutionary)',
     emoji: '🧨',
-    pitch: 'Sharp-tongued organizer who treats compromise as a temporary tool.',
-    benefit: 'Strongly increases odds of Identity Equity and Labor Power cards.',
-    drawback: 'Only influences card draw odds.',
+    pitch: 'SUBJECT EXPERTISE: Grassroots mobilization and systemic disruption. PROFILE: Sharp-tongued organizer. High risk of ideological subversion.',
+    benefit: 'ACTIVE PROTOCOL [FIXER]: Authorizes emergency rewriting of pending proposals.\nPASSIVE PROTOCOL: Increases frequency of Identity Equity and Labor Power proposals by 60%.',
+    drawback: 'LIMITATION: Active rewrite protocol requires a 5-turn federal cooldown sequence.',
     favoredPillars: ['identity_equity', 'labor_power'],
     bias: {
       pillarMultipliers: {
@@ -55,9 +55,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'vulture',
     name: 'Silas Vane (The Vulture)',
     emoji: '🦅',
-    pitch: 'Smug dealmaker who treats federal governance like an earnings call.',
-    benefit: 'Strongly increases odds of Market Growth and Fiscal Restraint cards.',
-    drawback: 'Only influences card draw odds.',
+    pitch: 'SUBJECT EXPERTISE: Corporate consolidation and asset liquidation. PROFILE: Amoral dealmaker. Views governance purely through profit margins.',
+    benefit: 'PASSIVE PROTOCOL: Increases frequency of Market Growth and Fiscal Restraint proposals by 60%.',
+    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['market_growth', 'fiscal_restraint'],
     bias: {
       pillarMultipliers: {
@@ -70,9 +70,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'iron_vance',
     name: 'Colonel "Iron" Vance (The Hawk)',
     emoji: '🪖',
-    pitch: 'Decorated hardliner who sees unrest as an operational opportunity.',
-    benefit: 'Strongly increases odds of National Security and Hardline Nationalism cards.',
-    drawback: 'Only influences card draw odds.',
+    pitch: 'SUBJECT EXPERTISE: Militarized enforcement and border containment. PROFILE: Decorated hardliner. Aggressive operational posture.',
+    benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Hardline Nationalism proposals by 60%.',
+    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['national_security', 'hardline_nationalism'],
     bias: {
       pillarMultipliers: {
@@ -85,9 +85,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'spin_doctor',
     name: '"Slick" Rick Santana (The Spin Doctor)',
     emoji: '📺',
-    pitch: 'Media-obsessed fixer who can turn any scandal into a headline strategy.',
-    benefit: 'Strongly increases odds of Global Diplomacy and Identity Equity cards.',
-    drawback: 'Only influences card draw odds.',
+    pitch: 'SUBJECT EXPERTISE: Media manipulation and scandal suppression. PROFILE: Optics-obsessed fixer. Masters public distraction.',
+    benefit: 'PASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
+    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['global_diplomacy', 'identity_equity'],
     bias: {
       pillarMultipliers: {

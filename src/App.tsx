@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AdvisorAction } from './components/AdvisorAction';
 import { DecisionCard } from './components/DecisionCard';
 import { GameOver } from './components/GameOver';
 import { StatsBar } from './components/StatsBar';
@@ -12,7 +13,6 @@ import {
   selectPolicyCardFromDeck,
 } from './lib/cardSelection.js';
 import {
-  applyChoiceToStats,
   logResolutionDebug,
   normalizeCard,
   resolveCardDecision,
@@ -51,7 +51,6 @@ const FULL_TERM_TURNS = 75;
 const TERM_CARD_COUNT = 25;
 const ELECTION_INTERVAL = 25;
 const ELECTION_MAJORITY = Math.floor(REGION_KEYS.length / 2) + 1;
-const ELECTION_CHECKPOINTS = [25, 50] as const;
 
 const POLICY_CARD_BY_ID = new Map(ALL_POLICY_CARDS.map((card) => [card.id, card]));
 
@@ -105,13 +104,6 @@ function getCurrentTerm(turn: number): number {
   return Math.floor(turn / TERM_CARD_COUNT) + 1;
 }
 
-function getTurnsUntilNextElection(turn: number): number | null {
-  const nextCheckpoint = ELECTION_CHECKPOINTS.find((checkpoint) => turn < checkpoint);
-  if (!nextCheckpoint) {
-    return null;
-  }
-  return nextCheckpoint - turn;
-}
 
 function createInitialRegionLoyalty(): RegionLoyaltyByRegion {
   const loyalty = {} as RegionLoyaltyByRegion;
@@ -168,6 +160,8 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     endingSummary: null,
     gameOver: false,
     gameOverReason: null,
+    malikCooldown: 0,
+    malikRewriteActive: false,
   };
 }
 
@@ -349,40 +343,24 @@ export default function App() {
   const needsAdvisorSelection = !selectedAdvisor && game.turn === 0 && !game.gameOver;
   const currentYear = useMemo(() => Math.floor(game.turn / 12) + 1, [game.turn]);
   const currentTerm = useMemo(() => getCurrentTerm(game.turn), [game.turn]);
-  const turnsUntilNextElection = useMemo(() => getTurnsUntilNextElection(game.turn), [game.turn]);
-
-  const currentGovernorLoyalty = useMemo(() => {
-    if (!currentCard?.governor) {
-      return null;
-    }
-    return game.regionLoyalty[currentCard.governor] ?? null;
-  }, [currentCard, game.regionLoyalty]);
-
-  const currentGovernor = useMemo(
-    () => (currentCard?.governor ? GOVERNORS[currentCard.governor] : null),
-    [currentCard],
-  );
-
-  const currentGovernorMood = useMemo(
-    () => (typeof currentGovernorLoyalty === 'number' ? getGovernorMood(currentGovernorLoyalty) : null),
-    [currentGovernorLoyalty],
-  );
-
-  const advisorBuffSummary = useMemo(() => {
-    if (!selectedAdvisor) {
-      return 'Pick an advisor to bias card draw odds toward their agenda.';
-    }
-    return selectedAdvisor.benefit;
-  }, [selectedAdvisor]);
-
   const previewStats = useMemo(() => {
     if (!previewDirection || !currentCard || game.gameOver) {
       return undefined;
     }
 
-    const choice = previewDirection === 'left' ? currentCard.left : currentCard.right;
-    return applyChoiceToStats(game.stats, choice);
-  }, [currentCard, game.gameOver, game.stats, previewDirection]);
+    const resolution = resolveCardDecision({
+      state: {
+        stats: game.stats,
+        hiddenStats: game.hiddenStats,
+        regionLoyalty: game.regionLoyalty,
+        malikRewriteActive: game.malikRewriteActive,
+      },
+      card: currentCard,
+      direction: previewDirection,
+    });
+    
+    return resolution.next.stats;
+  }, [currentCard, game.gameOver, game.stats, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, previewDirection]);
 
   const dismissElectionModal = useCallback(() => {
     setElectionModal(null);
@@ -390,39 +368,37 @@ export default function App() {
 
   const electionModalUi = electionModal ? (
     <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Election results">
-      <div className="settings-modal-panel">
-        <h2>No-Confidence Vote Results</h2>
+      <div className="settings-modal-panel" style={{ maxWidth: '600px' }}>
+        <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginTop: 0 }}>[ NO-CONFIDENCE VOTE RESULTS ]</h2>
         <p>
-          Turn {electionModal.turn}: {electionModal.passed ? 'Vote survived' : 'Vote failed'} (
+          TURN {electionModal.turn}: <span className={electionModal.passed ? 'glow-green' : 'gov-status-revolt'}>{electionModal.passed ? 'VOTE SURVIVED' : 'VOTE FAILED'}</span> (
           {electionModal.votesFor}-{electionModal.votesAgainst})
         </p>
-        <p>Votes For (Neutral / Supportive / Loyalist)</p>
-        <ul className="governor-standing-list">
-          {electionModal.forVotes.map((vote) => (
-            <li key={`for-${vote.region}`} className="governor-standing-item">
-              <span className="governor-standing-left">
-                <span>{vote.mood.emoji}</span>
-                <span>{getElectionRegionLabel(vote.region)}</span>
-              </span>
-              <span className="governor-standing-right">{Math.round(vote.loyalty)}</span>
-            </li>
-          ))}
-        </ul>
-        <p>Votes Against (Angry / Revolt)</p>
-        <ul className="governor-standing-list">
-          {electionModal.againstVotes.map((vote) => (
-            <li key={`against-${vote.region}`} className="governor-standing-item">
-              <span className="governor-standing-left">
-                <span>{vote.mood.emoji}</span>
-                <span>{getElectionRegionLabel(vote.region)}</span>
-              </span>
-              <span className="governor-standing-right">{Math.round(vote.loyalty)}</span>
-            </li>
-          ))}
-        </ul>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem', marginBottom: '2rem' }}>
+          <div>
+            <p className="glow-green" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES FOR (NO CONFIDENCE DEFEATED)</p>
+            <ul className="gov-list">
+              {electionModal.forVotes.map((vote) => (
+                <li key={`for-${vote.region}`} className="gov-item">
+                  <span className="glow-green">{getElectionRegionLabel(vote.region).toUpperCase()}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="gov-status-revolt" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES AGAINST (REMOVAL DEMANDED)</p>
+            <ul className="gov-list">
+              {electionModal.againstVotes.map((vote) => (
+                <li key={`against-${vote.region}`} className="gov-item">
+                  <span className="gov-status-revolt">{getElectionRegionLabel(vote.region).toUpperCase()}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <div className="settings-actions">
-          <button className="primary-btn" type="button" onClick={dismissElectionModal}>
-            Dismiss
+          <button className="advisor-action-btn" type="button" onClick={dismissElectionModal}>
+            [ DISMISS ]
           </button>
         </div>
       </div>
@@ -445,44 +421,67 @@ export default function App() {
     setGame(createNewGameState(advisorId));
   }, []);
 
-  const onChoose = useCallback(
-    (direction: Direction) => {
-      if (game.gameOver || !currentCard) {
-        return;
-      }
+      const onAdvisorAction = useCallback(() => {
+        if (!selectedAdvisor || game.gameOver || !currentCard) {
+          return;
+        }
 
-      const resolution = resolveCardDecision({
-        state: {
-          stats: game.stats,
-          hiddenStats: game.hiddenStats,
-          regionLoyalty: game.regionLoyalty,
-        },
-        card: currentCard,
-        direction,
-      });
+        if (selectedAdvisor.id === 'revolutionary') {
+          if (game.malikCooldown > 0) return;
+          
+          setGame((current) => ({
+            ...current,
+            malikRewriteActive: true,
+            malikCooldown: 5, // 5 turns cooldown (won't decrement until NEXT card swipe)
+            headline: '[ SYSTEM OVERRIDE: PROPOSAL REWRITTEN ]',
+          }));
+        }
+      }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard]);
 
-      if (resolutionDebugEnabled) {
-        logResolutionDebug(resolution, {
-          cardId: currentCard.id,
-          turn: game.turn,
-          direction,
-        });
-      }
+      const onChoose = useCallback(
+        (direction: Direction) => {
+          if (game.gameOver || !currentCard) {
+            return;
+          }
 
-      if (!resolution.ok) {
-        setGame((current) => ({
-          ...current,
-          headline: resolution.reason ?? 'Decision could not be resolved.',
-        }));
-        setPreviewDirection(null);
-        return;
-      }
+          const resolution = resolveCardDecision({
+            state: {
+              stats: game.stats,
+              hiddenStats: game.hiddenStats,
+              regionLoyalty: game.regionLoyalty,
+              malikRewriteActive: game.malikRewriteActive,
+            },
+            card: currentCard,
+            direction,
+          });
 
-      let nextStats = resolution.next.stats;
-      const nextHiddenStats = resolution.next.hiddenStats;
-      const nextRegionLoyalty = resolution.next.regionLoyalty;
-      const nextTurn = game.turn + 1;
-      const outcomeHint = buildOutcomeHint(resolution, currentCard);
+          if (resolutionDebugEnabled) {
+            logResolutionDebug(resolution, {
+              cardId: currentCard.id,
+              turn: game.turn,
+              direction,
+            });
+          }
+
+          if (!resolution.ok) {
+            setGame((current) => ({
+              ...current,
+              headline: resolution.reason ?? 'Decision could not be resolved.',
+            }));
+            setPreviewDirection(null);
+            return;
+          }
+
+          let nextStats = resolution.next.stats;
+          const nextHiddenStats = resolution.next.hiddenStats;
+          const nextRegionLoyalty = resolution.next.regionLoyalty;
+          const nextTurn = game.turn + 1;
+          const outcomeHint = buildOutcomeHint(resolution, currentCard);
+          
+          // Decrease cooldown on every card swipe.
+          // Because activating the rewrite *sets* the cooldown to 5, the swipe that consumed the rewrite
+          // immediately drops it to 4, which perfectly represents "4 turns left before it can activate again".
+          const nextMalikCooldown = Math.max(0, game.malikCooldown - 1);
 
       const collapseReason = getCollapseReason(nextStats);
       if (collapseReason) {
@@ -614,6 +613,8 @@ export default function App() {
         endingSummary: null,
         gameOver: false,
         gameOverReason: null,
+        malikCooldown: nextMalikCooldown,
+        malikRewriteActive: false, // reset on next card
       });
 
       setPreviewDirection(null);
@@ -695,124 +696,85 @@ export default function App() {
   return (
     <div className="app-shell">
       <main className="game-layout">
-        <section className="top-strip">
-          <article className="top-card">
-            <h2>Advisor</h2>
-            <p className="top-card-value">
-              {selectedAdvisor ? `${selectedAdvisor.emoji} ${selectedAdvisor.name}` : 'Unassigned'}
-            </p>
-            <p className="top-card-subtext">{advisorBuffSummary}</p>
-          </article>
-          <article className="top-card">
-            <h2>Term</h2>
-            <p className="top-card-value">{currentTerm}/3</p>
-            <p className="top-card-subtext">
-              Card {Math.min(game.turn + 1, FULL_TERM_TURNS)} of {FULL_TERM_TURNS}
-            </p>
-          </article>
-          <article className="top-card">
-            <h2>Election</h2>
-            <p className="top-card-value">
-              {turnsUntilNextElection === null ? 'Final Term' : `${turnsUntilNextElection} turns`}
-            </p>
-            <p className="top-card-subtext">
-              {turnsUntilNextElection === null ? 'No further no-confidence vote.' : 'Until next no-confidence vote'}
-            </p>
-          </article>
-          <button
-            type="button"
-            className="settings-btn"
-            onClick={() => setSettingsOpen(true)}
-            aria-label="Open game settings"
-          >
-            ⚙ Settings
-          </button>
-        </section>
+        <header className="top-strip">
+          <StatsBar stats={game.stats} previewStats={previewStats} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end', fontSize: '0.8rem' }}>
+            <div className="glow-amber">ADVISOR: {selectedAdvisor ? selectedAdvisor.name.toUpperCase() : 'UNASSIGNED'}</div>
+            <div className="glow-green">TERM {currentTerm}/3 | YR {currentYear}</div>
+            <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)} style={{ whiteSpace: 'nowrap' }}>
+              [ SYSTEM.SETTINGS ]
+            </button>
+          </div>
+        </header>
 
-        <section className="card-stage">
+        <aside className="gov-sidebar">
+          <h2>REGIONAL GOVERNORS (14)</h2>
+          <ul className="gov-list">
+            {REGION_KEYS.map((region) => {
+              const governor = GOVERNORS[region];
+              const loyalty = game.regionLoyalty[region] ?? 0;
+              const state = getRegionLoyaltyState(loyalty);
+              let statusClass = 'gov-status-neutral';
+              if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
+              if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+              
+              return (
+                <li key={region} className="gov-item">
+                  <span>{governor.futureRegionName.toUpperCase()}</span>
+                  <span className={statusClass}>[{state.toUpperCase()}]</span>
+                </li>
+              );
+            })}
+          </ul>
+        </aside>
+
+        <section className="action-stage">
           {currentCard ? (
             <DecisionCard
               card={currentCard}
-              governorLoyalty={currentGovernorLoyalty}
-              pressureHint={null}
+              disabled={!!electionModal || settingsOpen}
+              malikRewriteActive={game.malikRewriteActive}
               onChoose={onChoose}
               onPreviewDirection={setPreviewDirection}
             />
           ) : (
-            <div className="fallback-card">No decision card available.</div>
+            <div className="fallback-card glow-amber">NO PENDING DECISIONS.</div>
           )}
-        </section>
-
-        <section className="bottom-strip">
-          <aside className="governor-status-panel">
-            <h2>Current Governor</h2>
-            {currentGovernor && currentGovernorMood && typeof currentGovernorLoyalty === 'number' ? (
-              <>
-                <p className="governor-status-name">
-                  {currentGovernor.emoji} {currentGovernor.governorName}
-                </p>
-                <div className="governor-status-row">
-                  <div
-                    className="governor-status-emoji"
-                    aria-label={currentGovernorMood.label}
-                    title={currentGovernorMood.label}
-                  >
-                    {currentGovernorMood.emoji}
-                  </div>
-                  <details className="governor-collapsible governor-collapsible-inline">
-                    <summary>All Governors</summary>
-                    <div className="governor-standing-popover">
-                      <ul className="governor-standing-list">
-                        {REGION_KEYS.map((region) => {
-                          const governor = GOVERNORS[region];
-                          const loyalty = game.regionLoyalty[region];
-                          const mood = getGovernorMood(loyalty);
-                          return (
-                            <li key={region} className="governor-standing-item">
-                              <span className="governor-standing-left">
-                                <span>{governor.emoji}</span>
-                                <span>{governor.governorName}</span>
-                              </span>
-                              <span className="governor-standing-right" title={`${mood.label} (${Math.round(loyalty)})`}>
-                                {mood.emoji} {Math.round(loyalty)}
-                              </span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  </details>
-                </div>
-                <p className="governor-status-subtext">
-                  {currentGovernor.futureRegionName}: {currentGovernorMood.label} ({Math.round(currentGovernorLoyalty)})
-                </p>
-              </>
-            ) : (
-              <p className="governor-status-subtext">No governor is currently requesting policy.</p>
-            )}
-          </aside>
-
-          <aside className="metrics-panel">
-            <h2>National Metrics</h2>
-            <StatsBar stats={game.stats} previewStats={previewStats} />
-          </aside>
+          
+          <AdvisorAction 
+            advisorId={selectedAdvisor?.id ?? null} 
+            capitalStat={game.stats.capital} 
+            malikCooldown={game.malikCooldown}
+            onAction={onAdvisorAction}
+          />
         </section>
 
         {needsAdvisorSelection ? (
-          <section className="advisor-modal" role="dialog" aria-modal="true" aria-label="Select an advisor">
-            <div className="advisor-modal-panel">
-              <h2>Choose Advisor</h2>
-              <div className="advisor-options">
+          <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Select an advisor">
+            <div className="settings-modal-panel" style={{ maxWidth: '600px' }}>
+              <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginBottom: '1.5rem', marginTop: 0 }}>
+                [ INITIALIZE ADVISOR SYSTEM ]
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {ADVISOR_LIST.map((advisor) => (
                   <button
                     key={advisor.id}
                     type="button"
-                    className="advisor-option"
+                    className="advisor-action-btn"
+                    style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start', padding: '1.2rem' }}
                     onClick={() => selectAdvisor(advisor.id)}
                   >
-                    <span className="advisor-option-head">
-                      {advisor.emoji} {advisor.name}
-                    </span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: '0.2rem' }}>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{advisor.name.replace(/\s*\([^)]+\)/g, '').toUpperCase()}</span>
+                      <span className="glow-green" style={{ fontSize: '0.8rem' }}>[{advisor.id.toUpperCase()}]</span>
+                    </div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontStyle: 'italic', marginBottom: '0.5rem' }}>
+                      "{advisor.pitch}"
+                    </div>
+                    <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '0.5rem' }}>
+                      <span className="glow-green" style={{ whiteSpace: 'pre-line' }}>{advisor.benefit}</span>
+                      <span className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{advisor.drawback}</span>
+                    </div>
                   </button>
                 ))}
               </div>

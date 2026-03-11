@@ -134,6 +134,8 @@ export function loadGameState(): GameState | null {
     const endingSummary = parsed.endingSummary;
     const gameOver = parsed.gameOver;
     const gameOverReason = parsed.gameOverReason;
+    const malikCooldown = parsed.malikCooldown;
+    const malikRewriteActive = parsed.malikRewriteActive;
 
     if (
       !stats ||
@@ -163,6 +165,8 @@ export function loadGameState(): GameState | null {
       endingSummary: typeof endingSummary === 'string' ? endingSummary : null,
       gameOver,
       gameOverReason: gameOverReason ?? null,
+      malikCooldown: typeof malikCooldown === 'number' ? malikCooldown : 0,
+      malikRewriteActive: typeof malikRewriteActive === 'boolean' ? malikRewriteActive : false,
     };
   } catch {
     return null;

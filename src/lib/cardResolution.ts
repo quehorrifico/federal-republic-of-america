@@ -181,13 +181,26 @@ export interface DecisionResolutionResult {
 }
 
 export function resolveCardDecision(params: {
-  state: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty'>;
+  state: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive'>;
   card: Card;
   direction: Direction;
 }): DecisionResolutionResult {
   const { state, card, direction } = params;
 
-  const choice = getCardChoice(card, direction);
+  const rawChoice = getCardChoice(card, direction);
+  const choice = { ...rawChoice }; // Shallow clone to prevent mutating the source card object
+  
+  if (state.malikRewriteActive) {
+    // Left (DECLINE) does nothing. Right (ACCEPT) gives +5 Authority, +5 Sentiment, +10 Governor Loyalty.
+    choice.effects = direction === 'right' ? { authority: 5, sentiment: 5 } : {};
+    choice.treasuryDelta = 0;
+    if (direction === 'right' && card.governor) {
+      choice.regionalEffects = { [card.governor]: 10 };
+    } else {
+      choice.regionalEffects = {};
+    }
+  }
+
   const nextStats = applyChoiceToStats(state.stats, choice);
   const nextRegionLoyalty = applyChoiceToRegionSupport(state.regionLoyalty, choice);
 

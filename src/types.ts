@@ -290,4 +290,6 @@ export interface GameState {
   endingSummary: string | null;
   gameOver: boolean;
   gameOverReason: GameOverReason;
+  malikCooldown: number;
+  malikRewriteActive: boolean;
 }
