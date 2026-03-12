@@ -171,6 +171,8 @@ export function loadGameState(): GameState | null {
       malikRewriteActive: typeof malikRewriteActive === 'boolean' ? malikRewriteActive : false,
       pacifiedRegions: Array.isArray(pacifiedRegions) ? pacifiedRegions : [],
       krossLastUsedElectionTerm: typeof krossLastUsedElectionTerm === 'number' ? krossLastUsedElectionTerm : null,
+      santanaLastUsedElectionTerm: typeof parsed.santanaLastUsedElectionTerm === 'number' ? parsed.santanaLastUsedElectionTerm : null,
+      martialLawActive: typeof parsed.martialLawActive === 'boolean' ? parsed.martialLawActive : false,
     };
   } catch {
     return null;
