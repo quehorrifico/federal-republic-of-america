@@ -107,9 +107,14 @@ export function DecisionCard({
       outgoingDirectionRef.current = direction;
       updatePreviewDirection(direction);
       setIsDragging(false);
+      // Defer the position move to the next frame so the CSS transition
+      // (transition: transform 220ms) is active before the element moves,
+      // ensuring onTransitionEnd fires and the card flies out visibly.
       const flyOutDistance = Math.max(700, swipeThreshold + 640);
-      const randomYVariance = latestYRef.current + (latestYRef.current > 0 ? 50 : -50);
-      setCardPos(direction === 'left' ? -flyOutDistance : flyOutDistance, randomYVariance);
+      const flyY = latestYRef.current;
+      requestAnimationFrame(() => {
+        setCardPos(direction === 'left' ? -flyOutDistance : flyOutDistance, flyY);
+      });
     },
     [setCardPos, swipeThreshold, updatePreviewDirection],
   );
@@ -295,7 +300,10 @@ export function DecisionCard({
     }
     isAnimatingRef.current = false;
     outgoingDirectionRef.current = null;
-    onChoose(direction);
+    // Brief blank gap before swapping to the next card
+    window.setTimeout(() => {
+      onChoose(direction);
+    }, 160);
   };
 
   const rotation = useMemo(() => {

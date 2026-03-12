@@ -102,7 +102,7 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     emoji: '👁️',
     pitch: 'SUBJECT EXPERTISE: Deep state surveillance and predictive modeling. PROFILE: Information broker. Knows every secret, but his presence makes the governors paranoid.',
     benefit: 'PASSIVE PROTOCOL: Replaces standard predictive forecasting with exact backend statistical values.',
-    drawback: 'LIMITATION: Governors are highly distrustful. Election survival threshold is increased to 9 votes (from 7).',
+    drawback: 'LIMITATION: Governors are highly distrustful. Election survival threshold is increased to 9 votes.',
     favoredPillars: ['national_security', 'fiscal_restraint'],
     bias: {
       pillarMultipliers: {},
