@@ -25,9 +25,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'realpolitiker',
     name: 'Dr. Victor Kross (The Realpolitiker)',
     emoji: '🧪',
-    pitch: 'SUBJECT EXPERTISE: Political calculus and domestic pacification. PROFILE: Cold, clinical, treats populace as statistical variables.',
-    benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Fiscal Restraint proposals by 60%.',
-    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
+    pitch: 'Political calculus and domestic pacification. Cold, clinical, treats populace as statistical variables.',
+    benefit: 'ACTIVE PROTOCOL [PACIFICATION]: Once per election term, forcibly pacifies one target governor region. \n\nPASSIVE PROTOCOL: Increases frequency of National Security and Hardline Nationalism proposals by 60%.',
+    drawback: 'LIMITATION: Pacification triggers Sentiment -15 and all other regions lose 10 loyalty. Ability resets each election cycle.',
     favoredPillars: ['national_security', 'hardline_nationalism'],
     bias: {
       pillarMultipliers: {
@@ -40,8 +40,8 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'revolutionary',
     name: 'Sade Malik (The Revolutionary)',
     emoji: '🧨',
-    pitch: 'SUBJECT EXPERTISE: Grassroots mobilization and systemic disruption. PROFILE: Sharp-tongued organizer. High risk of ideological subversion.',
-    benefit: 'ACTIVE PROTOCOL [FIXER]: Authorizes emergency rewriting of pending proposals.\nPASSIVE PROTOCOL: Increases frequency of Identity Equity and Labor Power proposals by 60%.',
+    pitch: 'Grassroots mobilization and systemic disruption. Sharp-tongued organizer. High risk of ideological subversion.',
+    benefit: 'ACTIVE PROTOCOL [FIXER]: Authorizes emergency rewriting of pending proposals.\n\nPASSIVE PROTOCOL: Increases frequency of Identity Equity and Labor Power proposals by 60%.',
     drawback: 'LIMITATION: Active rewrite protocol requires a 10-turn federal cooldown sequence.',
     favoredPillars: ['identity_equity', 'labor_power'],
     bias: {
@@ -55,9 +55,9 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'vulture',
     name: 'Silas Vane (The Vulture)',
     emoji: '🦅',
-    pitch: 'SUBJECT EXPERTISE: Corporate consolidation and asset liquidation. PROFILE: Amoral dealmaker. Views governance purely through profit margins.',
-    benefit: 'PASSIVE PROTOCOL: Increases frequency of Market Growth and Fiscal Restraint proposals by 60%.',
-    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
+    pitch: 'Corporate consolidation and asset liquidation. Amoral dealmaker. Views governance purely through profit margins.',
+    benefit: 'ACTIVE PROTOCOL [BAILOUT]: When Capital drops to 10% or below, unlocks emergency corporate bailout. Grants Capital +80.\n\nPASSIVE PROTOCOL: Increases frequency of Market Growth and Fiscal Restraint proposals by 60%.',
+    drawback: 'LIMITATION: Bailout triggers Sentiment -60. All unpacified regions gain +20 loyalty except one randomly chosen region which loses -20.',
     favoredPillars: ['market_growth', 'fiscal_restraint'],
     bias: {
       pillarMultipliers: {
@@ -70,7 +70,7 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'iron_vance',
     name: 'Colonel "Iron" Vance (The Hawk)',
     emoji: '🪖',
-    pitch: 'SUBJECT EXPERTISE: Militarized enforcement and border containment. PROFILE: Decorated hardliner. Aggressive operational posture.',
+    pitch: 'Militarized enforcement and border containment. Decorated hardliner. Aggressive operational posture.',
     benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Hardline Nationalism proposals by 60%.',
     drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['national_security', 'traditional_values'],
@@ -85,7 +85,7 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     id: 'spin_doctor',
     name: '"Slick" Rick Santana (The Spin Doctor)',
     emoji: '📺',
-    pitch: 'SUBJECT EXPERTISE: Media manipulation and scandal suppression. PROFILE: Optics-obsessed fixer. Masters public distraction.',
+    pitch: 'Media manipulation and scandal suppression. Optics-obsessed fixer. Masters public distraction.',
     benefit: 'PASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
     drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
     favoredPillars: ['global_diplomacy', 'identity_equity'],
@@ -98,10 +98,10 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
   },
   data_broker: {
     id: 'data_broker',
-    name: 'Jax Thorne (The Fixer)',
+    name: 'Jax Thorne (The Data Broker)',
     emoji: '👁️',
-    pitch: 'SUBJECT EXPERTISE: Deep state surveillance and predictive modeling. PROFILE: Information broker. Knows every secret, but his presence makes the governors paranoid.',
-    benefit: 'PASSIVE PROTOCOL: Replaces standard predictive forecasting with exact backend statistical values.',
+    pitch: 'Deep state surveillance and predictive modeling. Information broker. Knows every secret, but his presence makes the governors paranoid.',
+    benefit: 'PASSIVE PROTOCOL: Exposes exact regional loyalty impact of each decision on the card footer — no more guessing which regions are affected and by how much.',
     drawback: 'LIMITATION: Governors are highly distrustful. Election survival threshold is increased to 9 votes.',
     favoredPillars: ['national_security', 'fiscal_restraint'],
     bias: {
