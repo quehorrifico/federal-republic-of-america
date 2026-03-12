@@ -364,3 +364,93 @@ body {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+/* ============================================
+   INTRO / HOW TO PLAY SCREEN
+   ============================================ */
+.intro-screen {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.intro-panel {
+  border: 1px solid var(--border-alert);
+  background: var(--bg-panel);
+  box-shadow: 0 0 40px rgba(255, 176, 0, 0.15), 0 0 80px rgba(0, 0, 0, 0.8);
+  padding: 2.5rem;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: card-pop-in 200ms ease-out forwards;
+}
+
+.intro-header {
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.intro-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: bold;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+}
+
+.intro-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.intro-section-header {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.intro-body {
+  font-size: 0.9rem;
+  color: var(--text-alert);
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
+}
+
+.intro-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-alert);
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
+}
+
+.intro-list li::before {
+  content: '> ';
+  color: var(--text-main);
+}
+
+.intro-start-btn {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}

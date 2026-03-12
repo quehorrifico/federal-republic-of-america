@@ -290,6 +290,9 @@ export default function App() {
   const [previewDirection, setPreviewDirection] = useState<Direction | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [electionModal, setElectionModal] = useState<ElectionResult | null>(null);
+  const [showIntro, setShowIntro] = useState<boolean>(() => {
+    try { return !window.sessionStorage.getItem('fra-intro-seen'); } catch { return true; }
+  });
   const drawRng = useMemo(() => {
     if (typeof window === 'undefined') {
       return Math.random;
@@ -418,8 +421,9 @@ export default function App() {
     setSettingsOpen(false);
     setPreviewDirection(null);
     setElectionModal(null);
-    setGame(createNewGameState(null));
-  }, []);
+    try { window.sessionStorage.removeItem('fra-intro-seen'); } catch { /* ignore */ }
+    setShowIntro(true);
+  }, [setShowIntro]);
 
   const selectAdvisor = useCallback((advisorId: AdvisorId) => {
     clearGameState();
@@ -755,6 +759,108 @@ export default function App() {
     return () => window.clearTimeout(timeout);
   }, [game.gameOver, game.headline]);
 
+  const dismissIntro = useCallback(() => {
+    try { window.sessionStorage.setItem('fra-intro-seen', '1'); } catch { /* ignore */ }
+    clearGameState();
+    setGame(createNewGameState(null));
+    setShowIntro(false);
+  }, []);
+
+  if (showIntro) {
+    return (
+      <div className="intro-screen">
+        <div className="intro-panel">
+          <div className="intro-header">
+            <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — EXECUTIVE TERMINAL v1.0</span>
+          </div>
+
+          <h1 className="intro-title glow-amber">CHANCELLOR'S<br />BRIEFING ROOM</h1>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; SITUATION REPORT</p>
+            <p className="intro-body">You are the newly appointed Chancellor of the Federal Republic. Fourteen regional governors are watching. The nation's stability rests on four critical systems: <strong>Authority</strong>, <strong>Capital</strong>, <strong>Sentiment</strong>, and <strong>Sustainability</strong>. Let any of them collapse to zero — and so does your administration.</p>
+          </div>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; THE FOUR PILLARS</p>
+            <p className="intro-body"><strong>Authority</strong> — The state's grip on its institutions. Erodes when the government is defied, destabilized, or overruled.</p>
+            <p className="intro-body"><strong>Capital</strong> — Federal treasury reserves. Funds operations, buyouts, and crisis response. Runs dry faster than you'd expect. Only metric which can have a deficit.</p>
+            <p className="intro-body"><strong>Sentiment</strong> — Public approval of the administration. Shaped by how proposals land with the population. Low sentiment makes governors restless.</p>
+            <p className="intro-body"><strong>Sustainability</strong> — Long-term systemic viability. Industrial, environmental, and infrastructural pressure accumulates quietly.</p>
+          </div>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; REGIONAL COMMAND</p>
+            <p className="intro-body">Each of the 14 governors operates independently. Their loyalty to the administration shifts based on the decisions you make. A <span className="glow-green">loyalist</span> or neutral governor votes for you in elections. An <span className="gov-status-revolt">angry or revolting</span> governor votes against you.</p>
+            <p className="intro-body">Some proposals target a specific governor's region directly. Choose carefully — what placates one region may inflame another.</p>
+          </div>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; THREAT ASSESSMENT</p>
+            <p className="intro-body">Every 25 turns, governors hold a <strong>Vote of No Confidence</strong>. Survive it or the administration falls. Regional governors each have a loyalty rating. Let too many revolt and elections become impossible to win. Your administration lasts <strong>3 turns</strong>. Complete 3 full terms to win.</p>
+          </div>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; OPERATIONAL MECHANICS</p>
+            <p className="intro-body">[DRAG RIGHT] — Approve the proposal. Endorse it.</p>
+            <p className="intro-body">[DRAG LEFT] — Reject the proposal. Deny it.</p>
+            <p className="intro-body">[ARROW KEYS] — Keyboard override available.</p>
+          </div>
+
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; ADVISOR SYSTEM</p>
+            <p className="intro-body">You will be assigned an advisor before play begins. Each advisor has a <strong>passive protocol</strong> that shapes the types of proposals you receive. Some carry an <strong>active protocol</strong> that grants emergency executive capabilities, with postive and negative game-changing effects.</p>
+            <p className="intro-body">Choose wisely. Your advisor is not a neutral party. They have an agenda, and it will shape the Federal Republic's future as much as your own decisions do.</p>
+          </div>
+
+          <button
+            className="advisor-action-btn intro-start-btn"
+            type="button"
+            onClick={dismissIntro}
+          >
+            [ PROCEED TO ADVISOR SELECTION ]
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (needsAdvisorSelection) {
+    return (
+      <div className="intro-screen">
+        <div className="intro-panel" style={{ maxWidth: '680px' }}>
+          <div className="intro-header">
+            <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — EXECUTIVE TERMINAL v1.0</span>
+          </div>
+          <h1 className="intro-title glow-amber" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>[ INITIALIZE ADVISOR SYSTEM ]</h1>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {ADVISOR_LIST.map((advisor) => (
+              <button
+                key={advisor.id}
+                type="button"
+                className="advisor-action-btn"
+                style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start', padding: '1.2rem' }}
+                onClick={() => selectAdvisor(advisor.id)}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: '0.2rem' }}>
+                  <span style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{advisor.name.replace(/\s*\([^)]+\)/g, '').toUpperCase()}</span>
+                  <span className="glow-green" style={{ fontSize: '0.8rem' }}>[{advisor.id.toUpperCase()}]</span>
+                </div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontStyle: 'italic', marginBottom: '0.5rem' }}>
+                  "{advisor.pitch}"
+                </div>
+                <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '0.5rem' }}>
+                  <span className="glow-green" style={{ whiteSpace: 'pre-line' }}>{advisor.benefit}</span>
+                  <span className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{advisor.drawback}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (game.gameOver) {
     return (
       <div className="app-shell">
@@ -812,7 +918,7 @@ export default function App() {
             <DecisionCard
               key={currentCard.id}
               card={currentCard}
-              disabled={!!electionModal || settingsOpen}
+              disabled={!!electionModal || settingsOpen || needsAdvisorSelection}
               malikRewriteActive={game.malikRewriteActive}
               isPacified={Boolean(currentCard.governor && game.pacifiedRegions.includes(currentCard.governor))}
               isDataBroker={selectedAdvisor?.id === 'data_broker'}
@@ -835,39 +941,6 @@ export default function App() {
             onAction={onAdvisorAction}
           />
         </section>
-
-        {needsAdvisorSelection ? (
-          <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Select an advisor">
-            <div className="settings-modal-panel" style={{ maxWidth: '600px' }}>
-              <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginBottom: '1.5rem', marginTop: 0 }}>
-                [ INITIALIZE ADVISOR SYSTEM ]
-              </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {ADVISOR_LIST.map((advisor) => (
-                  <button
-                    key={advisor.id}
-                    type="button"
-                    className="advisor-action-btn"
-                    style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start', padding: '1.2rem' }}
-                    onClick={() => selectAdvisor(advisor.id)}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: '0.2rem' }}>
-                      <span style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{advisor.name.replace(/\s*\([^)]+\)/g, '').toUpperCase()}</span>
-                      <span className="glow-green" style={{ fontSize: '0.8rem' }}>[{advisor.id.toUpperCase()}]</span>
-                    </div>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontStyle: 'italic', marginBottom: '0.5rem' }}>
-                      "{advisor.pitch}"
-                    </div>
-                    <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '0.5rem' }}>
-                      <span className="glow-green" style={{ whiteSpace: 'pre-line' }}>{advisor.benefit}</span>
-                      <span className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{advisor.drawback}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
 
         {settingsOpen ? (
           <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Game settings">
