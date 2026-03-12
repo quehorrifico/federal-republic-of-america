@@ -377,7 +377,12 @@ body {
 
 .settings-btn:hover {
   background: var(--text-alert);
-  color: #000;
+  color: #000 !important;
+}
+
+.advisor-top-btn {
+  color: var(--text-alert);
+  border-color: var(--border-alert);
 }
 
 .settings-modal {

@@ -86,8 +86,8 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     name: '"Slick" Rick Santana (The Spin Doctor)',
     emoji: '📺',
     pitch: 'Media manipulation and scandal suppression. Optics-obsessed fixer. Masters public distraction.',
-    benefit: 'ACTIVE PROTOCOL [DAMAGE CONTROL]: Once per election term, authorizes a full media suppression campaign. Grants Sentiment +20 and converts one revolting governor to neutral.\n\nPASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
-    drawback: 'LIMITATION: Suppression campaign costs Capital -25 and triggers Sustainability -15. Ability resets each election cycle.',
+    benefit: 'ACTIVE PROTOCOL [DAMAGE CONTROL]: Once per turn, authorizes full media suppression campaigns. Grants Sentiment +20 and converts one revolting governor to neutral.\n\nPASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
+    drawback: 'LIMITATION: Suppression campaign costs Capital -25 and triggers Sustainability -25.',
     favoredPillars: ['global_diplomacy', 'identity_equity'],
     bias: {
       pillarMultipliers: {

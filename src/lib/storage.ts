@@ -172,6 +172,7 @@ export function loadGameState(): GameState | null {
       pacifiedRegions: Array.isArray(pacifiedRegions) ? pacifiedRegions : [],
       krossLastUsedElectionTerm: typeof krossLastUsedElectionTerm === 'number' ? krossLastUsedElectionTerm : null,
       santanaLastUsedElectionTerm: typeof parsed.santanaLastUsedElectionTerm === 'number' ? parsed.santanaLastUsedElectionTerm : null,
+      santanaLastUsedTurn: typeof parsed.santanaLastUsedTurn === 'number' ? parsed.santanaLastUsedTurn : null,
       martialLawActive: typeof parsed.martialLawActive === 'boolean' ? parsed.martialLawActive : false,
     };
   } catch {

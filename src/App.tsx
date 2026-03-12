@@ -166,6 +166,7 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     pacifiedRegions: [],
     krossLastUsedElectionTerm: null,
     santanaLastUsedElectionTerm: null,
+    santanaLastUsedTurn: null,
     martialLawActive: false,
   };
 }
@@ -292,6 +293,7 @@ export default function App() {
   const [game, setGame] = useState<GameState>(() => loadGameState() ?? createNewGameState());
   const [govSortMode, setGovSortMode] = useState<'default' | 'loyalty'>('default');
   const [previewDirection, setPreviewDirection] = useState<Direction | null>(null);
+  const [advisorInfoOpen, setAdvisorInfoOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [electionModal, setElectionModal] = useState<ElectionResult | null>(null);
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -358,7 +360,7 @@ export default function App() {
 
   const advisorBias = selectedAdvisor?.bias;
   const needsAdvisorSelection = !selectedAdvisor && game.turn === 0 && !game.gameOver;
-  const currentYear = useMemo(() => Math.floor(game.turn / 12) + 1, [game.turn]);
+  const turnsUntilElection = useMemo(() => ELECTION_INTERVAL - (game.turn % ELECTION_INTERVAL), [game.turn]);
   const currentTerm = useMemo(() => getCurrentTerm(game.turn), [game.turn]);
   const previewStats = useMemo(() => {
     if (!previewDirection || !currentCard || game.gameOver) {
@@ -536,15 +538,13 @@ export default function App() {
       });
     }
     if (selectedAdvisor.id === 'spin_doctor') {
-      const currentElectionTerm = Math.floor(game.turn / ELECTION_INTERVAL);
-      const santanaAvailable = game.santanaLastUsedElectionTerm === null || game.santanaLastUsedElectionTerm < currentElectionTerm;
-      if (!santanaAvailable) return;
+      if (game.santanaLastUsedTurn === game.turn) return;
 
       setGame((current) => {
         const nextStats = { ...current.stats };
-        nextStats.sentiment = Math.min(100, nextStats.sentiment + 20);
-        nextStats.capital = Math.max(0, nextStats.capital - 25);
-        nextStats.sustainability = Math.max(0, nextStats.sustainability - 15);
+        nextStats.capital = Math.max(0, current.stats.capital - 25);
+        nextStats.sentiment = Math.min(100, current.stats.sentiment + 20);
+        nextStats.sustainability = Math.max(0, current.stats.sustainability - 25);
 
         // Convert the worst revolting/angry governor back to neutral (loyalty = 50)
         const nextRegionLoyalty = { ...current.regionLoyalty };
@@ -561,8 +561,8 @@ export default function App() {
           ...current,
           stats: nextStats,
           regionLoyalty: nextRegionLoyalty,
-          santanaLastUsedElectionTerm: currentElectionTerm,
-          headline: `[ DAMAGE CONTROL ACTIVATED: NARRATIVE SUPPRESSED ]`,
+          santanaLastUsedTurn: current.turn,
+          headline: 'DAMAGE CONTROL INITIATED (+20 SENTIMENT, -25 SUSTAINABILITY)',
         };
       });
     }
@@ -602,7 +602,7 @@ export default function App() {
         };
       });
     }
-  }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.santanaLastUsedElectionTerm, game.pacifiedRegions]);
+  }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.santanaLastUsedElectionTerm, game.pacifiedRegions, game.santanaLastUsedTurn]);
 
   const onChoose = useCallback(
     (direction: Direction) => {
@@ -818,6 +818,7 @@ export default function App() {
         malikRewriteActive: false, // reset on next card
         krossLastUsedElectionTerm: game.krossLastUsedElectionTerm,
         santanaLastUsedElectionTerm: game.santanaLastUsedElectionTerm,
+        santanaLastUsedTurn: game.santanaLastUsedTurn,
         martialLawActive: game.martialLawActive,
         pacifiedRegions: game.pacifiedRegions,
       });
@@ -1017,8 +1018,13 @@ export default function App() {
         <header className="top-strip">
           <StatsBar stats={game.stats} previewStats={previewStats} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end', fontSize: '0.8rem' }}>
-            <div className="glow-amber">ADVISOR: {selectedAdvisor ? selectedAdvisor.name.toUpperCase() : 'UNASSIGNED'}</div>
-            <div className="glow-green">TERM {currentTerm}/3 | YR {currentYear}</div>
+            <button 
+              className="settings-btn advisor-top-btn" 
+              onClick={() => setAdvisorInfoOpen(true)}
+            >
+              ADVISOR: {selectedAdvisor ? selectedAdvisor.name.toUpperCase() : 'UNASSIGNED'}
+            </button>
+            <div className="glow-green">TERM {currentTerm}/3 | NEXT ELECTION IN {turnsUntilElection}</div>
             <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)} style={{ whiteSpace: 'nowrap' }}>
               [ SYSTEM.SETTINGS ]
             </button>
@@ -1081,10 +1087,7 @@ export default function App() {
               game.krossLastUsedElectionTerm === null ||
               game.krossLastUsedElectionTerm < Math.floor(game.turn / ELECTION_INTERVAL)
             }
-            santanaAvailable={
-              game.santanaLastUsedElectionTerm === null ||
-              game.santanaLastUsedElectionTerm < Math.floor(game.turn / ELECTION_INTERVAL)
-            }
+            santanaAvailable={game.santanaLastUsedTurn !== game.turn}
             martialLawActive={game.martialLawActive}
             isCardRegion={Boolean(currentCard?.governor)}
             onAction={onAdvisorAction}
@@ -1109,6 +1112,39 @@ export default function App() {
             </div>
           </section>
         ) : null}
+
+        {advisorInfoOpen && selectedAdvisor && (
+          <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Advisor Information">
+            <div className="settings-modal-panel" style={{ maxWidth: '680px' }}>
+              <div className="intro-header">
+                <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — INTEL DOSSIER</span>
+              </div>
+              <h1 className="intro-title glow-amber" style={{ fontSize: '1.5rem', marginTop: '1rem' }}>
+                {selectedAdvisor.name.toUpperCase()}
+              </h1>
+              
+              <div className="intro-section" style={{ marginTop: '1rem' }}>
+                <p className="intro-section-header glow-green">&gt; PROFILE PREVIEW</p>
+                <p className="intro-body" style={{ fontStyle: 'italic' }}>"{selectedAdvisor.pitch}"</p>
+              </div>
+
+              <div className="intro-section">
+                <p className="intro-section-header glow-green">&gt; ACTIVE / PASSIVE PROTOCOLS</p>
+                <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '0.5rem' }}>
+                  <span className="glow-green" style={{ whiteSpace: 'pre-line' }}>{selectedAdvisor.benefit}</span>
+                  <span className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{selectedAdvisor.drawback}</span>
+                </div>
+              </div>
+
+              <div className="settings-actions">
+                <button className="advisor-action-btn" type="button" onClick={() => setAdvisorInfoOpen(false)}>
+                  [ DISMISS DOSSIER ]
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
+
         {electionModalUi}
       </main>
     </div>

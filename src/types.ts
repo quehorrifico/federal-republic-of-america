@@ -297,5 +297,6 @@ export interface GameState {
   pacifiedRegions: RegionKey[];
   krossLastUsedElectionTerm: number | null;
   santanaLastUsedElectionTerm: number | null;
+  santanaLastUsedTurn: number | null;
   martialLawActive: boolean;
 }

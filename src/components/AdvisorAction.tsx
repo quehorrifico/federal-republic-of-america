@@ -62,7 +62,7 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
     if (advisorId === 'spin_doctor') {
       if (!santanaAvailable) {
         return { 
-          label: '[ DAMAGE CONTROL UNAVAILABLE UNTIL NEXT ELECTION ]', 
+          label: '[ PROTOCOL RECHARGING... (RE-OPENS NEXT TURN) ]', 
           className: 'advisor-action-btn', 
           disabled: true 
         };
