@@ -290,6 +290,7 @@ function getElectionRegionLabel(region: (typeof REGION_KEYS)[number]): string {
 
 export default function App() {
   const [game, setGame] = useState<GameState>(() => loadGameState() ?? createNewGameState());
+  const [govSortMode, setGovSortMode] = useState<'default' | 'loyalty'>('default');
   const [previewDirection, setPreviewDirection] = useState<Direction | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [electionModal, setElectionModal] = useState<ElectionResult | null>(null);
@@ -346,6 +347,14 @@ export default function App() {
     () => (game.advisorId && isAdvisorId(game.advisorId) ? getAdvisorById(game.advisorId) : null),
     [game.advisorId],
   );
+
+  const sortedRegions = useMemo(() => {
+    const list = [...REGION_KEYS];
+    if (govSortMode === 'loyalty') {
+      return list.sort((a, b) => (game.regionLoyalty[b] ?? 0) - (game.regionLoyalty[a] ?? 0));
+    }
+    return list; // default is order in REGION_KEYS
+  }, [game.regionLoyalty, govSortMode]);
 
   const advisorBias = selectedAdvisor?.bias;
   const needsAdvisorSelection = !selectedAdvisor && game.turn === 0 && !game.gameOver;
@@ -1005,9 +1014,18 @@ export default function App() {
         </header>
 
         <aside className="gov-sidebar">
-          <h2>REGIONAL GOVERNORS (14)</h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed var(--border-color)', marginBottom: '1rem', paddingBottom: '0.2rem' }}>
+            <h2 style={{ border: 'none', margin: 0 }}>REGIONAL GOVERNORS (14)</h2>
+            <button 
+              className="settings-btn" 
+              style={{ fontSize: '0.7rem' }}
+              onClick={() => setGovSortMode(current => current === 'default' ? 'loyalty' : 'default')}
+            >
+              [ SORT: {govSortMode === 'default' ? 'ORIG' : 'LOYALTY'} ]
+            </button>
+          </div>
           <ul className="gov-list">
-            {REGION_KEYS.map((region) => {
+            {sortedRegions.map((region) => {
               const governor = GOVERNORS[region];
               const loyalty = game.regionLoyalty[region] ?? 0;
               const isPacified = game.pacifiedRegions.includes(region);

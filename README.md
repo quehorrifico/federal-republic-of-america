@@ -1,4 +1,4 @@
-# Federal Republic Council
+# Federal Republic of America
 
 Small swipe-decision web game inspired by Reigns / Democratic Socialism Simulator.
 

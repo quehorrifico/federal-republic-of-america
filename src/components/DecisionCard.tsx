@@ -181,6 +181,7 @@ export function DecisionCard({
     outgoingDirectionRef.current = null;
     pointerIdRef.current = null;
     setIsDragging(false);
+    setKeyboardPreview(null);
     updatePreviewDirection(null);
     setCardPos(0, 0);
   }, [card.id, setCardPos, updatePreviewDirection]);
@@ -193,6 +194,8 @@ export function DecisionCard({
     return () => window.clearTimeout(timeout);
   }, [showHint]);
 
+  const [keyboardPreview, setKeyboardPreview] = useState<Direction | null>(null);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (disabled) {
@@ -200,27 +203,55 @@ export function DecisionCard({
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        triggerSwipe('left');
+        if (keyboardPreview === 'left') {
+          setKeyboardPreview(null);
+          triggerSwipe('left');
+        } else {
+          setKeyboardPreview('left');
+          updatePreviewDirection('left');
+          setCardPos(-40, 0);
+        }
         return;
       }
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        triggerSwipe('right');
+        if (keyboardPreview === 'right') {
+          setKeyboardPreview(null);
+          triggerSwipe('right');
+        } else {
+          setKeyboardPreview('right');
+          updatePreviewDirection('right');
+          setCardPos(40, 0);
+        }
         return;
       }
       if (event.key === ' ' || event.code === 'Space') {
         event.preventDefault();
         setShowHint(true);
+        return;
+      }
+      
+      // Any other key resets keyboard preview
+      if (keyboardPreview) {
+        setKeyboardPreview(null);
+        updatePreviewDirection(null);
+        setCardPos(0, 0);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [triggerSwipe, disabled]);
+  }, [triggerSwipe, disabled, keyboardPreview, updatePreviewDirection, setCardPos]);
 
+  // Reset keyboard preview if mouse/pointer interaction starts
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (isAnimatingRef.current) {
       return;
+    }
+    if (keyboardPreview) {
+      setKeyboardPreview(null);
+      updatePreviewDirection(null);
+      setCardPos(0, 0);
     }
     pointerIdRef.current = event.pointerId;
     startOffsetRef.current = event.clientX - latestXRef.current;
