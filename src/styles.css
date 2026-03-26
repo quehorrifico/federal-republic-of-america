@@ -655,7 +655,7 @@ body {
   border-left: 1px solid var(--border-color);
   background: var(--bg-panel);
   padding: 1rem;
-  overflow-y: auto;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -689,4 +689,101 @@ body {
 .status-desc {
   line-height: 1.4;
   opacity: 0.9;
+}
+
+/* CUSTOM TOOLTIP (NEON TERMINAL STYLE) */
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+  cursor: help;
+}
+
+.tooltip-box {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  right: calc(100% + 15px);
+  transform: translateY(-50%) translateX(10px);
+  width: 280px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 15px rgba(255, 176, 0, 0.4), inset 0 0 10px rgba(255, 176, 0, 0.1);
+  color: var(--text-main);
+  padding: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Base Arrow */
+.tooltip-box::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--border-color);
+}
+
+.tooltip-container:hover .tooltip-box {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Tooltip Color Variants */
+.tooltip-box.glow-amber {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+.tooltip-box.glow-amber::after {
+  border-color: transparent transparent transparent var(--text-main);
+}
+
+.tooltip-box.glow-green {
+  border-color: #00ff41;
+  color: #00ff41;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4), inset 0 0 10px rgba(0, 255, 65, 0.1);
+}
+.tooltip-box.glow-green::after {
+  border-color: transparent transparent transparent #00ff41;
+}
+.tooltip-box.glow-green .tooltip-title {
+  border-bottom-color: #00ff41;
+}
+
+.tooltip-box.gov-status-revolt {
+  border-color: #ff003c;
+  color: #ff003c;
+  box-shadow: 0 0 15px rgba(255, 0, 60, 0.4), inset 0 0 10px rgba(255, 0, 60, 0.1);
+}
+.tooltip-box.gov-status-revolt::after {
+  border-color: transparent transparent transparent #ff003c;
+}
+.tooltip-box.gov-status-revolt .tooltip-title {
+  border-bottom-color: #ff003c;
+}
+
+.tooltip-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dashed var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tooltip-body {
+  white-space: pre-wrap;
+}
+
+.status-item .tooltip-container {
+  width: 100%;
+  flex-direction: column;
 }

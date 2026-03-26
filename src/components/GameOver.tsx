@@ -33,30 +33,23 @@ export function GameOver({ reason, turns, endingSummary, onRestart }: GameOverPr
   return (
     <div className="intro-screen">
       <div className="intro-panel">
-        <div className="intro-header">
-          <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>
-            FEDERAL REPUBLIC OF AMERICA — DEBRIEFING TERMINAL
-          </span>
-        </div>
-
-        <h1 className="intro-title glow-amber">
+        <h1 className="intro-title glow-amber" style={{ textAlign: 'center', marginBottom: '2rem', borderBottom: 'none' }}>
           {reason === 'completed' ? 'MANDATE COMPLETE' : 'REPUBLIC COLLAPSED'}
         </h1>
 
-        <div className="intro-section">
-          <p className="intro-section-header glow-amber">&gt; STATUS REPORT</p>
-          <p className="intro-body">{getReasonText(reason)}</p>
-          <p className="intro-body" style={{ marginTop: '0.5rem' }}>
-            <strong>Total Cards Resolved:</strong> {turns}
-          </p>
-        </div>
-
         {endingSummary && (
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; HISTORICAL RECORD</p>
-            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>{endingSummary}</p>
+          <div className="intro-section" style={{ border: 'none', background: 'transparent', padding: '0 1rem', marginBottom: '2rem' }}>
+            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.8', whiteSpace: 'pre-line', fontSize: '1.05rem', textAlign: 'center' }}>
+              {endingSummary}
+            </p>
           </div>
         )}
+
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <p className="intro-body" style={{ opacity: 0.7 }}>
+            {getReasonText(reason)} — Cards Resolved: {turns}
+          </p>
+        </div>
 
         <button 
           className="advisor-action-btn intro-start-btn" 
