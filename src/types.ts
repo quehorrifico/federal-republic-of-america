@@ -287,6 +287,26 @@ export interface ReactionCard extends Card {
   requiredAdvisorId?: AdvisorId;
 }
 
+export interface MandateDefinition {
+  key: PolicyPillarKey;
+  name: string;
+  description: string;
+}
+
+export const MANDATES: Record<PolicyPillarKey, MandateDefinition> = {
+  social_safety_net: { key: 'social_safety_net', name: 'The Welfare Mandate', description: 'All negative Sentiment drops from cards are reduced by 50%.' },
+  green_stewardship: { key: 'green_stewardship', name: 'The Green Mandate', description: 'All negative Sustainability drops from cards are reduced by 50%.' },
+  global_diplomacy: { key: 'global_diplomacy', name: 'The Peace Mandate', description: '+5 Capital and +5 Sentiment each turn.' },
+  hardline_nationalism: { key: 'hardline_nationalism', name: 'The Nationalist Mandate', description: '+5 Authority each turn and each region receives a static +10 to regional loyalty.' },
+  market_growth: { key: 'market_growth', name: 'The Prosperity Mandate', description: 'All positive Capital gains are doubled.' },
+  identity_equity: { key: 'identity_equity', name: 'The Equity Mandate', description: 'Sentiment gains are doubled.' },
+  labor_power: { key: 'labor_power', name: 'The Labor Mandate', description: 'Capital costs are reduced by 25% and sentiment gains increased by 25%.' },
+  fiscal_restraint: { key: 'fiscal_restraint', name: 'The Austerity Mandate', description: 'Capital costs are reduced by 50%.' },
+  national_security: { key: 'national_security', name: 'The Security Mandate', description: 'All crisis card effects reduced by 50%.' },
+  traditional_values: { key: 'traditional_values', name: 'The Heritage Mandate', description: 'A static +25 to regional loyalty.' },
+};
+
+
 export interface RawCard extends Omit<Card, 'left' | 'right'> {
   left?: CardChoice;
   right?: CardChoice;
@@ -330,4 +350,6 @@ export interface GameState {
   unlockedDirection: Direction | null;
   activeUnlock: 'bribe' | 'force' | null;
   flags: string[];
+  activeMandate: PolicyPillarKey | null;
+  pillarTallies: Record<PolicyPillarKey, number>;
 }

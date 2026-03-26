@@ -11,6 +11,7 @@ import {
   type RegionKey,
   type RegionLoyaltyByRegion,
   type Stats,
+  type PolicyPillarKey,
   normalizeHiddenStatKey,
   type StatBuffers,
   STAT_KEYS,
@@ -147,6 +148,7 @@ export function applyChoiceToStats(
   stats: Stats,
   statBuffers: StatBuffers,
   choice: CardChoice,
+  activeMandate: PolicyPillarKey | null,
 ): { stats: Stats; statBuffers: StatBuffers } {
   const effects = choice.effects ?? {};
   const treasuryDelta = choice.treasuryDelta ?? 0;
@@ -157,7 +159,33 @@ export function applyChoiceToStats(
   for (const key of STAT_KEYS) {
     let delta = effects[key] ?? 0;
     if (key === 'capital') {
-      delta += treasuryDelta;
+      let capDelta = treasuryDelta;
+      
+      if (activeMandate === 'labor_power' && capDelta < 0) {
+        capDelta = Math.ceil(capDelta * 0.75); // 25% cost reduction
+      } else if (activeMandate === 'fiscal_restraint' && capDelta < 0) {
+        capDelta = Math.ceil(capDelta * 0.50); // 50% cost reduction
+      } else if (activeMandate === 'market_growth' && capDelta > 0) {
+        capDelta = capDelta * 2; // double capital gains
+      }
+      
+      delta += capDelta;
+    }
+    
+    if (key === 'sentiment') {
+      if (activeMandate === 'social_safety_net' && delta < 0) {
+        delta = Math.ceil(delta * 0.5); // 50% reduction in sentiment drops
+      } else if (activeMandate === 'identity_equity' && delta > 0) {
+        delta = delta * 2; // double sentiment gains
+      } else if (activeMandate === 'labor_power' && delta > 0) {
+        delta = Math.ceil(delta * 1.25); // 25% sentiment boost
+      }
+    }
+    
+    if (key === 'sustainability') {
+      if (activeMandate === 'green_stewardship' && delta < 0) {
+        delta = Math.ceil(delta * 0.5); // 50% reduction in sustainability drops
+      }
     }
 
     if (delta > 0) {
@@ -236,7 +264,7 @@ export interface DecisionResolutionResult {
   ok: boolean;
   reason?: string;
   choice: CardChoice;
-  next: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'flags'>;
+  next: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'flags' | 'activeMandate' | 'pillarTallies'>;
   changes: DecisionResolutionChanges;
   events: {
     targetRegions: RegionKey[];
@@ -245,7 +273,7 @@ export interface DecisionResolutionResult {
 }
 
 export function resolveCardDecision(params: {
-  state: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions' | 'flags'>;
+  state: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions' | 'flags' | 'activeMandate' | 'pillarTallies'>;
   card: Card;
   direction: Direction;
 }): DecisionResolutionResult {
@@ -268,18 +296,40 @@ export function resolveCardDecision(params: {
     choice.effects = {};
     choice.treasuryDelta = 0;
     choice.regionalEffects = {};
+  } else if (state.activeMandate === 'national_security' && card.id.startsWith('crisis-')) {
+    // Security Mandate reduces all crisis card effects by 50%
+    if (choice.effects) {
+      for (const k of Object.keys(choice.effects) as Array<keyof typeof choice.effects>) {
+        if (choice.effects[k] !== undefined && choice.effects[k]! < 0) {
+          choice.effects[k] = Math.ceil(choice.effects[k]! * 0.5);
+        }
+      }
+    }
+    if (choice.treasuryDelta && choice.treasuryDelta < 0) {
+      choice.treasuryDelta = Math.ceil(choice.treasuryDelta * 0.5);
+    }
   }
 
-  const { stats: nextStats, statBuffers: nextBuffers } = applyChoiceToStats(state.stats, state.statBuffers, choice);
+  const { stats: nextStats, statBuffers: nextBuffers } = applyChoiceToStats(state.stats, state.statBuffers, choice, state.activeMandate);
   const nextRegionLoyalty = applyChoiceToRegionSupport(state.regionLoyalty, choice);
   const nextHiddenStats = applyHiddenStatEffects(state.hiddenStats, choice.hiddenEffects);
 
   const nextFlags = [...state.flags];
+  if (!nextFlags.includes(`seen_${card.id}`)) {
+    nextFlags.push(`seen_${card.id}`);
+  }
   if (choice.setFlags && choice.setFlags.length > 0) {
     for (const flag of choice.setFlags) {
       if (!nextFlags.includes(flag)) {
         nextFlags.push(flag);
       }
+    }
+  }
+
+  const nextPillarTallies = { ...state.pillarTallies };
+  if (card.pillarTags) {
+    for (const pillar of card.pillarTags) {
+      nextPillarTallies[pillar] += 1;
     }
   }
 
@@ -292,6 +342,8 @@ export function resolveCardDecision(params: {
       hiddenStats: nextHiddenStats,
       regionLoyalty: nextRegionLoyalty,
       flags: nextFlags,
+      activeMandate: state.activeMandate,
+      pillarTallies: nextPillarTallies,
     },
     changes: {
       visibleStatChanges: getNumericChanges(state.stats, nextStats),

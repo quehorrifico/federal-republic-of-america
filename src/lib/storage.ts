@@ -10,10 +10,12 @@ import {
   type RegionLoyaltyByRegion,
   type Stats,
   type StatBuffers,
+  type PolicyPillarKey,
 } from '../types';
 import { HIDDEN_STAT_DEFAULT, clampHiddenStat, createInitialHiddenStats } from './hiddenStats';
+import { normalizePolicyPillarKey } from '../types';
 
-const STORAGE_KEY = 'fra-sim-state-v6';
+const STORAGE_KEY = 'fra-sim-state-v7';
 const LEGACY_STORAGE_KEY = 'fra-sim-state-v5';
 const INTRO_DISMISSED_KEY = 'fra-sim-intro-dismissed-v1';
 
@@ -140,6 +142,31 @@ export function loadGameState(): GameState | null {
       return null;
     }
 
+    const parsePillarTallies = (val: unknown): Record<PolicyPillarKey, number> => {
+      const def = {
+        social_safety_net: 0,
+        green_stewardship: 0,
+        global_diplomacy: 0,
+        hardline_nationalism: 0,
+        market_growth: 0,
+        identity_equity: 0,
+        labor_power: 0,
+        fiscal_restraint: 0,
+        national_security: 0,
+        traditional_values: 0,
+      };
+      if (!isRecord(val)) return def;
+      
+      const out = { ...def };
+      for (const [k, v] of Object.entries(val)) {
+        const norm = normalizePolicyPillarKey(k);
+        if (norm && typeof v === 'number') {
+          out[norm] = v;
+        }
+      }
+      return out;
+    };
+
     const stats = parseStats(parsed.stats);
     const statBuffers = parseStatBuffers(parsed.statBuffers);
     const hiddenStats = parseHiddenStats(parsed.hiddenStats);
@@ -199,6 +226,8 @@ export function loadGameState(): GameState | null {
       unlockedDirection: (parsed.unlockedDirection === 'left' || parsed.unlockedDirection === 'right') ? parsed.unlockedDirection : null,
       activeUnlock: (parsed.activeUnlock === 'bribe' || parsed.activeUnlock === 'force') ? parsed.activeUnlock : null,
       flags,
+      activeMandate: typeof parsed.activeMandate === 'string' ? normalizePolicyPillarKey(parsed.activeMandate) : null,
+      pillarTallies: parsePillarTallies(parsed.pillarTallies),
     };
   } catch {
     return null;

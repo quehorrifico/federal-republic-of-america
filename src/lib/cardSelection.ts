@@ -55,8 +55,9 @@ export function scoreCardWeight(params: {
   card: Card;
   advisorBias: AdvisorSelectionBias | undefined;
   hiddenStats?: HiddenStats;
+  isSustainabilityMaxed?: boolean;
 }): number {
-  const { card, advisorBias, hiddenStats } = params;
+  const { card, advisorBias, hiddenStats, isSustainabilityMaxed } = params;
 
   let weight = 1;
   const multipliers = advisorBias?.pillarMultipliers ?? {};
@@ -83,6 +84,11 @@ export function scoreCardWeight(params: {
     // Assume the bucket format exactly matches the ID suffix (e.g. crisis-public_health_emergency)
     if (isBucketVulnerable(hiddenStats, bucketStr as VulnerabilityBucketKey)) {
       weight *= 10;
+    }
+    
+    // Sustainability passive cuts crisis card base weight
+    if (isSustainabilityMaxed) {
+      weight *= 0.5;
     }
   }
 
@@ -126,8 +132,9 @@ export function selectPolicyCardFromDeck(params: {
   cardsById: Map<string, Card>;
   hiddenStats: HiddenStats;
   rng?: () => number;
+  isSustainabilityMaxed?: boolean;
 }): { cardId: string; chosenType: CardType } | null {
-  const { deck, advisorBias, cardsById, hiddenStats, rng = Math.random } = params;
+  const { deck, advisorBias, cardsById, hiddenStats, rng = Math.random, isSustainabilityMaxed } = params;
 
   const candidates: Array<{ cardId: string; card: Card; cardType: CardType }> = [];
   for (const cardId of deck) {
@@ -154,6 +161,7 @@ export function selectPolicyCardFromDeck(params: {
         card: entry.card,
         advisorBias,
         hiddenStats,
+        isSustainabilityMaxed,
       }),
     rng,
   );

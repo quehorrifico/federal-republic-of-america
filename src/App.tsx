@@ -44,6 +44,8 @@ import {
   type Stats,
   type StatBuffers,
   type ReactionCard,
+  MANDATES,
+  type PolicyPillarKey,
 } from './types';
 
 const ALL_POLICY_CARDS = (cardsData as RawCard[])
@@ -155,6 +157,7 @@ function selectNextCard(
   rng: () => number,
   flags: string[],
   advisorId: AdvisorId | null,
+  isSustainabilityMaxed: boolean = false,
 ): { deck: string[]; cardId: string | null } {
   const validReactionCards = ALL_REACTION_CARDS.filter((rc) => {
     if (flags.includes(`seen_${rc.id}`)) return false;
@@ -178,6 +181,7 @@ function selectNextCard(
     cardsById: POLICY_CARD_BY_ID,
     hiddenStats,
     rng,
+    isSustainabilityMaxed,
   });
 
   if (!selected?.cardId) {
@@ -193,7 +197,7 @@ function selectNextCard(
 function createNewGameState(advisorId: AdvisorId | null = null): GameState {
   const deck = createPolicyDeck();
   const advisor = getAdvisorById(advisorId);
-  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random, [], advisorId);
+  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random, [], advisorId, false);
 
   return {
     advisorId,
@@ -219,6 +223,19 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     unlockedDirection: null,
     activeUnlock: null,
     flags: [],
+    activeMandate: null,
+    pillarTallies: {
+      social_safety_net: 0,
+      green_stewardship: 0,
+      global_diplomacy: 0,
+      hardline_nationalism: 0,
+      market_growth: 0,
+      identity_equity: 0,
+      labor_power: 0,
+      fiscal_restraint: 0,
+      national_security: 0,
+      traditional_values: 0,
+    },
   };
 }
 
@@ -435,6 +452,8 @@ export default function App() {
         malikRewriteActive: game.malikRewriteActive,
         pacifiedRegions: game.pacifiedRegions,
         flags: game.flags,
+        activeMandate: game.activeMandate,
+        pillarTallies: game.pillarTallies,
       },
       card: currentCard,
       direction: previewDirection,
@@ -786,6 +805,8 @@ export default function App() {
           malikRewriteActive: game.malikRewriteActive,
           pacifiedRegions: game.pacifiedRegions,
           flags: game.flags,
+          activeMandate: game.activeMandate,
+          pillarTallies: game.pillarTallies,
         },
         card: currentCard,
         direction,
@@ -945,6 +966,9 @@ export default function App() {
 
 
       let electionHeadline: string | null = null;
+      let nextPillarTallies: Record<PolicyPillarKey, number> | null = null;
+      let nextActiveMandate: PolicyPillarKey | null = null;
+
       if (nextTurn % ELECTION_INTERVAL === 0 && nextTurn < FULL_TERM_TURNS) {
         const threshold = selectedAdvisor?.id === 'data_broker' ? 9 : ELECTION_MAJORITY;
         const noConfidence = getNoConfidenceResult(nextTurn, nextRegionLoyalty, threshold, nextStats.sentiment === 100);
@@ -973,7 +997,40 @@ export default function App() {
           return;
         }
 
-        electionHeadline = `No-confidence vote survived (${noConfidence.votesFor}-${noConfidence.votesAgainst}).`;
+        let nextPillarTallies = { ...resolution.next.pillarTallies };
+        let nextActiveMandate = game.activeMandate;
+
+        // MANDATE CALCULATION (10 or more loyal regions)
+        if (noConfidence.votesAgainst >= 10) {
+          let maxPillar: PolicyPillarKey | null = null;
+          let maxValue = 0;
+          for (const [pillar, value] of Object.entries(game.pillarTallies)) {
+            if (value > maxValue) {
+              maxValue = value;
+              maxPillar = pillar as PolicyPillarKey;
+            }
+          }
+          if (maxPillar) {
+            nextActiveMandate = maxPillar;
+            electionHeadline = `Election won by a MASSIVE MARGIN. You secured a mandate: ${MANDATES[maxPillar].name}`;
+          }
+        } else {
+          electionHeadline = `No-confidence vote survived (${noConfidence.votesFor}-${noConfidence.votesAgainst}).`;
+        }
+
+        // Reset tallies at the end of the term
+        nextPillarTallies = {
+          social_safety_net: 0,
+          green_stewardship: 0,
+          global_diplomacy: 0,
+          hardline_nationalism: 0,
+          market_growth: 0,
+          identity_equity: 0,
+          labor_power: 0,
+          fiscal_restraint: 0,
+          national_security: 0,
+          traditional_values: 0,
+        };
       }
 
       if (nextTurn >= FULL_TERM_TURNS) {
@@ -1000,7 +1057,7 @@ export default function App() {
         return;
       }
 
-      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng, resolution.next.flags, selectedAdvisor?.id ?? null);
+      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng, resolution.next.flags, selectedAdvisor?.id ?? null, nextStats.sustainability === 100);
 
       if (drawDebugEnabled) {
         // eslint-disable-next-line no-console
@@ -1024,6 +1081,9 @@ export default function App() {
           stats: nextStats,
           hiddenStats: nextHiddenStats,
           regionLoyalty: nextRegionLoyalty,
+          flags: resolution.next.flags,
+          activeMandate: nextActiveMandate ?? null,
+          pillarTallies: nextPillarTallies ?? resolution.next.pillarTallies,
           turn: nextTurn,
           deck: nextSelection.deck,
           currentCardId: null,
@@ -1043,12 +1103,35 @@ export default function App() {
       if (nextStats.capital === 100 && nextTurn % 5 === 0) {
         // We use the same applyChoiceToStats logic to ensure overflow goes to buffers
         const passiveEffects = { authority: 10, sentiment: 10, sustainability: 10 };
-        const passiveResult = applyChoiceToStats(nextStats, nextBuffers, { effects: passiveEffects } as any);
+        const passiveResult = applyChoiceToStats(nextStats, nextBuffers, { effects: passiveEffects } as any, nextActiveMandate);
         nextStats = passiveResult.stats;
         // The result of applyChoiceToStats also updates nextBuffers via reference or return?
         // Wait, applyChoiceToStats returns { stats, statBuffers }.
         // My previous code ignored the buffer update. I should fix that.
-        Object.assign(nextBuffers, passiveResult.statBuffers);
+      }
+
+      // Mandate Passives
+      if (nextActiveMandate === 'global_diplomacy') {
+        // Peace Mandate: +5 Capital and +5 Sentiment each turn
+        const peaceEffects = { capital: 5, sentiment: 5 };
+        const peaceResult = applyChoiceToStats(nextStats, nextBuffers, { effects: peaceEffects } as any, nextActiveMandate);
+        nextStats = peaceResult.stats;
+        Object.assign(nextBuffers, peaceResult.statBuffers);
+      } else if (nextActiveMandate === 'hardline_nationalism') {
+        // Nationalist Mandate: +5 Authority each turn
+        const nationalistEffects = { authority: 5 };
+        const nationalistResult = applyChoiceToStats(nextStats, nextBuffers, { effects: nationalistEffects } as any, nextActiveMandate);
+        nextStats = nationalistResult.stats;
+        Object.assign(nextBuffers, nationalistResult.statBuffers);
+        // And +10 static regional loyalty to all regions
+        for (const region of REGION_KEYS) {
+          nextRegionLoyalty[region] = Math.min(100, nextRegionLoyalty[region] + 10);
+        }
+      } else if (nextActiveMandate === 'traditional_values') {
+        // Heritage Mandate: +25 static regional loyalty
+        for (const region of REGION_KEYS) {
+          nextRegionLoyalty[region] = Math.min(100, nextRegionLoyalty[region] + 25);
+        }
       }
 
       setGame({
@@ -1058,6 +1141,8 @@ export default function App() {
         hiddenStats: nextHiddenStats,
         regionLoyalty: nextRegionLoyalty,
         flags: resolution.next.flags,
+        activeMandate: nextActiveMandate ?? null,
+        pillarTallies: nextPillarTallies ?? resolution.next.pillarTallies,
         turn: nextTurn,
         deck: nextSelection.deck,
         currentCardId: nextSelection.cardId,
@@ -1089,7 +1174,7 @@ export default function App() {
 
       const currentAdvisor =
         current.advisorId && isAdvisorId(current.advisorId) ? getAdvisorById(current.advisorId) : null;
-      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng, current.flags, current.advisorId);
+      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng, current.flags, current.advisorId, current.stats.sustainability === 100);
 
       if (!nextSelection.cardId) {
         const endingSummary = getEndingSummary({
@@ -1139,48 +1224,24 @@ export default function App() {
   if (showIntro) {
     return (
       <div className="intro-screen">
-        <div className="intro-panel">
-          <div className="intro-header">
-            <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — EXECUTIVE TERMINAL v1.0</span>
+        <div className="intro-panel" style={{ border: 'none', background: 'transparent', boxShadow: 'none' }}>
+          <h1 className="intro-title glow-amber" style={{ textAlign: 'center', marginBottom: '2rem', borderBottom: 'none' }}>
+            FEDERAL REPUBLIC OF AMERICA
+          </h1>
+
+          <div className="intro-section" style={{ border: 'none', background: 'transparent', padding: '0 1rem', marginBottom: '2rem', textAlign: 'center' }}>
+            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.8', fontSize: '1.05rem', marginBottom: '1.5rem' }}>
+              You are the newly appointed Chancellor. Fourteen regional governors are watching. The nation's stability rests on four critical pillars: Authority, Capital, Sentiment, and Sustainability. Let any of them collapse, and your administration falls.
+            </p>
+            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.8', fontSize: '1.05rem' }}>
+              Every 25 decisions, the governors will hold a Vote of No Confidence. Complete 3 full terms to secure your legacy. Choose your advisors and policies wisely.
+            </p>
           </div>
 
-          <h1 className="intro-title glow-amber">CHANCELLOR'S<br />BRIEFING ROOM</h1>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; SITUATION REPORT</p>
-            <p className="intro-body">You are the newly appointed Chancellor of the Federal Republic. Fourteen regional governors are watching. The nation's stability rests on four critical systems: <strong>Authority</strong>, <strong>Capital</strong>, <strong>Sentiment</strong>, and <strong>Sustainability</strong>. Let any of them collapse to zero — and so does your administration.</p>
-          </div>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; THE FOUR PILLARS</p>
-            <p className="intro-body"><strong>Authority</strong> — The state's grip on its institutions. Erodes when the government is defied, destabilized, or overruled.</p>
-            <p className="intro-body"><strong>Capital</strong> — Federal treasury reserves. Funds operations, buyouts, and crisis response. Runs dry faster than you'd expect. Only metric which can have a deficit.</p>
-            <p className="intro-body"><strong>Sentiment</strong> — Public approval of the administration. Shaped by how proposals land with the population. Low sentiment makes governors restless.</p>
-            <p className="intro-body"><strong>Sustainability</strong> — Long-term systemic viability. Industrial, environmental, and infrastructural pressure accumulates quietly.</p>
-          </div>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; REGIONAL COMMAND</p>
-            <p className="intro-body">Each of the 14 governors operates independently. Their loyalty to the administration shifts based on the decisions you make. A <span className="glow-green">loyalist</span> or neutral governor votes for you in elections. An <span className="gov-status-revolt">angry or revolting</span> governor votes against you.</p>
-            <p className="intro-body">Some proposals target a specific governor's region directly. Choose carefully — what placates one region may inflame another.</p>
-          </div>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; THREAT ASSESSMENT</p>
-            <p className="intro-body">Every 25 turns, governors hold a <strong>Vote of No Confidence</strong>. Survive it or the administration falls. Regional governors each have a loyalty rating. Let too many revolt and elections become impossible to win. Your administration lasts <strong>3 turns</strong>. Complete 3 full terms to win.</p>
-          </div>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; OPERATIONAL MECHANICS</p>
-            <p className="intro-body">[DRAG RIGHT] — Approve the proposal. Endorse it.</p>
-            <p className="intro-body">[DRAG LEFT] — Reject the proposal. Deny it.</p>
-            <p className="intro-body">[ARROW KEYS] — Keyboard override available.</p>
-          </div>
-
-          <div className="intro-section">
-            <p className="intro-section-header glow-amber">&gt; ADVISOR SYSTEM</p>
-            <p className="intro-body">You will be assigned an advisor before play begins. Each advisor has a <strong>passive protocol</strong> that shapes the types of proposals you receive. Some carry an <strong>active protocol</strong> that grants emergency executive capabilities, with postive and negative game-changing effects.</p>
-            <p className="intro-body">Choose wisely. Your advisor is not a neutral party. They have an agenda, and it will shape the Federal Republic's future as much as your own decisions do.</p>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <p className="intro-body" style={{ opacity: 0.7 }}>
+              [ DRAG CARDS LEFT/RIGHT OR USE ARROWS TO GOVERN ]
+            </p>
           </div>
 
           <button
@@ -1204,12 +1265,14 @@ export default function App() {
   if (needsAdvisorSelection) {
     return (
       <div className="intro-screen">
-        <div className="intro-panel" style={{ maxWidth: '680px' }}>
-          <div className="intro-header">
-            <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — EXECUTIVE TERMINAL v1.0</span>
-          </div>
-          <h1 className="intro-title glow-amber" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>[ INITIALIZE ADVISOR SYSTEM ]</h1>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div className="intro-panel" style={{ maxWidth: '1200px', width: '95%', paddingTop: 0, border: 'none', background: 'transparent', boxShadow: 'none' }}>
+          <h1 className="intro-title glow-amber" style={{ textAlign: 'center', marginBottom: '0.5rem', borderBottom: 'none' }}>
+            ADVISOR SYSTEM
+          </h1>
+          <p className="intro-body" style={{ textAlign: 'center', marginBottom: '2rem', fontStyle: 'italic', opacity: 0.8 }}>
+            Select an advisor to guide your administration. Their unique passive biases and active protocols will shape your legacy.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', width: '100%' }}>
             {ADVISOR_LIST.map((advisor) => (
               <button
                 key={advisor.id}
@@ -1232,12 +1295,6 @@ export default function App() {
               </button>
             ))}
           </div>
-
-          <footer className="credits-footnote">
-            <a href="https://github.com/quehorrifico/federal-republic-of-america" target="_blank" rel="noopener noreferrer">
-              [ SOURCE CODE / REPOSITORY ]
-            </a>
-          </footer>
         </div>
       </div>
     );
@@ -1272,12 +1329,6 @@ export default function App() {
               [ SYSTEM.SETTINGS ]
             </button>
             <div className="glow-amber">TERM {currentTerm}/3 | NEXT ELECTION IN {turnsUntilElection}</div>
-            <button
-              className="settings-btn advisor-top-btn"
-              onClick={() => setAdvisorInfoOpen(true)}
-            >
-              ADVISOR: {selectedAdvisor ? selectedAdvisor.name.toUpperCase() : 'UNASSIGNED'}
-            </button>
           </div>
         </header>
 
@@ -1389,46 +1440,112 @@ export default function App() {
 
         <aside className="status-sidebar">
           <div style={{ borderBottom: '1px dashed var(--border-color)', marginBottom: '1rem', paddingBottom: '0.2rem' }}>
-            <h2 style={{ border: 'none', margin: 0 }}>ACTIVE STATUSES</h2>
+            <h2 style={{ border: 'none', margin: 0 }}>STATUS PANEL</h2>
           </div>
           <ul className="status-list">
+
+            {/* MANDATE TOOLTIP */}
+            {game.activeMandate && (
+              <li className="status-item" style={{ borderColor: 'var(--text-main)' }}>
+                <div className="tooltip-container">
+                  <span className="status-name glow-amber">{MANDATES[game.activeMandate].name}</span>
+                  <div className="tooltip-box glow-amber">
+                    <div className="tooltip-title">{MANDATES[game.activeMandate].name}</div>
+                    <div className="tooltip-body">{MANDATES[game.activeMandate].description}</div>
+                  </div>
+                </div>
+              </li>
+            )}
+
+            {/* ADVISOR TOOLTIP */}
+            {selectedAdvisor && (
+              <li className="status-item" style={{ borderColor: 'var(--text-main)' }}>
+                <div className="tooltip-container">
+                  <span className="status-name glow-amber">Advisor: {selectedAdvisor.name}</span>
+                  <div className="tooltip-box glow-amber">
+                    <div className="tooltip-title">{selectedAdvisor.name}</div>
+                    <div className="tooltip-body">{selectedAdvisor.benefit}</div>
+                  </div>
+                </div>
+              </li>
+            )}
+
+            {/* COALITIONS TOOLTIP */}
+            {activeCoalitions.length > 0 && (
+              <li className="status-item" style={{ borderColor: '#ff003c' }}>
+                <div className="tooltip-container">
+                  <span className="status-name gov-status-revolt">ACTIVE COALITION</span>
+                  <div className="tooltip-box gov-status-revolt">
+                    <div className="tooltip-title">Coalition Block</div>
+                    <div className="tooltip-body">A synchronized voting bloc has formed among dissenting governors. They cannot be bribed individually—you must force or bribe the entire bloc simultaneously.</div>
+                  </div>
+                </div>
+              </li>
+            )}
+
+            {/* BUFFER TOOLTIPS */}
             {game.stats.capital === 100 && (
               <li className="status-item">
-                <span className="status-name">Capital Overflow</span>
-                <span className="status-desc">Massive financial shock absorber. Grants +10 to other core metrics every 5 turns.</span>
+                <div className="tooltip-container">
+                  <span className="status-name">Capital Overflow</span>
+                  <div className="tooltip-box glow-green">
+                    <div className="tooltip-title">Capital Overflow</div>
+                    <div className="tooltip-body">Peak financial strength. Extra capital becomes buffer points. Every 5 turns, other core stats gain +10.</div>
+                  </div>
+                </div>
               </li>
             )}
             {game.stats.sentiment === 100 && (
               <li className="status-item">
-                <span className="status-name">Sentiment Overflow</span>
-                <span className="status-desc">Extreme public support. All governors receive a +10 loyalty bonus.</span>
+                <div className="tooltip-container">
+                  <span className="status-name">Sentiment Overflow</span>
+                  <div className="tooltip-box glow-green">
+                    <div className="tooltip-title">Sentiment Overflow</div>
+                    <div className="tooltip-body">Peak public support. Extra sentiment becomes buffer points. All governors gain +10 loyalty.</div>
+                  </div>
+                </div>
               </li>
             )}
             {game.stats.authority === 100 && (
               <li className="status-item">
-                <span className="status-name">Authority Overflow</span>
-                <span className="status-desc">Executive Override active. Permits bypassing coalition blocks by consuming Authority Buffer.</span>
+                <div className="tooltip-container">
+                  <span className="status-name">Authority Overflow</span>
+                  <div className="tooltip-box glow-green">
+                    <div className="tooltip-title">Authority Overflow</div>
+                    <div className="tooltip-body">Peak executive power. Extra authority becomes buffer points. Coalition blocks can be bypassed by spending Authority Buffer.</div>
+                  </div>
+                </div>
               </li>
             )}
             {game.stats.sustainability === 100 && (
               <li className="status-item">
-                <span className="status-name">Sustainability Overflow</span>
-                <span className="status-desc">Ecological harmony. Passively repairs random negative metrics each cycle.</span>
-              </li>
-            )}
-            {game.corruption > 0 && (
-              <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem' }}>
-                <span className="status-name gov-status-revolt" style={{ fontSize: '1.1rem' }}>CORRUPTION LEVEL</span>
-                <span className="status-desc glow-amber">Bribes to bypass coalition blocks erode public trust. Impeachment at 100%.</span>
-                <div style={{ width: '100%', height: '18px', backgroundColor: 'var(--bg-main)', border: '1px solid var(--border-color)', position: 'relative', marginTop: '0.5rem' }}>
-                  <div style={{ width: `${game.corruption}%`, height: '100%', backgroundColor: 'var(--text-alert)' }}></div>
-                  <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontWeight: 'bold', fontSize: '0.75rem', mixBlendMode: 'difference', color: '#fff' }}>
-                    {game.corruption}%
-                  </span>
+                <div className="tooltip-container">
+                  <span className="status-name">Sustainability Overflow</span>
+                  <div className="tooltip-box glow-green">
+                    <div className="tooltip-title">Sustainability Overflow</div>
+                    <div className="tooltip-body">Peak ecological balance. Extra sustainability becomes buffer points. The probability of drawing Crisis cards is halved.</div>
+                  </div>
                 </div>
               </li>
             )}
-            {Object.values(game.stats).every(v => v < 100) && (
+
+            {/* CORRUPTION TOOLTIP */}
+            {game.corruption > 0 && (
+              <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem', borderColor: '#ff003c' }}>
+                <div className="tooltip-container">
+                  <span className="status-name gov-status-revolt" style={{ fontSize: '1.1rem' }}>CORRUPTION: {game.corruption}%</span>
+                  <div className="tooltip-box gov-status-revolt">
+                    <div className="tooltip-title">Corruption Threat</div>
+                    <div className="tooltip-body">Bribes to bypass coalition blocks erode public trust. Impeachment triggers inherently at 100%.</div>
+                  </div>
+                </div>
+                <div style={{ width: '100%', height: '18px', backgroundColor: 'var(--bg-main)', border: '1px solid var(--border-color)', position: 'relative', marginTop: '0.5rem' }}>
+                  <div style={{ width: `${game.corruption}%`, height: '100%', backgroundColor: 'var(--text-alert)' }}></div>
+                </div>
+              </li>
+            )}
+
+            {!game.activeMandate && !selectedAdvisor && activeCoalitions.length === 0 && Object.values(game.stats).every(v => v < 100) && (
               <li style={{ fontSize: '0.8rem', opacity: 0.5, fontStyle: 'italic', textAlign: 'center', marginTop: '2rem' }}>
                 NO SYSTEM PASSIVES ACTIVE
               </li>
