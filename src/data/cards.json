@@ -32,7 +32,10 @@
         "tax_cuts": 15,
         "small_government": 15,
         "austerity": 15
-      }
+      },
+      "setFlags": [
+        "cascadia_rain_battery_rejected"
+      ]
     },
     "right": {
       "label": "Build It",
@@ -53,7 +56,10 @@
         "tax_cuts": -15,
         "small_government": -15,
         "austerity": -15
-      }
+      },
+      "setFlags": [
+        "cascadia_rain_battery_built"
+      ]
     }
   },
   {
@@ -604,7 +610,10 @@
         "anti_racism": -25,
         "feminism": -25,
         "lgbt_rights": -25
-      }
+      },
+      "setFlags": [
+        "california_ai_equity_board_rejected"
+      ]
     },
     "right": {
       "label": "Audit the Code",
@@ -627,7 +636,10 @@
         "economic_growth": -15,
         "free_market": -15,
         "entrepreneurship": -15
-      }
+      },
+      "setFlags": [
+        "california_ai_equity_board_created"
+      ]
     }
   },
   {
@@ -1198,7 +1210,10 @@
         "anti_racism": 20,
         "feminism": 20,
         "lgbt_rights": 20
-      }
+      },
+      "setFlags": [
+        "mesa_drone_grid_rejected"
+      ]
     },
     "right": {
       "label": "Deploy the Drones",
@@ -1221,7 +1236,10 @@
         "anti_racism": -20,
         "feminism": -20,
         "lgbt_rights": -20
-      }
+      },
+      "setFlags": [
+        "mesa_drone_grid_active"
+      ]
     }
   },
   {
@@ -1775,7 +1793,10 @@
         "environmentalism": 25,
         "conservation": 25,
         "sustainability": 25
-      }
+      },
+      "setFlags": [
+        "frontier_public_lands_kept"
+      ]
     },
     "right": {
       "label": "Liquidate Assets",
@@ -1796,7 +1817,10 @@
         "environmentalism": -30,
         "conservation": -30,
         "sustainability": -30
-      }
+      },
+      "setFlags": [
+        "frontier_public_lands_sold"
+      ]
     }
   },
   {
@@ -2346,7 +2370,10 @@
         "tradition": -25,
         "christianity": -25,
         "rural_life": -25
-      }
+      },
+      "setFlags": [
+        "heartland_synthetic_meat_approved"
+      ]
     },
     "right": {
       "label": "Ban Synthetic Meat",
@@ -2367,7 +2394,10 @@
         "environmentalism": -20,
         "conservation": -20,
         "sustainability": -20
-      }
+      },
+      "setFlags": [
+        "heartland_synthetic_meat_banned"
+      ]
     }
   },
   {
@@ -2927,7 +2957,10 @@
         "anti_racism": 15,
         "feminism": 15,
         "lgbt_rights": 15
-      }
+      },
+      "setFlags": [
+        "texas_tax_holiday_rejected"
+      ]
     },
     "right": {
       "label": "Approve Tax Holiday",
@@ -2948,7 +2981,10 @@
         "tax_cuts": 20,
         "small_government": 20,
         "austerity": 20
-      }
+      },
+      "setFlags": [
+        "texas_tax_holiday_approved"
+      ]
     }
   },
   {
@@ -3497,7 +3533,10 @@
         "workers_rights": -25,
         "job_creation": -25,
         "unionization": -25
-      }
+      },
+      "setFlags": [
+        "superior_metal_tariffs_rejected"
+      ]
     },
     "right": {
       "label": "Impose Tariffs",
@@ -3518,7 +3557,10 @@
         "world_peace": -30,
         "internationalism": -30,
         "global_justice": -30
-      }
+      },
+      "setFlags": [
+        "superior_metal_tariffs_approved"
+      ]
     }
   },
   {
@@ -4066,7 +4108,10 @@
         "workers_rights": -25,
         "job_creation": -25,
         "unionization": -25
-      }
+      },
+      "setFlags": [
+        "appalachia_keep_coal_mines_closed"
+      ]
     },
     "right": {
       "label": "Reopen the Mines",
@@ -4087,7 +4132,10 @@
         "environmentalism": -35,
         "conservation": -35,
         "sustainability": -35
-      }
+      },
+      "setFlags": [
+        "appalachia_reopen_coal_mines"
+      ]
     }
   },
   {
@@ -4645,7 +4693,10 @@
         "security": -25,
         "military_strength": -25,
         "fighting_crime_terrorism": -25
-      }
+      },
+      "setFlags": [
+        "commonwealth_nsa_privatization_rejected"
+      ]
     },
     "right": {
       "label": "Privatize the NSA",
@@ -4666,7 +4717,10 @@
         "tax_cuts": 25,
         "small_government": 25,
         "austerity": 25
-      }
+      },
+      "setFlags": [
+        "commonwealth_nsa_privatized"
+      ]
     }
   },
   {
@@ -5216,7 +5270,10 @@
         "world_peace": -25,
         "internationalism": -25,
         "global_justice": -25
-      }
+      },
+      "setFlags": [
+        "union_un_hq_taxed"
+      ]
     },
     "right": {
       "label": "Exempt the UN",
@@ -5237,7 +5294,10 @@
         "tax_cuts": 15,
         "small_government": 15,
         "austerity": 15
-      }
+      },
+      "setFlags": [
+        "union_un_hq_exempted"
+      ]
     }
   },
   {
@@ -5789,7 +5849,10 @@
         "economic_growth": -25,
         "free_market": -25,
         "entrepreneurship": -25
-      }
+      },
+      "setFlags": [
+        "piedmont_auto_plant_stall"
+      ]
     },
     "right": {
       "label": "Fund the Plants",
@@ -5810,7 +5873,10 @@
         "workers_rights": -30,
         "job_creation": -30,
         "unionization": -30
-      }
+      },
+      "setFlags": [
+        "piedmont_auto_plant_funded"
+      ]
     }
   },
   {
@@ -6360,7 +6426,10 @@
         "economic_growth": -25,
         "free_market": -25,
         "entrepreneurship": -25
-      }
+      },
+      "setFlags": [
+        "dixie_protect_gulf"
+      ]
     },
     "right": {
       "label": "Drill the Deep",
@@ -6381,7 +6450,10 @@
         "environmentalism": -30,
         "conservation": -30,
         "sustainability": -30
-      }
+      },
+      "setFlags": [
+        "dixie_drill_gulf"
+      ]
     }
   },
   {
@@ -6946,7 +7018,10 @@
         "economic_growth": -30,
         "free_market": -30,
         "entrepreneurship": -30
-      }
+      },
+      "setFlags": [
+        "alaska_protect_arctic_wildlife"
+      ]
     },
     "right": {
       "label": "Drill the Thaw",
@@ -6967,7 +7042,10 @@
         "security": 20,
         "military_strength": 20,
         "fighting_crime_terrorism": 20
-      }
+      },
+      "setFlags": [
+        "alaska_drill_artic_oil"
+      ]
     }
   },
   {
@@ -7520,7 +7598,10 @@
         "anti_racism": -30,
         "feminism": -30,
         "lgbt_rights": -30
-      }
+      },
+      "setFlags": [
+        "hawaii_keep_red_hill_open"
+      ]
     },
     "right": {
       "label": "Close Red Hill",
@@ -7543,7 +7624,10 @@
         "security": -35,
         "military_strength": -35,
         "fighting_crime_terrorism": -35
-      }
+      },
+      "setFlags": [
+        "hawaii_close_red_hill"
+      ]
     }
   },
   {

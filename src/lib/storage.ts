@@ -13,8 +13,8 @@ import {
 } from '../types';
 import { HIDDEN_STAT_DEFAULT, clampHiddenStat, createInitialHiddenStats } from './hiddenStats';
 
-const STORAGE_KEY = 'fra-sim-state-v5';
-const LEGACY_STORAGE_KEY = 'fra-sim-state-v4';
+const STORAGE_KEY = 'fra-sim-state-v6';
+const LEGACY_STORAGE_KEY = 'fra-sim-state-v5';
 const INTRO_DISMISSED_KEY = 'fra-sim-intro-dismissed-v1';
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -145,6 +145,7 @@ export function loadGameState(): GameState | null {
     const hiddenStats = parseHiddenStats(parsed.hiddenStats);
     const regionLoyalty = parseRegionLoyalty(parsed.regionLoyalty);
     const deck = parseStringArray(parsed.deck);
+    const flags = parseStringArray(parsed.flags) ?? [];
     const advisorId = parsed.advisorId;
     const turn = parsed.turn;
     const currentCardId = parsed.currentCardId;
@@ -197,6 +198,7 @@ export function loadGameState(): GameState | null {
       martialLawActive: typeof parsed.martialLawActive === 'boolean' ? parsed.martialLawActive : false,
       unlockedDirection: (parsed.unlockedDirection === 'left' || parsed.unlockedDirection === 'right') ? parsed.unlockedDirection : null,
       activeUnlock: (parsed.activeUnlock === 'bribe' || parsed.activeUnlock === 'force') ? parsed.activeUnlock : null,
+      flags,
     };
   } catch {
     return null;
