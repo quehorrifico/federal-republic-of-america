@@ -1,0 +1,1604 @@
+[
+  {
+    "id": "reaction-cascadia-rain-battery-drought",
+    "type": "fallout",
+    "requiredFlags": [
+      "cascadia_rain_battery_rejected"
+    ],
+    "prompt": "The dry season arrived early. Cascadia's reservoirs are under strain, and critics are blaming your decision to reject the federal rain-battery grid. Local leaders are now demanding emergency federal water relief.",
+    "left": {
+      "label": "Declare a federal water emergency.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Cascadia": 15,
+        "Texas": -10
+      },
+      "hiddenEffects": {
+        "environmentalism": 10,
+        "conservation": 10,
+        "sustainability": 10,
+        "small_government": -15,
+        "austerity": -15,
+        "tax_cuts": -10
+      },
+      "setFlags": [
+        "cascadia_water_emergency"
+      ]
+    },
+    "right": {
+      "label": "No special relief.",
+      "effects": {
+        "authority": -10,
+        "capital": 5,
+        "sentiment": -15,
+        "sustainability": -15
+      },
+      "regionalEffects": {
+        "Cascadia": -25,
+        "Texas": 10
+      },
+      "hiddenEffects": {
+        "environmentalism": -10,
+        "conservation": -10,
+        "sustainability": -10,
+        "small_government": 15,
+        "austerity": 15,
+        "tax_cuts": 10
+      },
+      "setFlags": [
+        "cascadia_left_to_dry"
+      ]
+    }
+  },
+  {
+    "id": "reaction-cascadia-rain-battery-expansion",
+    "type": "fallout",
+    "requiredFlags": [
+      "cascadia_rain_battery_built"
+    ],
+    "prompt": "The rain-battery grid is performing better than expected. Cascadia now wants federal approval to sell surplus stored water and clean energy credits nationwide, while Texas energy firms warn this would distort the market.",
+    "left": {
+      "label": "Keep the system regional.",
+      "effects": {
+        "authority": 5,
+        "capital": 0,
+        "sentiment": 5,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Cascadia": 15,
+        "Texas": 0
+      },
+      "hiddenEffects": {
+        "environmentalism": 15,
+        "conservation": 15,
+        "sustainability": 15,
+        "economic_growth": -5,
+        "free_market": -5,
+        "entrepreneurship": -5
+      },
+      "setFlags": [
+        "cascadia_grid_regionalized"
+      ]
+    },
+    "right": {
+      "label": "Open national trading.",
+      "effects": {
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 0,
+        "sustainability": 5
+      },
+      "regionalEffects": {
+        "Cascadia": 20,
+        "Texas": -15
+      },
+      "hiddenEffects": {
+        "environmentalism": 10,
+        "conservation": 10,
+        "sustainability": 10,
+        "economic_growth": 20,
+        "free_market": 20,
+        "entrepreneurship": 20
+      },
+      "setFlags": [
+        "cascadia_grid_national_market"
+      ]
+    }
+  },
+  {
+    "id": "reaction-california-ai-equity-lawsuit",
+    "type": "fallout",
+    "requiredFlags": [
+      "california_ai_equity_board_rejected"
+    ],
+    "prompt": "After you let the market decide, a whistleblower leaked internal hiring data from several major AI firms. The numbers are ugly, and California activists are demanding a federal civil-rights investigation into algorithmic discrimination.",
+    "left": {
+      "label": "Launch the investigation.",
+      "effects": {
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 20,
+        "Frontier": -10
+      },
+      "hiddenEffects": {
+        "civil_rights": 20,
+        "social_justice": 20,
+        "anti_racism": 20,
+        "feminism": 20,
+        "lgbt_rights": 20,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "ai_bias_probe"
+      ]
+    },
+    "right": {
+      "label": "Call it a media panic.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": -25,
+        "Frontier": 10
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "civil_rights": -20,
+        "social_justice": -20,
+        "anti_racism": -20,
+        "feminism": -20,
+        "lgbt_rights": -20
+      },
+      "setFlags": [
+        "ai_bias_ignored"
+      ]
+    }
+  },
+  {
+    "id": "reaction-california-ai-equity-backlash",
+    "type": "fallout",
+    "requiredFlags": [
+      "california_ai_equity_board_created"
+    ],
+    "prompt": "The new Federal AI Equity Board has started auditing major hiring platforms, and the first fines are already hitting Silicon Valley. Investors are nervous, but civil-rights groups are celebrating. Several CEOs are now demanding a 'safe harbor' period before penalties fully kick in.",
+    "left": {
+      "label": "No exceptions. Enforce immediately.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 20,
+        "Frontier": -15
+      },
+      "hiddenEffects": {
+        "civil_rights": 20,
+        "social_justice": 20,
+        "anti_racism": 20,
+        "feminism": 20,
+        "lgbt_rights": 20,
+        "economic_growth": -15,
+        "free_market": -15,
+        "entrepreneurship": -15
+      },
+      "setFlags": [
+        "ai_board_crackdown"
+      ]
+    },
+    "right": {
+      "label": "Grant a temporary safe harbor.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 0,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "California": 5,
+        "Frontier": 10
+      },
+      "hiddenEffects": {
+        "economic_growth": 10,
+        "free_market": 10,
+        "entrepreneurship": 10,
+        "civil_rights": 5,
+        "social_justice": 5,
+        "anti_racism": 5,
+        "feminism": 5,
+        "lgbt_rights": 5
+      },
+      "setFlags": [
+        "ai_board_safe_harbor"
+      ]
+    }
+  },
+  {
+    "id": "reaction-mesa-drone-grid-breach",
+    "type": "fallout",
+    "requiredFlags": [
+      "mesa_drone_grid_rejected"
+    ],
+    "prompt": "After you ordered Mesa to stand down, a highly publicized border breach triggered a media firestorm. Gov. Vance is now demanding emergency powers to deploy rapid-response surveillance towers across the desert frontier.",
+    "left": {
+      "label": "Grant emergency surveillance powers.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 20,
+        "California": -10
+      },
+      "hiddenEffects": {
+        "security": 20,
+        "military_strength": 20,
+        "fighting_crime_terrorism": 20,
+        "civil_rights": -10,
+        "social_justice": -10,
+        "anti_racism": -10,
+        "feminism": -10,
+        "lgbt_rights": -10
+      },
+      "setFlags": [
+        "mesa_emergency_surveillance"
+      ]
+    },
+    "right": {
+      "label": "Refuse. No panic powers.",
+      "effects": {
+        "authority": -10,
+        "capital": 5,
+        "sentiment": -10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -25,
+        "California": 10
+      },
+      "hiddenEffects": {
+        "security": -15,
+        "military_strength": -15,
+        "fighting_crime_terrorism": -15,
+        "civil_rights": 10,
+        "social_justice": 10,
+        "anti_racism": 10,
+        "feminism": 10,
+        "lgbt_rights": 10
+      },
+      "setFlags": [
+        "mesa_no_panic_powers"
+      ]
+    }
+  },
+  {
+    "id": "reaction-mesa-drone-grid-abuse",
+    "type": "fallout",
+    "requiredFlags": [
+      "mesa_drone_grid_active"
+    ],
+    "prompt": "Mesa's armed drone grid is active, but leaked footage shows several wrongful detentions and one deadly strike on a civilian convoy. California officials are calling for an independent review and suspension of the program.",
+    "left": {
+      "label": "Suspend the grid and investigate.",
+      "effects": {
+        "authority": -5,
+        "capital": -5,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": -20,
+        "California": 20
+      },
+      "hiddenEffects": {
+        "civil_rights": 20,
+        "social_justice": 20,
+        "anti_racism": 20,
+        "feminism": 20,
+        "lgbt_rights": 20,
+        "security": -15,
+        "military_strength": -15,
+        "fighting_crime_terrorism": -15
+      },
+      "setFlags": [
+        "mesa_drone_probe"
+      ]
+    },
+    "right": {
+      "label": "Back the operators. Stay the course.",
+      "effects": {
+        "authority": 10,
+        "capital": 0,
+        "sentiment": -15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Mesa": 15,
+        "California": -20
+      },
+      "hiddenEffects": {
+        "security": 15,
+        "military_strength": 15,
+        "fighting_crime_terrorism": 15,
+        "civil_rights": -20,
+        "social_justice": -20,
+        "anti_racism": -20,
+        "feminism": -20,
+        "lgbt_rights": -20
+      },
+      "setFlags": [
+        "mesa_drone_crackdown"
+      ]
+    }
+  },
+  {
+    "id": "reaction-frontier-public-lands-backlash",
+    "type": "fallout",
+    "requiredFlags": [
+      "frontier_public_lands_kept"
+    ],
+    "prompt": "After you kept the public lands under federal control, ranching and mining lobbies in the Frontier launched a furious campaign accusing your administration of strangling local economies. Gov. Cassidy now wants emergency mineral leases on a smaller slice of federal land as a 'compromise.'",
+    "left": {
+      "label": "Reject the leases.",
+      "effects": {
+        "authority": 10,
+        "capital": -5,
+        "sentiment": -10,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Frontier": -20,
+        "Cascadia": 15
+      },
+      "hiddenEffects": {
+        "environmentalism": 20,
+        "conservation": 20,
+        "sustainability": 20,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "frontier_leases_rejected"
+      ]
+    },
+    "right": {
+      "label": "Offer limited leases.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Frontier": 15,
+        "Cascadia": -10
+      },
+      "hiddenEffects": {
+        "economic_growth": 10,
+        "free_market": 10,
+        "entrepreneurship": 10,
+        "environmentalism": -10,
+        "conservation": -10,
+        "sustainability": -10
+      },
+      "setFlags": [
+        "frontier_limited_leases"
+      ]
+    }
+  },
+  {
+    "id": "reaction-frontier-land-selloff-disaster",
+    "type": "fallout",
+    "requiredFlags": [
+      "frontier_public_lands_sold"
+    ],
+    "prompt": "The land selloff brought in a flood of cash, but one of the newly privatized mining tracts triggered a major toxic runoff disaster. Cascadia's media is calling it the 'Great Rockies Fire Sale,' and lawmakers are demanding accountability.",
+    "left": {
+      "label": "Nationalize the damaged tract.",
+      "effects": {
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 15
+      },
+      "regionalEffects": {
+        "Frontier": -15,
+        "Cascadia": 20
+      },
+      "hiddenEffects": {
+        "environmentalism": 25,
+        "conservation": 25,
+        "sustainability": 25,
+        "economic_growth": -15,
+        "free_market": -15,
+        "entrepreneurship": -15
+      },
+      "setFlags": [
+        "frontier_tract_nationalized"
+      ]
+    },
+    "right": {
+      "label": "Shield the buyers from liability.",
+      "effects": {
+        "authority": -10,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -15
+      },
+      "regionalEffects": {
+        "Frontier": 10,
+        "Cascadia": -25
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "environmentalism": -20,
+        "conservation": -20,
+        "sustainability": -20
+      },
+      "setFlags": [
+        "frontier_buyers_shielded"
+      ]
+    }
+  },
+  {
+    "id": "reaction-heartland-synthetic-meat-price-war",
+    "type": "fallout",
+    "requiredFlags": [
+      "heartland_synthetic_meat_approved"
+    ],
+    "prompt": "After you let the market decide, synthetic meat prices crashed and major grocery chains started replacing Heartland beef contracts overnight. Ranchers are panicking, and Gov. Gantry wants an emergency federal labeling law forcing lab-grown products to carry a warning stamp.",
+    "left": {
+      "label": "Pass the warning-label law.",
+      "effects": {
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 5,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Heartland": 20,
+        "California": -10
+      },
+      "hiddenEffects": {
+        "tradition": 20,
+        "christianity": 20,
+        "rural_life": 20,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "synthetic_meat_warning_labels"
+      ]
+    },
+    "right": {
+      "label": "No intervention. Let ranchers compete.",
+      "effects": {
+        "authority": -10,
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": 5
+      },
+      "regionalEffects": {
+        "Heartland": -20,
+        "California": 15
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "tradition": -15,
+        "christianity": -15,
+        "rural_life": -15
+      },
+      "setFlags": [
+        "synthetic_meat_full_competition"
+      ]
+    }
+  },
+  {
+    "id": "reaction-heartland-synthetic-meat-black-market",
+    "type": "fallout",
+    "requiredFlags": [
+      "heartland_synthetic_meat_banned"
+    ],
+    "prompt": "The synthetic meat ban thrilled ranchers, but California firms are now shipping bootleg product through neighboring states and selling it online as 'protein substrate.' Heartland lawmakers want a federal enforcement crackdown before the ban becomes a joke.",
+    "left": {
+      "label": "Launch a crackdown.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Heartland": 15,
+        "California": -15
+      },
+      "hiddenEffects": {
+        "tradition": 15,
+        "christianity": 15,
+        "rural_life": 15,
+        "environmentalism": -10,
+        "conservation": -10,
+        "sustainability": -10
+      },
+      "setFlags": [
+        "synthetic_meat_crackdown"
+      ]
+    },
+    "right": {
+      "label": "Ease the ban and tax it instead.",
+      "effects": {
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 0,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Heartland": -10,
+        "California": 10
+      },
+      "hiddenEffects": {
+        "economic_growth": 10,
+        "free_market": 10,
+        "entrepreneurship": 10,
+        "tradition": -10,
+        "christianity": -10,
+        "rural_life": -10
+      },
+      "setFlags": [
+        "synthetic_meat_taxed_exception"
+      ]
+    }
+  },
+  {
+    "id": "reaction-texas-tech-relocation-stallout",
+    "type": "fallout",
+    "requiredFlags": [
+      "texas_tax_holiday_rejected"
+    ],
+    "prompt": "After you blocked the tax holiday, two of the tech conglomerates froze their relocation plans and started shopping for softer deals in other regions. Gov. Walker is demanding a narrower federal package just for infrastructure and hiring incentives in Austin.",
+    "left": {
+      "label": "No carve-outs. Let them pay full freight.",
+      "effects": {
+        "authority": 10,
+        "capital": 0,
+        "sentiment": -10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -20,
+        "California": 10
+      },
+      "hiddenEffects": {
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10,
+        "civil_rights": 5,
+        "social_justice": 5,
+        "anti_racism": 5,
+        "feminism": 5,
+        "lgbt_rights": 5
+      },
+      "setFlags": [
+        "texas_no_tech_carveout"
+      ]
+    },
+    "right": {
+      "label": "Offer a limited relocation package.",
+      "effects": {
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": 15,
+        "California": -10
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 10,
+        "entrepreneurship": 10,
+        "tax_cuts": 5,
+        "small_government": 5,
+        "austerity": 5
+      },
+      "setFlags": [
+        "texas_limited_relocation_package"
+      ]
+    }
+  },
+  {
+    "id": "reaction-texas-tech-hq-backlash",
+    "type": "fallout",
+    "requiredFlags": [
+      "texas_tax_holiday_approved"
+    ],
+    "prompt": "The tax holiday worked: the tech giants are coming to Austin. But local housing prices are exploding, longtime residents are furious, and California is calling it a federally subsidized corporate raid. Texas leaders want emergency zoning preemption to accelerate luxury housing construction.",
+    "left": {
+      "label": "Protect local communities first.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Texas": -10,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "civil_rights": 15,
+        "social_justice": 15,
+        "anti_racism": 15,
+        "feminism": 15,
+        "lgbt_rights": 15,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "texas_housing_protections"
+      ]
+    },
+    "right": {
+      "label": "Fast-track the buildout.",
+      "effects": {
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Texas": 20,
+        "California": -10
+      },
+      "hiddenEffects": {
+        "economic_growth": 20,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "tax_cuts": 10,
+        "small_government": 10,
+        "austerity": 10
+      },
+      "setFlags": [
+        "texas_fast_growth_buildout"
+      ]
+    }
+  },
+  {
+    "id": "reaction-superior-steel-collapse",
+    "type": "fallout",
+    "requiredFlags": [
+      "superior_metal_tariffs_rejected"
+    ],
+    "prompt": "After you embraced free trade, two major foundries in Superior announced layoffs within the month. Gov. Kowalski is demanding an emergency federal procurement order requiring public infrastructure projects to buy domestic steel.",
+    "left": {
+      "label": "Issue the domestic-buy order.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 20,
+        "Union": -10
+      },
+      "hiddenEffects": {
+        "workers_rights": 20,
+        "job_creation": 20,
+        "unionization": 20,
+        "world_peace": -10,
+        "internationalism": -10,
+        "global_justice": -10
+      },
+      "setFlags": [
+        "superior_domestic_steel_order"
+      ]
+    },
+    "right": {
+      "label": "No intervention. Let the industry adapt.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": -25,
+        "Union": 10
+      },
+      "hiddenEffects": {
+        "world_peace": 10,
+        "internationalism": 10,
+        "global_justice": 10,
+        "workers_rights": -15,
+        "job_creation": -15,
+        "unionization": -15
+      },
+      "setFlags": [
+        "superior_foundries_left_to_market"
+      ]
+    }
+  },
+  {
+    "id": "reaction-superior-tariff-retaliation",
+    "type": "fallout",
+    "requiredFlags": [
+      "superior_metal_tariffs_approved"
+    ],
+    "prompt": "The metal tariffs revived several Superior mills, but foreign governments retaliated by slapping duties on American machinery and farm equipment. Exporters are furious, and Union financiers want carve-outs before the trade war spreads.",
+    "left": {
+      "label": "Hold the line on tariffs.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 20,
+        "Union": -20
+      },
+      "hiddenEffects": {
+        "workers_rights": 15,
+        "job_creation": 15,
+        "unionization": 15,
+        "world_peace": -20,
+        "internationalism": -20,
+        "global_justice": -20
+      },
+      "setFlags": [
+        "superior_trade_war_doubled_down"
+      ]
+    },
+    "right": {
+      "label": "Negotiate selective exemptions.",
+      "effects": {
+        "authority": -5,
+        "capital": 5,
+        "sentiment": 5,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Superior": 5,
+        "Union": 10
+      },
+      "hiddenEffects": {
+        "workers_rights": 10,
+        "job_creation": 10,
+        "unionization": 10,
+        "world_peace": 10,
+        "internationalism": 10,
+        "global_justice": 10
+      },
+      "setFlags": [
+        "superior_tariff_exemptions"
+      ]
+    }
+  },
+  {
+    "id": "reaction-appalachia-coal-town-collapse",
+    "type": "fallout",
+    "requiredFlags": [
+      "appalachia_keep_coal_mines_closed"
+    ],
+    "prompt": "After you kept the mountain mines sealed, two coal towns declared fiscal emergencies and thousands of laid-off workers marched on the state capitol. Gov. Calloway is now demanding a federal jobs corps to rebuild roads, flood barriers, and rail lines in the hollow counties.",
+    "left": {
+      "label": "Fund the jobs corps.",
+      "effects": {
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Appalachia": 20,
+        "Cascadia": 5
+      },
+      "hiddenEffects": {
+        "workers_rights": 20,
+        "job_creation": 20,
+        "unionization": 20,
+        "environmentalism": 10,
+        "conservation": 10,
+        "sustainability": 10
+      },
+      "setFlags": [
+        "appalachia_jobs_corps"
+      ]
+    },
+    "right": {
+      "label": "No bailout. Let the market adjust.",
+      "effects": {
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -15,
+        "sustainability": 5
+      },
+      "regionalEffects": {
+        "Appalachia": -25,
+        "Cascadia": 10
+      },
+      "hiddenEffects": {
+        "tax_cuts": 10,
+        "small_government": 10,
+        "austerity": 10,
+        "workers_rights": -15,
+        "job_creation": -15,
+        "unionization": -15
+      },
+      "setFlags": [
+        "appalachia_market_adjustment"
+      ]
+    }
+  },
+  {
+    "id": "reaction-appalachia-coal-disaster",
+    "type": "fallout",
+    "requiredFlags": [
+      "appalachia_reopen_coal_mines"
+    ],
+    "prompt": "The reopened coal mines brought jobs back fast, but a major tunnel collapse and runoff spill have triggered national outrage. Cascadian media are calling the coal order a death sentence, while Appalachian families are demanding safety inspections before another shift goes underground.",
+    "left": {
+      "label": "Pause operations for safety inspections.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Appalachia": -5,
+        "Cascadia": 15
+      },
+      "hiddenEffects": {
+        "workers_rights": 15,
+        "job_creation": 5,
+        "unionization": 15,
+        "environmentalism": 10,
+        "conservation": 10,
+        "sustainability": 10
+      },
+      "setFlags": [
+        "appalachia_coal_safety_pause"
+      ]
+    },
+    "right": {
+      "label": "Keep the mines running.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -10
+      },
+      "regionalEffects": {
+        "Appalachia": 10,
+        "Cascadia": -20
+      },
+      "hiddenEffects": {
+        "workers_rights": -20,
+        "job_creation": 10,
+        "unionization": -20,
+        "environmentalism": -15,
+        "conservation": -15,
+        "sustainability": -15
+      },
+      "setFlags": [
+        "appalachia_coal_no_pause"
+      ]
+    }
+  },
+  {
+    "id": "reaction-commonwealth-nsa-breach",
+    "type": "fallout",
+    "requiredFlags": [
+      "commonwealth_nsa_privatization_rejected"
+    ],
+    "prompt": "After you blocked the NSA privatization plan, a major cyberattack exposed weaknesses in several aging federal data centers. Gov. Sterling is demanding an emergency contract package to modernize the system before the next breach hits.",
+    "left": {
+      "label": "Modernize the servers under public control.",
+      "effects": {
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 10,
+        "California": 5
+      },
+      "hiddenEffects": {
+        "security": 20,
+        "military_strength": 20,
+        "fighting_crime_terrorism": 20,
+        "civil_rights": 10,
+        "social_justice": 10,
+        "anti_racism": 10,
+        "feminism": 10,
+        "lgbt_rights": 10
+      },
+      "setFlags": [
+        "commonwealth_public_server_upgrade"
+      ]
+    },
+    "right": {
+      "label": "Accept the risk. No new spending.",
+      "effects": {
+        "authority": -10,
+        "capital": 5,
+        "sentiment": -10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -20,
+        "California": 10
+      },
+      "hiddenEffects": {
+        "tax_cuts": 10,
+        "small_government": 10,
+        "austerity": 10,
+        "security": -15,
+        "military_strength": -15,
+        "fighting_crime_terrorism": -15
+      },
+      "setFlags": [
+        "commonwealth_server_neglect"
+      ]
+    }
+  },
+  {
+    "id": "reaction-commonwealth-private-surveillance-scandal",
+    "type": "fallout",
+    "requiredFlags": [
+      "commonwealth_nsa_privatized"
+    ],
+    "prompt": "The NSA privatization deal balanced the books, but leaked documents show one of the contractors was quietly data-mining Americans for profit. California is calling it the largest domestic surveillance scandal in decades, and the contractors are demanding immunity to keep the system online.",
+    "left": {
+      "label": "Revoke the contracts and investigate.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": -10,
+        "California": 20
+      },
+      "hiddenEffects": {
+        "civil_rights": 25,
+        "social_justice": 25,
+        "anti_racism": 25,
+        "feminism": 25,
+        "lgbt_rights": 25,
+        "security": -10,
+        "military_strength": -10,
+        "fighting_crime_terrorism": -10
+      },
+      "setFlags": [
+        "commonwealth_surveillance_probe"
+      ]
+    },
+    "right": {
+      "label": "Grant immunity and keep the net running.",
+      "effects": {
+        "authority": 15,
+        "capital": 5,
+        "sentiment": -20,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Commonwealth": 15,
+        "California": -25
+      },
+      "hiddenEffects": {
+        "security": 20,
+        "military_strength": 20,
+        "fighting_crime_terrorism": 20,
+        "civil_rights": -25,
+        "social_justice": -25,
+        "anti_racism": -25,
+        "feminism": -25,
+        "lgbt_rights": -25
+      },
+      "setFlags": [
+        "commonwealth_contractor_immunity"
+      ]
+    }
+  },
+  {
+    "id": "reaction-union-un-expansion-stall",
+    "type": "fallout",
+    "requiredFlags": [
+      "union_un_hq_taxed"
+    ],
+    "prompt": "After you taxed the diplomats, the UN expansion stalled and several foreign delegations openly threatened to relocate major summits out of New York. Gov. Vane is demanding a last-minute federal hospitality package to keep the headquarters politically anchored in Manhattan.",
+    "left": {
+      "label": "Offer a limited diplomatic package.",
+      "effects": {
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 15,
+        "Mesa": -10
+      },
+      "hiddenEffects": {
+        "world_peace": 15,
+        "internationalism": 15,
+        "global_justice": 15,
+        "tax_cuts": -5,
+        "small_government": -5,
+        "austerity": -5
+      },
+      "setFlags": [
+        "union_diplomatic_package"
+      ]
+    },
+    "right": {
+      "label": "Let them leave if they want.",
+      "effects": {
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -20,
+        "Mesa": 10
+      },
+      "hiddenEffects": {
+        "containing_immigration": 10,
+        "nationalism": 10,
+        "white_supremacy": 10,
+        "world_peace": -15,
+        "internationalism": -15,
+        "global_justice": -15
+      },
+      "setFlags": [
+        "union_un_hardline"
+      ]
+    }
+  },
+  {
+    "id": "reaction-union-un-enclave-backlash",
+    "type": "fallout",
+    "requiredFlags": [
+      "union_un_hq_exempted"
+    ],
+    "prompt": "The UN tax exemption passed, but residents around the federalized Manhattan blocks are furious over rising security zones, restricted streets, and diplomatic immunity abuses. City leaders want the republic to either compensate the neighborhood or scale back the enclave.",
+    "left": {
+      "label": "Compensate the neighborhood.",
+      "effects": {
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": 10,
+        "Mesa": -5
+      },
+      "hiddenEffects": {
+        "world_peace": 10,
+        "internationalism": 10,
+        "global_justice": 10,
+        "welfare_state": 10,
+        "public_services": 10,
+        "poverty_relief": 10
+      },
+      "setFlags": [
+        "union_un_neighborhood_compensation"
+      ]
+    },
+    "right": {
+      "label": "Expand security and ignore complaints.",
+      "effects": {
+        "authority": 15,
+        "capital": 0,
+        "sentiment": -20,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Union": -15,
+        "Mesa": 5
+      },
+      "hiddenEffects": {
+        "security": 15,
+        "military_strength": 15,
+        "fighting_crime_terrorism": 15,
+        "world_peace": 5,
+        "internationalism": 5,
+        "global_justice": 5
+      },
+      "setFlags": [
+        "union_un_security_state"
+      ]
+    }
+  },
+  {
+    "id": "reaction-piedmont-auto-plant-stall",
+    "type": "fallout",
+    "requiredFlags": [
+      "piedmont_auto_plant_stall"
+    ],
+    "prompt": "After you protected the unions, one of the European automakers froze its Piedmont expansion and started scouting non-union sites overseas. Gov. Ashcroft is demanding a narrower federal package: keep labor protections, but offer targeted infrastructure grants to salvage the deal.",
+    "left": {
+      "label": "Offer the grants, keep the unions.",
+      "effects": {
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 15,
+        "Superior": 10
+      },
+      "hiddenEffects": {
+        "workers_rights": 15,
+        "job_creation": 15,
+        "unionization": 15,
+        "economic_growth": 10,
+        "free_market": 5,
+        "entrepreneurship": 5
+      },
+      "setFlags": [
+        "piedmont_union_grant_compromise"
+      ]
+    },
+    "right": {
+      "label": "Let the deal collapse.",
+      "effects": {
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -15,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": -20,
+        "Superior": 10
+      },
+      "hiddenEffects": {
+        "workers_rights": 10,
+        "job_creation": -15,
+        "unionization": 10,
+        "economic_growth": -15,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "piedmont_auto_deal_lost"
+      ]
+    }
+  },
+  {
+    "id": "reaction-piedmont-nonunion-walkout",
+    "type": "fallout",
+    "requiredFlags": [
+      "piedmont_auto_plant_funded"
+    ],
+    "prompt": "The federally backed auto plants broke ground on schedule, but leaked hiring documents confirmed management intends to crush every organizing effort before the first car rolls off the line. Superior labor leaders are calling for a national boycott, and unrest is already spreading among local construction crews.",
+    "left": {
+      "label": "Force neutrality in union elections.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 0
+      },
+      "regionalEffects": {
+        "Piedmont": 5,
+        "Superior": 20
+      },
+      "hiddenEffects": {
+        "workers_rights": 20,
+        "job_creation": 10,
+        "unionization": 20,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "piedmont_union_neutrality_order"
+      ]
+    },
+    "right": {
+      "label": "Back management and crush the walkout.",
+      "effects": {
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -20,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Piedmont": 15,
+        "Superior": -25
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "workers_rights": -20,
+        "job_creation": -10,
+        "unionization": -20
+      },
+      "setFlags": [
+        "piedmont_union_crackdown"
+      ]
+    }
+  },
+  {
+    "id": "reaction-dixie-offshore-stagnation",
+    "type": "fallout",
+    "requiredFlags": [
+      "dixie_protect_gulf"
+    ],
+    "prompt": "After you protected the Gulf, several offshore investors pulled back and Gulf Coast governors are screaming about lost jobs and idle shipyards. Gov. LeBlanc now wants a narrower federal compromise: allow limited new drilling, but only in already-developed offshore zones.",
+    "left": {
+      "label": "Hold the line. No new drilling.",
+      "effects": {
+        "authority": 10,
+        "capital": -5,
+        "sentiment": -10,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Dixie": -20,
+        "Cascadia": 10
+      },
+      "hiddenEffects": {
+        "environmentalism": 15,
+        "conservation": 15,
+        "sustainability": 15,
+        "economic_growth": -10,
+        "free_market": -10,
+        "entrepreneurship": -10
+      },
+      "setFlags": [
+        "dixie_no_new_drilling"
+      ]
+    },
+    "right": {
+      "label": "Approve limited offshore leases.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Dixie": 15,
+        "Cascadia": -10
+      },
+      "hiddenEffects": {
+        "economic_growth": 10,
+        "free_market": 10,
+        "entrepreneurship": 10,
+        "environmentalism": -10,
+        "conservation": -10,
+        "sustainability": -10
+      },
+      "setFlags": [
+        "dixie_limited_offshore_leases"
+      ]
+    }
+  },
+  {
+    "id": "reaction-dixie-rig-spill",
+    "type": "fallout",
+    "requiredFlags": [
+      "dixie_drill_gulf"
+    ],
+    "prompt": "The new deep-water drilling boom flooded Dixie with cash, but one of the expanded rigs has suffered a major spill. Fisheries are collapsing, tourism operators are panicking, and Cascadian media are calling your offshore order a national disgrace.",
+    "left": {
+      "label": "Force a full cleanup shutdown.",
+      "effects": {
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 15
+      },
+      "regionalEffects": {
+        "Dixie": -10,
+        "Cascadia": 20
+      },
+      "hiddenEffects": {
+        "environmentalism": 20,
+        "conservation": 20,
+        "sustainability": 20,
+        "economic_growth": -15,
+        "free_market": -15,
+        "entrepreneurship": -15
+      },
+      "setFlags": [
+        "dixie_rig_cleanup_shutdown"
+      ]
+    },
+    "right": {
+      "label": "Contain it and keep pumping.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -15
+      },
+      "regionalEffects": {
+        "Dixie": 10,
+        "Cascadia": -20
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "environmentalism": -20,
+        "conservation": -20,
+        "sustainability": -20
+      },
+      "setFlags": [
+        "dixie_spill_covered_up"
+      ]
+    }
+  },
+  {
+    "id": "reaction-alaska-arctic-jobs-crisis",
+    "type": "fallout",
+    "requiredFlags": [
+      "alaska_protect_arctic_wildlife"
+    ],
+    "prompt": "After you protected the Arctic, several expected offshore projects collapsed and coastal Alaskan towns are now facing layoffs, empty ports, and a wave of angry local officials. Gov. O'Malley wants a federal Arctic jobs package focused on research stations, ice logistics, and wildlife patrols to replace the lost drilling boom.",
+    "left": {
+      "label": "Fund the Arctic jobs package.",
+      "effects": {
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Alaska": 20,
+        "Cascadia": 10
+      },
+      "hiddenEffects": {
+        "environmentalism": 15,
+        "conservation": 15,
+        "sustainability": 15,
+        "workers_rights": 10,
+        "job_creation": 15,
+        "unionization": 10
+      },
+      "setFlags": [
+        "alaska_arctic_jobs_package"
+      ]
+    },
+    "right": {
+      "label": "No bailout. Let Alaska diversify on its own.",
+      "effects": {
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -15,
+        "sustainability": 5
+      },
+      "regionalEffects": {
+        "Alaska": -25,
+        "Cascadia": 10
+      },
+      "hiddenEffects": {
+        "tax_cuts": 10,
+        "small_government": 10,
+        "austerity": 10,
+        "job_creation": -15,
+        "entrepreneurship": -10,
+        "economic_growth": -10
+      },
+      "setFlags": [
+        "alaska_forced_diversification"
+      ]
+    }
+  },
+  {
+    "id": "reaction-alaska-arctic-spill",
+    "type": "fallout",
+    "requiredFlags": [
+      "alaska_drill_artic_oil"
+    ],
+    "prompt": "The first Arctic mega-rigs came online fast, but one suffered a catastrophic blowout beneath drifting ice. Cleanup crews are overwhelmed, fisheries are panicking, and Cascadian papers are calling it the worst industrial gamble in modern history.",
+    "left": {
+      "label": "Shut down the rigs and launch full cleanup.",
+      "effects": {
+        "authority": 10,
+        "capital": -20,
+        "sentiment": 5,
+        "sustainability": 20
+      },
+      "regionalEffects": {
+        "Alaska": -10,
+        "Cascadia": 20
+      },
+      "hiddenEffects": {
+        "environmentalism": 25,
+        "conservation": 25,
+        "sustainability": 25,
+        "economic_growth": -20,
+        "free_market": -20,
+        "entrepreneurship": -20
+      },
+      "setFlags": [
+        "alaska_arctic_cleanup_shutdown"
+      ]
+    },
+    "right": {
+      "label": "Contain it quietly and keep drilling.",
+      "effects": {
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -20,
+        "sustainability": -15
+      },
+      "regionalEffects": {
+        "Alaska": 10,
+        "Cascadia": -25
+      },
+      "hiddenEffects": {
+        "economic_growth": 15,
+        "free_market": 15,
+        "entrepreneurship": 15,
+        "environmentalism": -20,
+        "conservation": -20,
+        "sustainability": -20
+      },
+      "setFlags": [
+        "alaska_arctic_coverup"
+      ]
+    }
+  },
+  {
+    "id": "reaction-hawaii-red-hill-outrage",
+    "type": "fallout",
+    "requiredFlags": [
+      "hawaii_keep_red_hill_open"
+    ],
+    "prompt": "After you protected the fleet and kept Red Hill open, another fuel leak contaminated local water supplies and protests erupted across O'ahu. Gov. Palakiko is demanding an emergency federal cleanup trust and independent health monitoring for affected communities.",
+    "left": {
+      "label": "Fund the cleanup and health trust.",
+      "effects": {
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 10
+      },
+      "regionalEffects": {
+        "Hawaii": 20,
+        "Commonwealth": -5
+      },
+      "hiddenEffects": {
+        "civil_rights": 15,
+        "social_justice": 15,
+        "anti_racism": 15,
+        "feminism": 15,
+        "lgbt_rights": 15,
+        "security": -5,
+        "military_strength": -5,
+        "fighting_crime_terrorism": -5
+      },
+      "setFlags": [
+        "hawaii_red_hill_cleanup_trust"
+      ]
+    },
+    "right": {
+      "label": "Minimize the leak and stay operational.",
+      "effects": {
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -20,
+        "sustainability": -10
+      },
+      "regionalEffects": {
+        "Hawaii": -25,
+        "Commonwealth": 10
+      },
+      "hiddenEffects": {
+        "security": 10,
+        "military_strength": 10,
+        "fighting_crime_terrorism": 10,
+        "civil_rights": -15,
+        "social_justice": -15,
+        "anti_racism": -15,
+        "feminism": -15,
+        "lgbt_rights": -15
+      },
+      "setFlags": [
+        "hawaii_red_hill_denial"
+      ]
+    }
+  },
+  {
+    "id": "reaction-hawaii-pearl-transition-crisis",
+    "type": "fallout",
+    "requiredFlags": [
+      "hawaii_close_red_hill"
+    ],
+    "prompt": "Closing Red Hill was wildly popular in Hawaii, but the Navy is warning that the Pearl Harbor transition is now causing severe fuel bottlenecks and readiness delays across the Pacific fleet. Commonwealth hawks want emergency military exemptions before the shutdown becomes a strategic embarrassment.",
+    "left": {
+      "label": "Grant temporary military exemptions.",
+      "effects": {
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": -5
+      },
+      "regionalEffects": {
+        "Hawaii": -10,
+        "Commonwealth": 15
+      },
+      "hiddenEffects": {
+        "security": 15,
+        "military_strength": 15,
+        "fighting_crime_terrorism": 15,
+        "civil_rights": -5,
+        "social_justice": -5,
+        "anti_racism": -5,
+        "feminism": -5,
+        "lgbt_rights": -5
+      },
+      "setFlags": [
+        "hawaii_red_hill_temporary_exemptions"
+      ]
+    },
+    "right": {
+      "label": "Stay the course and accelerate decommissioning.",
+      "effects": {
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 15
+      },
+      "regionalEffects": {
+        "Hawaii": 20,
+        "Commonwealth": -20
+      },
+      "hiddenEffects": {
+        "civil_rights": 15,
+        "social_justice": 15,
+        "anti_racism": 15,
+        "feminism": 15,
+        "lgbt_rights": 15,
+        "security": -15,
+        "military_strength": -15,
+        "fighting_crime_terrorism": -15
+      },
+      "setFlags": [
+        "hawaii_red_hill_full_shutdown"
+      ]
+    }
+  }
+]

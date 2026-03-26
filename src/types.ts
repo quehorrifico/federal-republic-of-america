@@ -264,6 +264,7 @@ export interface CardChoice {
   treasuryDelta?: number;
   regionalEffects?: RegionalEffects;
   hiddenEffects?: HiddenStatEffects;
+  setFlags?: string[];
 }
 
 export interface Card {
@@ -279,6 +280,11 @@ export interface Card {
   prompt: string;
   left: CardChoice;
   right: CardChoice;
+}
+
+export interface ReactionCard extends Card {
+  requiredFlags?: string[];
+  requiredAdvisorId?: AdvisorId;
 }
 
 export interface RawCard extends Omit<Card, 'left' | 'right'> {
@@ -323,4 +329,5 @@ export interface GameState {
   martialLawActive: boolean;
   unlockedDirection: Direction | null;
   activeUnlock: 'bribe' | 'force' | null;
+  flags: string[];
 }

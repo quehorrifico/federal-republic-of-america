@@ -92,6 +92,7 @@ function normalizeCardChoice(choice: CardChoice): CardChoice {
     treasuryDelta: typeof choice.treasuryDelta === 'number' ? choice.treasuryDelta : undefined,
     regionalEffects: normalizeRegionalEffectsRecord(choice.regionalEffects),
     hiddenEffects: normalizeHiddenEffectsRecord(choice.hiddenEffects),
+    setFlags: Array.isArray(choice.setFlags) ? choice.setFlags : undefined,
   };
 }
 
@@ -235,7 +236,7 @@ export interface DecisionResolutionResult {
   ok: boolean;
   reason?: string;
   choice: CardChoice;
-  next: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty'>;
+  next: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'flags'>;
   changes: DecisionResolutionChanges;
   events: {
     targetRegions: RegionKey[];
@@ -244,7 +245,7 @@ export interface DecisionResolutionResult {
 }
 
 export function resolveCardDecision(params: {
-  state: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions'>;
+  state: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions' | 'flags'>;
   card: Card;
   direction: Direction;
 }): DecisionResolutionResult {
@@ -273,6 +274,15 @@ export function resolveCardDecision(params: {
   const nextRegionLoyalty = applyChoiceToRegionSupport(state.regionLoyalty, choice);
   const nextHiddenStats = applyHiddenStatEffects(state.hiddenStats, choice.hiddenEffects);
 
+  const nextFlags = [...state.flags];
+  if (choice.setFlags && choice.setFlags.length > 0) {
+    for (const flag of choice.setFlags) {
+      if (!nextFlags.includes(flag)) {
+        nextFlags.push(flag);
+      }
+    }
+  }
+
   return {
     ok: true,
     choice,
@@ -281,6 +291,7 @@ export function resolveCardDecision(params: {
       statBuffers: nextBuffers,
       hiddenStats: nextHiddenStats,
       regionLoyalty: nextRegionLoyalty,
+      flags: nextFlags,
     },
     changes: {
       visibleStatChanges: getNumericChanges(state.stats, nextStats),

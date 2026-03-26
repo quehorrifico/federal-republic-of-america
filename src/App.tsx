@@ -5,6 +5,7 @@ import { GameOver } from './components/GameOver';
 import { StatsBar } from './components/StatsBar';
 import { ADVISOR_LIST, getAdvisorById } from './data/advisors';
 import cardsData from './data/cards.json';
+import reactionCardsData from './data/reaction_cards.json';
 import { GOVERNORS } from './data/governors';
 import {
   applyDeckSelection,
@@ -42,6 +43,7 @@ import {
   type StatKey,
   type Stats,
   type StatBuffers,
+  type ReactionCard,
 } from './types';
 
 const ALL_POLICY_CARDS = (cardsData as RawCard[])
@@ -58,13 +60,29 @@ const TERM_CARD_COUNT = 25;
 const ELECTION_INTERVAL = 25;
 const ELECTION_MAJORITY = Math.floor(REGION_KEYS.length / 2) + 1;
 
-const POLICY_CARD_BY_ID = new Map(ALL_POLICY_CARDS.map((card) => [card.id, card]));
+const ALL_REACTION_CARDS = (reactionCardsData as RawCard[])
+  .map((rawCard) => normalizeCard(rawCard) as ReactionCard | null)
+  .filter((card): card is ReactionCard => Boolean(card))
+  .map((card) => {
+    const raw = reactionCardsData.find((r) => r.id === card.id) as any;
+    return {
+      ...card,
+      type: card.type ?? inferCardType(card),
+      requiredFlags: raw.requiredFlags,
+      requiredAdvisorId: raw.requiredAdvisorId,
+    };
+  });
+
+const POLICY_CARD_BY_ID = new Map<string, Card>([
+  ...ALL_POLICY_CARDS.map((card) => [card.id, card] as const),
+  ...ALL_REACTION_CARDS.map((card) => [card.id, card] as const),
+]);
 
 const INITIAL_STATS: Stats = {
   authority: 80,
   capital: 80,
   sentiment: 80,
-  sustainability: 30,
+  sustainability: 40,
 };
 
 const INITIAL_STAT_BUFFERS: StatBuffers = {
@@ -135,7 +153,21 @@ function selectNextCard(
   advisorBias: AdvisorSelectionBias | undefined,
   hiddenStats: HiddenStats,
   rng: () => number,
+  flags: string[],
+  advisorId: AdvisorId | null,
 ): { deck: string[]; cardId: string | null } {
+  const validReactionCards = ALL_REACTION_CARDS.filter((rc) => {
+    if (flags.includes(`seen_${rc.id}`)) return false;
+    if (rc.requiredAdvisorId && rc.requiredAdvisorId !== advisorId) return false;
+    if (rc.requiredFlags && !rc.requiredFlags.every((f: string) => flags.includes(f))) return false;
+    return true;
+  });
+
+  if (validReactionCards.length > 0 && rng() < 0.3) {
+    const chosen = validReactionCards[Math.floor(rng() * validReactionCards.length)];
+    return { deck, cardId: chosen.id };
+  }
+
   if (deck.length === 0) {
     return { deck, cardId: null };
   }
@@ -161,7 +193,7 @@ function selectNextCard(
 function createNewGameState(advisorId: AdvisorId | null = null): GameState {
   const deck = createPolicyDeck();
   const advisor = getAdvisorById(advisorId);
-  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random);
+  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random, [], advisorId);
 
   return {
     advisorId,
@@ -186,6 +218,7 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     martialLawActive: false,
     unlockedDirection: null,
     activeUnlock: null,
+    flags: [],
   };
 }
 
@@ -401,6 +434,7 @@ export default function App() {
         regionLoyalty: game.regionLoyalty,
         malikRewriteActive: game.malikRewriteActive,
         pacifiedRegions: game.pacifiedRegions,
+        flags: game.flags,
       },
       card: currentCard,
       direction: previewDirection,
@@ -411,7 +445,7 @@ export default function App() {
 
     if (game.martialLawActive) {
       const isCrisis = typeof currentCard.id === 'string' && currentCard.id.startsWith('crisis-');
-      
+
       if (isCrisis) {
         // Iron Vance nullifies negative stat drops from crisis cards
         STAT_KEYS.forEach((k) => {
@@ -751,6 +785,7 @@ export default function App() {
           regionLoyalty: game.regionLoyalty,
           malikRewriteActive: game.malikRewriteActive,
           pacifiedRegions: game.pacifiedRegions,
+          flags: game.flags,
         },
         card: currentCard,
         direction,
@@ -780,7 +815,7 @@ export default function App() {
 
       if (game.martialLawActive) {
         const isCrisis = typeof currentCard.id === 'string' && currentCard.id.startsWith('crisis-');
-        
+
         if (isCrisis) {
           // Iron Vance nullifies negative stat drops from crisis cards
           STAT_KEYS.forEach((k) => {
@@ -965,7 +1000,7 @@ export default function App() {
         return;
       }
 
-      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng);
+      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng, resolution.next.flags, selectedAdvisor?.id ?? null);
 
       if (drawDebugEnabled) {
         // eslint-disable-next-line no-console
@@ -1022,6 +1057,7 @@ export default function App() {
         statBuffers: nextBuffers,
         hiddenStats: nextHiddenStats,
         regionLoyalty: nextRegionLoyalty,
+        flags: resolution.next.flags,
         turn: nextTurn,
         deck: nextSelection.deck,
         currentCardId: nextSelection.cardId,
@@ -1053,7 +1089,7 @@ export default function App() {
 
       const currentAdvisor =
         current.advisorId && isAdvisorId(current.advisorId) ? getAdvisorById(current.advisorId) : null;
-      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng);
+      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng, current.flags, current.advisorId);
 
       if (!nextSelection.cardId) {
         const endingSummary = getEndingSummary({
@@ -1398,22 +1434,7 @@ export default function App() {
               </li>
             )}
 
-            {/* DEBUG OVERLAY */}
-            <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem' }}>
-              <span className="status-name glow-amber" style={{ fontSize: '0.9rem', color: '#00ffff' }}>DEBUG: LOWEST HIDDEN STATS</span>
-              <div style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#00ffff', display: 'flex', flexDirection: 'column', marginTop: '0.5rem', opacity: 0.8 }}>
-                {Object.entries(game.hiddenStats)
-                  .sort((a, b) => (a[1] as number) - (b[1] as number))
-                  .slice(0, 5)
-                  .map(([stat, val]) => (
-                    <div key={stat} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
-                      <span style={{ textTransform: 'uppercase' }}>{stat}:</span>
-                      <span>{val as number}</span>
-                    </div>
-                  ))
-                }
-              </div>
-            </li>
+
 
           </ul>
         </aside>
