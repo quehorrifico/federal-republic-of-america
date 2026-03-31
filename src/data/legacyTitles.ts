@@ -1,7 +1,7 @@
 import { type PolicyPillarKey } from '../types';
 
 /**
- * 220 Dynamic Titles for the Federal Republic of America
+ * 220 Dynamic Titles for Mandate
  * * Lookup structure:
  * 1. SINGLE_PILLAR: When all top 3 hidden stats belong to one pillar. (10 titles)
  * 2. DOUBLE_PILLAR: When 2 stats belong to one pillar (Majority) and 1 to another (Minority). (90 titles)

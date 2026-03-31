@@ -1,4 +1,4 @@
-# Federal Republic of America
+# Mandate
 
 Small swipe-decision web game inspired by Reigns / Democratic Socialism Simulator.
 

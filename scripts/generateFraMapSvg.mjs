@@ -17,7 +17,7 @@ const WIDTH = 1200;
 const HEIGHT = 760;
 
 // -----------------------------------------------------------------------------
-// Federal Republic of America — 14 regions (whole states only)
+// Mandate — 14 regions (whole states only)
 // -----------------------------------------------------------------------------
 const REGION_TO_STATES = {
   pacific_northwest: ['WA', 'OR', 'ID'],
@@ -356,7 +356,7 @@ async function buildMap() {
      viewBox="0 0 ${WIDTH} ${HEIGHT}"
      role="img"
      aria-labelledby="fra-map-title fra-map-desc">
-  <title id="fra-map-title">Federal Republic of America — Regions</title>
+  <title id="fra-map-title">Mandate — Regions</title>
   <desc id="fra-map-desc">
     United States map grouped into 14 regions (whole-state membership), including Alaska and Hawaii.
   </desc>

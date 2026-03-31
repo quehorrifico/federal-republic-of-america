@@ -85,7 +85,7 @@ export function FraRegionMap({
     <div
       className={classes}
       ref={rootRef}
-      aria-label="Federal Republic of America regional map"
+      aria-label="Mandate regional map"
       dangerouslySetInnerHTML={{ __html: fraRegionsMapSvg }}
     />
   );

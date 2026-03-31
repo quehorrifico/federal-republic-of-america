@@ -1233,7 +1233,7 @@ export default function App() {
       <div className="intro-screen">
         <div className="intro-panel" style={{ border: 'none', background: 'transparent', boxShadow: 'none' }}>
           <h1 className="intro-title glow-amber" style={{ textAlign: 'center', marginBottom: '2rem', borderBottom: 'none' }}>
-            FEDERAL REPUBLIC OF AMERICA
+            MANDATE
           </h1>
 
           <div className="intro-section" style={{ border: 'none', background: 'transparent', padding: '0 1rem', marginBottom: '2rem', textAlign: 'center' }}>
@@ -1261,7 +1261,7 @@ export default function App() {
 
           <footer className="credits-footnote">
             <a href="https://github.com/quehorrifico/federal-republic-of-america" target="_blank" rel="noopener noreferrer">
-              [ SOURCE CODE / REPOSITORY | v2.0.1 ]
+              [ SOURCE CODE / REPOSITORY | v2.0.2 ]
             </a>
           </footer>
         </div>
@@ -1314,7 +1314,7 @@ export default function App() {
           <div className="settings-modal-panel game-over-panel" style={{ maxWidth: '600px', cursor: 'grab' }}>
             <h2 className="glow-amber" style={{ fontSize: '1.5rem', marginBottom: '1rem', borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem' }}>[ INITIALIZING: PROJECT FRA ]</h2>
             <p style={{ marginBottom: '1rem', lineHeight: '1.4' }}>
-              Welcome to the <span className="glow-amber">Federal Republic of America</span> administration terminal.
+              Welcome to the <span className="glow-amber">Mandate</span> administration terminal.
             </p>
             <p style={{ marginBottom: '1rem', lineHeight: '1.4' }}>
               You are the Chief Executive. Your mandate is to maintain the delicate balance of the Federal Government by managing four core metrics: <b>Authority</b>, <b>Capital</b>, <b>Sentiment</b>, and <b>Sustainability</b>. Keep them from reaching absolute zero, or the Republic will collapse.
@@ -1702,7 +1702,7 @@ export default function App() {
           <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Advisor Information">
             <div className="settings-modal-panel" style={{ maxWidth: '680px' }}>
               <div className="intro-header">
-                <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>FEDERAL REPUBLIC OF AMERICA — INTEL DOSSIER</span>
+                <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>MANDATE — INTEL DOSSIER</span>
               </div>
               <h1 className="intro-title glow-amber" style={{ fontSize: '1.5rem', marginTop: '1rem' }}>
                 {selectedAdvisor.name.toUpperCase()}
